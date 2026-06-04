@@ -3,18 +3,35 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>うどんバカ一代｜サイトへ移動します</title>
+<title>リニューアル提案サイト 一覧</title>
 <meta name="robots" content="noindex" />
-<link rel="canonical" href="udonbakaichidai/" />
-<meta http-equiv="refresh" content="0; url=udonbakaichidai/" />
-<script>location.replace("udonbakaichidai/");</script>
 <style>
-  body { font-family: "Noto Sans JP", system-ui, sans-serif; background: #faf7f0; color: #2b2620;
-    display: grid; place-items: center; min-height: 100vh; margin: 0; }
-  a { color: #1a3a5c; font-weight: 700; }
+  :root { --ink:#2b2620; --muted:#6b6155; }
+  body { font-family: "Noto Sans JP", system-ui, sans-serif; background: #faf7f0; color: var(--ink);
+    display: grid; place-items: center; min-height: 100vh; margin: 0; padding: 2rem; }
+  .wrap { width: min(680px, 92vw); text-align: center; }
+  h1 { font-size: 1.3rem; margin-bottom: .3rem; }
+  p.lead { color: var(--muted); margin-bottom: 1.6rem; font-size: .95rem; }
+  .cards { display: grid; gap: 1rem; grid-template-columns: 1fr 1fr; }
+  @media (max-width: 560px) { .cards { grid-template-columns: 1fr; } }
+  a.card { display: block; text-decoration: none; color: #fff; border-radius: 14px; padding: 1.6rem 1.2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,.12); font-weight: 700; }
+  a.card .emoji { font-size: 2.2rem; display: block; margin-bottom: .4rem; }
+  a.card .sub { display: block; font-weight: 400; font-size: .82rem; opacity: .9; margin-top: .3rem; }
+  .udon { background: linear-gradient(160deg, #1a3a5c, #12283f); }
+  .minmin { background: linear-gradient(160deg, #9c1f1f, #6f1414); }
+  footer { margin-top: 1.6rem; color: var(--muted); font-size: .78rem; }
 </style>
 </head>
 <body>
-  <p>うどんバカ一代のサイトへ移動します… 自動で切り替わらない場合は <a href="udonbakaichidai/">こちら</a>。</p>
+  <div class="wrap">
+    <h1>リニューアル提案サイト</h1>
+    <p class="lead">制作したデモサイト（モック）の一覧です。</p>
+    <div class="cards">
+      <a class="card udon" href="udonbakaichidai/"><span class="emoji" aria-hidden="true">🍜</span>手打十段 うどんバカ一代<span class="sub">香川・高松の讃岐うどん</span></a>
+      <a class="card minmin" href="utsunomiya-minmin/"><span class="emoji" aria-hidden="true">🥟</span>宇都宮みんみん<span class="sub">栃木・宇都宮の餃子専門店</span></a>
+    </div>
+    <footer>※いずれもリニューアル提案のデモ（決済は発生しません）。</footer>
+  </div>
 </body>
 </html>
