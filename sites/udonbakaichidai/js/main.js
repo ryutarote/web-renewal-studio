@@ -49,6 +49,8 @@
       else a.removeAttribute("aria-current");
     });
     document.title = (route === "home" ? "" : ROUTES[route] + "｜") + SITE + "（リニューアル提案）";
+    const status = $("#route-status");
+    if (status) status.textContent = ROUTES[route] + " のページを表示しました";
 
     // 開いているUIを閉じる
     closeCart();
@@ -313,6 +315,38 @@
     clearTimeout(toastTimer);
     toastTimer = setTimeout(() => { el.hidden = true; }, ms);
   }
+
+  /* =========================================================
+     YouTube ファサード（クリックで初めて読み込む＝初期表示を軽量化）
+     ========================================================= */
+  document.addEventListener("click", (e) => {
+    const fac = e.target.closest(".video-facade");
+    if (!fac) return;
+    const id = fac.dataset.yt;
+    if (!id) return;
+    const iframe = document.createElement("iframe");
+    iframe.src = "https://www.youtube-nocookie.com/embed/" + id + "?autoplay=1&rel=0";
+    iframe.title = fac.getAttribute("aria-label") || "動画";
+    iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+    iframe.allowFullscreen = true;
+    iframe.loading = "lazy";
+    const wrap = document.createElement("div");
+    wrap.className = "video";
+    wrap.appendChild(iframe);
+    fac.replaceWith(wrap);
+    const f = iframe; setTimeout(() => f.focus && f.focus(), 0);
+  });
+
+  /* =========================================================
+     画像フォールバック（外部CDN/プロキシ障害時も崩れにくく）
+     ========================================================= */
+  window.addEventListener("error", (e) => {
+    const t = e.target;
+    if (t && t.tagName === "IMG" && !t.dataset.fallback) {
+      t.dataset.fallback = "1";
+      t.classList.add("img-failed");
+    }
+  }, true);
 
   /* ---- 初期化 ---- */
   refreshCount();

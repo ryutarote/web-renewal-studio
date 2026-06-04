@@ -6,7 +6,11 @@
 <title>手打十段 うどんバカ一代｜香川・高松の本格手打ち讃岐うどん｜釜バターうどん発祥の店</title>
 <meta name="description" content="香川県高松市の手打ち讃岐うどん「うどんバカ一代」公式サイト（リニューアル提案）。名物・釜バターうどん、打ちたて・茹でたての手打ちうどんを早朝6時から。お土産うどんの通販（アカウント登録不要・ゲスト購入OK）も。" />
 <meta name="theme-color" content="#1a3a5c" />
+<meta name="robots" content="index, follow" />
+<meta name="format-detection" content="telephone=no" />
 <link rel="canonical" href="https://www.udonbakaichidai.co.jp/" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23b3373a'/%3E%3Ctext x='32' y='46' font-family='serif' font-size='40' font-weight='700' text-anchor='middle' fill='%23fff'%3E十%3C/text%3E%3C/svg%3E" />
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a3a5c'/%3E%3Ctext x='32' y='46' font-family='serif' font-size='40' font-weight='700' text-anchor='middle' fill='%23e0a526'%3E十%3C/text%3E%3C/svg%3E" />
 
 <meta property="og:type" content="restaurant" />
 <meta property="og:site_name" content="手打十段 うどんバカ一代" />
@@ -14,11 +18,17 @@
 <meta property="og:description" content="香川・高松の本格手打ち讃岐うどん。名物・釜バターうどんを早朝6時から。お土産うどん通販も。" />
 <meta property="og:url" content="https://www.udonbakaichidai.co.jp/" />
 <meta property="og:image" content="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/main_img.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="675" />
 <meta property="og:locale" content="ja_JP" />
 <meta name="twitter:card" content="summary_large_image" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preconnect" href="https://images.weserv.nl" />
+<link rel="preconnect" href="https://i.ytimg.com" />
+<link rel="dns-prefetch" href="https://www.youtube-nocookie.com" />
+<link rel="preload" as="image" href="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/main_img.jpg" fetchpriority="high" media="(min-width: 681px)" />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@600;700&display=swap" rel="stylesheet" />
 
 <link rel="stylesheet" href="css/style.css" />
@@ -43,6 +53,7 @@
 </head>
 <body>
 <a class="skip-link" href="#main">本文へスキップ</a>
+<p id="route-status" class="sr-only" aria-live="polite" role="status"></p>
 
 <!-- ===== Header ===== -->
 <header class="site-header" id="top">
@@ -89,15 +100,17 @@
     <section class="hero">
       <picture class="hero-photo">
         <source media="(max-width: 680px)" srcset="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/sp_main_img.jpg" />
-        <img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/main_img.jpg" width="1600" height="900" alt="美味しいうどんを昨日よりも、提供できるよう頑張ります。" />
+        <img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/main_img.jpg" width="1600" height="900" fetchpriority="high" decoding="async" alt="美味しいうどんを昨日よりも、提供できるよう頑張ります。" />
       </picture>
       <div class="container hero-inner">
-        <p class="hero-eyebrow">香川・高松 / 平成16年創業 / 早朝6時開店</p>
-        <h1 class="hero-title" data-view-title>打ちたて、茹でたて。<br />讃岐の本気を、一杯に。</h1>
-        <p class="hero-lead">名物「釜バターうどん」発祥の店。手打十段の職人が、毎朝その日の小麦と向き合う。</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#/menu">お品書きを見る</a>
-          <a class="btn btn-ghost" href="#/ec">お土産うどんを買う</a>
+        <div class="hero-panel">
+          <p class="hero-eyebrow">香川・高松 / 平成16年創業 / 早朝6時開店</p>
+          <h1 class="hero-title" data-view-title>打ちたて、茹でたて。<br />讃岐の本気を、一杯に。</h1>
+          <p class="hero-lead">名物「釜バターうどん」発祥の店。手打十段の職人が、毎朝その日の小麦と向き合う。</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#/menu">お品書きを見る</a>
+            <a class="btn btn-ghost" href="#/ec">お土産うどんを買う</a>
+          </div>
         </div>
       </div>
     </section>
@@ -171,9 +184,18 @@
           <h2 class="section-title">動画で見るうどんバカ一代</h2>
         </header>
         <div class="video-grid">
-          <div class="video"><iframe src="https://www.youtube.com/embed/S8xszCJHZ9s?rel=0" title="うどんバカ一代 紹介動画1" loading="lazy" allowfullscreen></iframe></div>
-          <div class="video"><iframe src="https://www.youtube.com/embed/ygkeSERMkCI?rel=0" title="うどんバカ一代 紹介動画2" loading="lazy" allowfullscreen></iframe></div>
-          <div class="video"><iframe src="https://www.youtube.com/embed/GyxZ4HSYbk0?rel=0" title="ゴールデンウィークの様子" loading="lazy" allowfullscreen></iframe></div>
+          <button class="video video-facade" data-yt="S8xszCJHZ9s" aria-label="動画を再生：うどんバカ一代 紹介動画1">
+            <img src="https://i.ytimg.com/vi/S8xszCJHZ9s/hqdefault.jpg" width="480" height="360" loading="lazy" decoding="async" alt="" />
+            <span class="video-play" aria-hidden="true"></span>
+          </button>
+          <button class="video video-facade" data-yt="ygkeSERMkCI" aria-label="動画を再生：うどんバカ一代 紹介動画2">
+            <img src="https://i.ytimg.com/vi/ygkeSERMkCI/hqdefault.jpg" width="480" height="360" loading="lazy" decoding="async" alt="" />
+            <span class="video-play" aria-hidden="true"></span>
+          </button>
+          <button class="video video-facade" data-yt="GyxZ4HSYbk0" aria-label="動画を再生：ゴールデンウィークの様子">
+            <img src="https://i.ytimg.com/vi/GyxZ4HSYbk0/hqdefault.jpg" width="480" height="360" loading="lazy" decoding="async" alt="" />
+            <span class="video-play" aria-hidden="true"></span>
+          </button>
         </div>
       </div>
     </section>
