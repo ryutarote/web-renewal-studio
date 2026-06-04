@@ -1,69 +1,57 @@
 /* =========================================================
    モックEC: 商品データ + カート（localStorage永続化）
    ※ 決済は一切発生しません。本番は決済代行のトークン方式で実装。
-   商品ラインナップ・送料・支払い方法は公式通販の公開情報を基に再構成。
+   商品ラインナップ・価格・画像・送料は公式通販(category/1, category/5)の公開情報。
+   画像は http 配信のため images.weserv.nl 経由で https 化して表示。
    ========================================================= */
+
+const IMG = (path) => "https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/" + path;
 
 const PRODUCTS = [
   {
-    id: "den-no-suke-4",
-    name: "伝の助うどん 4人前（つゆ付）",
-    desc: "店の味をそのまま。ゆでタイプ（米粉入り）で、手軽に打ちたての食感を。",
-    price: 1080,
-    grad: "linear-gradient(135deg,#f0dca5,#d9b15f)"
-  },
-  {
-    id: "kama-butter-set",
-    name: "釜バターうどんセット 2人前",
-    desc: "名物・釜バターうどんをご自宅で。特製バター・胡椒・出汁醤油付き。",
-    price: 1680,
-    grad: "radial-gradient(circle at 40% 35%,#f6d97a,#e0a526 65%,#b9851a)"
-  },
-  {
-    id: "kama-butter-3",
-    name: "釜バターうどん 3食組",
-    desc: "麺300g×1・つゆ・バターオイル・胡椒入り。まず試したい方に。",
-    price: 880,
-    grad: "radial-gradient(circle at 45% 40%,#f3d27a,#d99f29 70%,#a9760f)"
-  },
-  {
-    id: "hannama-6",
-    name: "半生讃岐うどん 6人前（つゆ付）",
-    desc: "コシと小麦の香りが長持ちする半生タイプ。常温保存OK。",
+    id: "omiyage-udon",
+    name: "手打十段うどんバカ一代の『おみやげうどん』",
+    desc: "店の味をご自宅で。手打十段の讃岐うどんおみやげ用。",
     price: 1500,
-    grad: "linear-gradient(135deg,#e7d6ac,#c7a45c)"
+    img: IMG("udon01.jpg")
   },
   {
-    id: "kijoyu-set",
-    name: "生醤油うどんセット 3人前",
-    desc: "麺の旨みを楽しむ生醤油。すだち果汁を添えて。",
-    price: 1400,
-    grad: "linear-gradient(135deg,#dccba0,#b89a5f)"
+    id: "dennosuke-4",
+    name: "『伝の助うどん』4人前（つゆ付）ゆでタイプ ★米粉入り",
+    desc: "ゆでタイプで手軽に本格讃岐うどん。つゆ付き・米粉入り。",
+    price: 1500,
+    img: IMG("dennosuke01.jpg")
   },
   {
-    id: "gift-8",
-    name: "贈答用 化粧箱 8人前（のし対応）",
-    desc: "ご贈答に。讃岐うどん詰め合わせのギフトボックス。のし・包装承ります。",
-    price: 3200,
-    grad: "linear-gradient(135deg,#1a3a5c,#2f5e8c)"
+    id: "dennosuke-2",
+    name: "『伝の助うどん』2人前（つゆ付）ゆでタイプ ★米粉入り",
+    desc: "まずはお試しに。ゆでタイプ・つゆ付き・米粉入りの2人前。",
+    price: 800,
+    img: IMG("dennosuke06.jpg")
+  },
+  {
+    id: "dashi-shoyu",
+    name: "釜バターうどん用『だし醤油』",
+    desc: "名物・釜バターうどんの味を決める特製だし醤油。",
+    price: 400,
+    img: IMG("P1010012.jpg")
   }
 ];
 
-/* 送料（公式通販の公開情報を基に再構成）
-   全国一律 ¥1,000／北海道・東北・沖縄は ¥1,300 */
+/* 送料（公式通販の公開情報）
+   全国一律 ¥1,000／北海道・東北・沖縄は ¥1,300（すべて税込） */
 const SHIPPING = {
   standard: 1000,
-  remote: 1300,
-  freeOver: null // 送料無料ラインは設けない
+  remote: 1300
 };
 
-/* 利用可能な支払い方法（表示用・デモ） */
+/* 利用可能な支払い方法（公式の表記） */
 const PAYMENT_METHODS = [
   "代金引換",
   "銀行振込",
   "郵便振替",
-  "クレジットカード",
-  "コンビニ決済",
+  "クレジットカード決済",
+  "オンラインコンビニ決済",
   "ネットバンク決済",
   "電子マネー決済"
 ];

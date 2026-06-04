@@ -30,7 +30,9 @@
   const grid = $("#product-grid");
   grid.innerHTML = PRODUCTS.map((p) => `
     <article class="product-card">
-      <div class="product-thumb" style="background:${p.grad}" role="img" aria-label="${p.name}の商品画像"></div>
+      <div class="product-thumb"${p.img ? "" : ` style="background:${p.grad || "#e7ddcb"}"`} role="img" aria-label="${p.name}の商品画像">
+        ${p.img ? `<img src="${p.img}" alt="${p.name}" loading="lazy" />` : ""}
+      </div>
       <div class="product-body">
         <h3 class="product-name">${p.name}</h3>
         <p class="product-desc">${p.desc}</p>
