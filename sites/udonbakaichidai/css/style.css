@@ -146,12 +146,14 @@ body.no-scroll { overflow: hidden; }
   background: var(--vermilion); color: #fff; font-size: .72rem; font-weight: 700;
   border-radius: 999px; display: grid; place-items: center; padding: 0 5px;
 }
+.cart-count[hidden] { display: none; }
 
 /* ===== Hero（画像と文字を分割：重ねないレイアウト） ===== */
 .hero {
   display: grid; grid-template-columns: 1fr 1fr; align-items: stretch;
   color: #fff; overflow: hidden;
-  background: linear-gradient(160deg, var(--indigo) 0%, var(--indigo-dark) 75%);
+  background-color: var(--indigo-dark);
+  background-image: linear-gradient(160deg, var(--indigo) 0%, var(--indigo-dark) 75%);
 }
 .hero-media { position: relative; min-height: clamp(260px, 38vw, 520px); }
 .hero-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
