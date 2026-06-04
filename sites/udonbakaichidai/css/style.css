@@ -187,14 +187,15 @@ body.no-scroll { overflow: hidden; }
   overflow: hidden; box-shadow: var(--shadow); transition: transform .2s ease;
 }
 .dish-card:hover { transform: translateY(-4px); }
-.dish-photo { aspect-ratio: 4 / 3; overflow: hidden; display: grid; place-items: center;
-  background: linear-gradient(135deg, #f6ead0, #e9d6ad); }
-.dish-photo--kamabutter { background: radial-gradient(circle at 50% 40%, #f6d97a, #e0a526 60%, #b9851a); }
-.dish-photo--shoyu { background: linear-gradient(135deg, #e9d9b0, #c9a85f); }
-.dish-photo--kake { background: radial-gradient(circle at 50% 38%, #f3e7c6, #d9c08a 72%); display: grid; place-items: center; }
-.dish-photo--kake::after { content: "🍜"; font-size: clamp(2.6rem, 6vw, 3.6rem); filter: drop-shadow(0 4px 8px rgba(0,0,0,.18)); }
+/* 名物カードは統一した暖色イメージタイル（料理名と矛盾しない汎用イメージ）。
+   ※正規の料理写真が用意でき次第、各カードに差し替え可能。 */
+.dish-photo { aspect-ratio: 4 / 3; overflow: hidden; display: grid; place-items: center; position: relative;
+  background: radial-gradient(circle at 50% 38%, #f3e7c6, #d9c08a 72%); }
+.dish-photo::after { content: "🍜"; font-size: clamp(2.8rem, 6vw, 3.8rem); filter: drop-shadow(0 4px 8px rgba(0,0,0,.18)); }
+.dish-photo--kamabutter { background: radial-gradient(circle at 50% 38%, #f8e08f, #e0a526 70%); }
+.dish-photo--kamabukkake { background: radial-gradient(circle at 50% 38%, #efd49a, #cf9b3f 72%); }
+.dish-photo--kake { background: radial-gradient(circle at 50% 38%, #f4ecd6, #ddc790 72%); }
 .dish-body { padding: 1.2rem 1.3rem 1.5rem; }
-.dish-photo img { width: 100%; height: 100%; object-fit: contain; display: block; }
 .dish-body h3 { font-family: var(--serif); font-size: 1.3rem; color: var(--indigo); }
 .dish-body p { color: var(--muted); font-size: .95rem; margin-top: .4rem; }
 .dish-price { font-family: var(--serif); font-size: 1.5rem; color: var(--vermilion); font-weight: 700; margin-top: .8rem !important; }
