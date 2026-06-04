@@ -1,6 +1,7 @@
 name: Deploy うどんバカ一代 site to GitHub Pages
 
-# sites/udonbakaichidai/ をサイトのルートとして GitHub Pages に公開する。
+# sites/ をルートとして公開し、サイト本体は /udonbakaichidai/ サブディレクトリで配信する。
+# 公開URL: https://ryutarote.github.io/moneytize-claude-code/udonbakaichidai/
 # 初回のみ Settings → Pages → Source を「GitHub Actions」に設定する必要がある。
 # github-pages 環境は既定で main からのデプロイのみ許可するため main で実行する。
 
@@ -9,7 +10,7 @@ on:
     branches:
       - main
     paths:
-      - "sites/udonbakaichidai/**"
+      - "sites/**"
       - ".github/workflows/pages.yml"
   workflow_dispatch: {}
 
@@ -37,12 +38,12 @@ jobs:
         uses: actions/configure-pages@v5
 
       - name: Disable Jekyll processing
-        run: touch sites/udonbakaichidai/.nojekyll
+        run: touch sites/.nojekyll
 
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: sites/udonbakaichidai
+          path: sites
 
       - name: Deploy to GitHub Pages
         id: deployment

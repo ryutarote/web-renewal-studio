@@ -1,5 +1,6 @@
 /* =========================================================
    UI: ナビ開閉 / 商品描画 / カートDrawer / チェックアウト(モック)
+   購入までアカウント登録は不要（ゲスト購入が既定。作成は任意）。
    ========================================================= */
 (function () {
   "use strict";
@@ -46,6 +47,8 @@
   const overlay = $("#cart-overlay");
   const cartCountEl = $("#cart-count");
   const cartItemsEl = $("#cart-items");
+  const cartSubtotalEl = $("#cart-subtotal");
+  const cartShippingEl = $("#cart-shipping");
   const cartTotalEl = $("#cart-total");
   const checkoutBtn = $("#checkout-open");
 
@@ -93,6 +96,10 @@
           </div>`;
       }).join("");
     }
+    const sub = Cart.subtotal();
+    const ship = Cart.shipping();
+    cartSubtotalEl.textContent = yen(sub);
+    cartShippingEl.textContent = ship > 0 ? yen(ship) : "—";
     cartTotalEl.textContent = yen(Cart.total());
     refreshCount();
   }
@@ -126,22 +133,54 @@
 
   /* ---- チェックアウト(モック) ---- */
   const modal = $("#checkout-modal");
-  const openModal = () => { modal.hidden = false; closeCart(); };
+  const form = $("#checkout-form");
+  const acctFields = $("#acct-fields");
+  const passwordInput = acctFields ? $("input[name=password]", acctFields) : null;
+  const submitBtn = $("#checkout-submit");
+
+  function syncCheckoutSummary() {
+    $("#co-subtotal").textContent = yen(Cart.subtotal());
+    const ship = Cart.shipping();
+    $("#co-shipping").textContent = ship > 0 ? yen(ship) : "—";
+    $("#co-total").textContent = yen(Cart.total());
+  }
+
+  function openModal() {
+    syncCheckoutSummary();
+    modal.hidden = false;
+    closeCart();
+  }
   const closeModal = () => { modal.hidden = true; };
 
   checkoutBtn.addEventListener("click", openModal);
   $("#checkout-close").addEventListener("click", closeModal);
   modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
 
-  $("#checkout-form").addEventListener("submit", (e) => {
+  /* 購入方法の切替: ゲスト(登録不要・既定) / アカウント作成(任意) */
+  function applyAcctMode() {
+    const mode = (form.querySelector("input[name=acct]:checked") || {}).value || "guest";
+    const create = mode === "create";
+    if (acctFields) acctFields.hidden = !create;
+    if (passwordInput) passwordInput.required = create; // 作成時のみパスワード必須
+    if (submitBtn) submitBtn.textContent = create
+      ? "アカウントを作成して注文（デモ）"
+      : "ゲストとして注文を確定（デモ）";
+  }
+  $$("input[name=acct]", form).forEach((r) => r.addEventListener("change", applyAcctMode));
+  applyAcctMode();
+
+  form.addEventListener("submit", (e) => {
     e.preventDefault();
-    const form = e.target;
     if (!form.checkValidity()) { form.reportValidity(); return; }
+    const mode = (form.querySelector("input[name=acct]:checked") || {}).value || "guest";
     const total = Cart.total();
     Cart.clear();
     renderCart();
     closeModal();
-    toast(`ご注文ありがとうございます（デモ）｜合計 ${yen(total)}`, 4000);
+    form.reset();
+    applyAcctMode();
+    const who = mode === "create" ? "アカウントを作成しました｜" : "ゲスト購入｜";
+    toast(`${who}ご注文ありがとうございます（デモ）｜合計 ${yen(total)}`, 4500);
   });
 
   /* ---- Esc で各種クローズ ---- */
