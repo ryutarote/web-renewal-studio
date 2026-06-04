@@ -1,32 +1,90 @@
 /* =========================================================
-   UI: ナビ開閉 / 商品描画 / カートDrawer / チェックアウト(モック)
-   購入までアカウント登録は不要（ゲスト購入が既定。作成は任意）。
+   うどんバカ一代 リニューアル（モック）
+   - ハッシュルーティングのSPA（クリックでビュー切替・リロードなし）
+   - 商品描画 / カートDrawer / チェックアウト(モック)
+   - ドロワー/モーダルはフォーカストラップ＋背面スクロール固定
+   - 購入までアカウント登録は不要（ゲスト購入が既定。作成は任意）
    ========================================================= */
 (function () {
   "use strict";
 
   const $ = (sel, ctx = document) => ctx.querySelector(sel);
   const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
+  const FOCUSABLE = 'a[href],button:not([disabled]),input:not([disabled]),select,textarea,[tabindex]:not([tabindex="-1"])';
 
   /* ---- 年号 ---- */
   $("#year").textContent = new Date().getFullYear();
 
+  /* =========================================================
+     SPA ルーター
+     ========================================================= */
+  const SITE = "手打十段 うどんバカ一代";
+  const ROUTES = {
+    home:    "ホーム",
+    menu:    "お品書き",
+    shop:    "店舗紹介・アクセス",
+    craft:   "うどんができるまで",
+    rule:    "バカイチのルール",
+    recruit: "求人情報",
+    ec:      "お土産うどん お取り寄せ"
+  };
+  const views = $$(".view");
+  const navLinks = $$('.nav-menu a[data-route]');
+
+  function routeFromHash() {
+    const h = (location.hash || "").replace(/^#\/?/, "");
+    return ROUTES[h] ? h : "home";
+  }
+
+  function showView(route) {
+    views.forEach((v) => {
+      const on = v.dataset.route === route;
+      v.classList.toggle("is-active", on);
+      v.hidden = !on;
+    });
+    navLinks.forEach((a) => {
+      const on = a.dataset.route === route;
+      a.classList.toggle("active", on);
+      if (on) a.setAttribute("aria-current", "page");
+      else a.removeAttribute("aria-current");
+    });
+    document.title = (route === "home" ? "" : ROUTES[route] + "｜") + SITE + "（リニューアル提案）";
+
+    // 開いているUIを閉じる
+    closeCart();
+    closeModal();
+    closeNav();
+
+    // 先頭へ＋見出しへフォーカス（アクセシビリティ）
+    window.scrollTo({ top: 0, behavior: "auto" });
+    const active = views.find((v) => v.dataset.route === route);
+    const title = active && active.querySelector("[data-view-title]");
+    if (title) {
+      title.setAttribute("tabindex", "-1");
+      title.focus({ preventScroll: true });
+    }
+  }
+
+  window.addEventListener("hashchange", () => showView(routeFromHash()));
+
   /* ---- モバイルナビ ---- */
   const navToggle = $(".nav-toggle");
   const navMenu = $("#nav-menu");
+  function closeNav() {
+    navMenu.classList.remove("open");
+    navToggle.setAttribute("aria-expanded", "false");
+    navToggle.setAttribute("aria-label", "メニューを開く");
+  }
   navToggle.addEventListener("click", () => {
     const open = navMenu.classList.toggle("open");
     navToggle.setAttribute("aria-expanded", String(open));
     navToggle.setAttribute("aria-label", open ? "メニューを閉じる" : "メニューを開く");
   });
-  navMenu.addEventListener("click", (e) => {
-    if (e.target.tagName === "A") {
-      navMenu.classList.remove("open");
-      navToggle.setAttribute("aria-expanded", "false");
-    }
-  });
+  // ルーター遷移時に閉じるので、リンククリック個別処理は不要
 
-  /* ---- 商品描画 ---- */
+  /* =========================================================
+     商品描画（EC）
+     ========================================================= */
   const grid = $("#product-grid");
   grid.innerHTML = PRODUCTS.map((p) => `
     <article class="product-card">
@@ -44,7 +102,34 @@
     </article>
   `).join("");
 
-  /* ---- カートDrawer ---- */
+  /* =========================================================
+     フォーカストラップ＋背面スクロール固定（共通）
+     ========================================================= */
+  let lastFocused = null;
+  let releaseTrap = null;
+
+  function lockScroll() { document.body.classList.add("no-scroll"); }
+  function unlockScroll() {
+    if (!$(".cart-drawer.open") && $("#checkout-modal").hidden) {
+      document.body.classList.remove("no-scroll");
+    }
+  }
+  function trapFocus(container) {
+    function onKey(e) {
+      if (e.key !== "Tab") return;
+      const f = $$(FOCUSABLE, container).filter((el) => el.offsetParent !== null);
+      if (!f.length) return;
+      const first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+    container.addEventListener("keydown", onKey);
+    return () => container.removeEventListener("keydown", onKey);
+  }
+
+  /* =========================================================
+     カートDrawer
+     ========================================================= */
   const drawer = $("#cart-drawer");
   const overlay = $("#cart-overlay");
   const cartCountEl = $("#cart-count");
@@ -56,14 +141,22 @@
 
   function openCart() {
     renderCart();
+    lastFocused = document.activeElement;
     drawer.classList.add("open");
     drawer.setAttribute("aria-hidden", "false");
     overlay.hidden = false;
+    lockScroll();
+    releaseTrap = trapFocus(drawer);
+    $("#cart-close").focus();
   }
   function closeCart() {
+    if (!drawer.classList.contains("open")) return;
     drawer.classList.remove("open");
     drawer.setAttribute("aria-hidden", "true");
     overlay.hidden = true;
+    if (releaseTrap) { releaseTrap(); releaseTrap = null; }
+    unlockScroll();
+    if (lastFocused && document.contains(lastFocused)) lastFocused.focus();
   }
 
   function refreshCount() {
@@ -82,9 +175,12 @@
         const p = PRODUCTS.find((x) => x.id === id);
         if (!p) return "";
         const q = c[id];
+        const thumbStyle = p.img
+          ? `background-image:url('${p.img}');background-size:cover;background-position:center;`
+          : `background:${p.grad || "#e7ddcb"};`;
         return `
           <div class="cart-line" data-id="${id}">
-            <span class="thumb" style="background:${p.grad}"></span>
+            <span class="thumb" style="${thumbStyle}"></span>
             <div>
               <div class="nm">${p.name}</div>
               <div class="pr">${yen(p.price)} × ${q} = ${yen(p.price * q)}</div>
@@ -106,7 +202,6 @@
     refreshCount();
   }
 
-  /* 商品追加 */
   grid.addEventListener("click", (e) => {
     const btn = e.target.closest(".add-cart");
     if (!btn) return;
@@ -116,7 +211,6 @@
     openCart();
   });
 
-  /* カート内操作 */
   cartItemsEl.addEventListener("click", (e) => {
     const line = e.target.closest(".cart-line");
     if (!line) return;
@@ -133,12 +227,16 @@
   $("#cart-close").addEventListener("click", closeCart);
   overlay.addEventListener("click", closeCart);
 
-  /* ---- チェックアウト(モック) ---- */
+  /* =========================================================
+     チェックアウト(モック)
+     ========================================================= */
   const modal = $("#checkout-modal");
   const form = $("#checkout-form");
   const acctFields = $("#acct-fields");
   const passwordInput = acctFields ? $("input[name=password]", acctFields) : null;
   const submitBtn = $("#checkout-submit");
+  let modalReleaseTrap = null;
+  let modalLastFocused = null;
 
   function syncCheckoutSummary() {
     $("#co-subtotal").textContent = yen(Cart.subtotal());
@@ -149,21 +247,34 @@
 
   function openModal() {
     syncCheckoutSummary();
+    modalLastFocused = document.activeElement;
+    // カートは閉じるが背面ロックは維持
+    drawer.classList.remove("open");
+    drawer.setAttribute("aria-hidden", "true");
+    overlay.hidden = true;
+    if (releaseTrap) { releaseTrap(); releaseTrap = null; }
     modal.hidden = false;
-    closeCart();
+    lockScroll();
+    modalReleaseTrap = trapFocus(modal);
+    $("#checkout-close").focus();
   }
-  const closeModal = () => { modal.hidden = true; };
+  function closeModal() {
+    if (modal.hidden) return;
+    modal.hidden = true;
+    if (modalReleaseTrap) { modalReleaseTrap(); modalReleaseTrap = null; }
+    unlockScroll();
+    if (modalLastFocused && document.contains(modalLastFocused)) modalLastFocused.focus();
+  }
 
   checkoutBtn.addEventListener("click", openModal);
   $("#checkout-close").addEventListener("click", closeModal);
   modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
 
-  /* 購入方法の切替: ゲスト(登録不要・既定) / アカウント作成(任意) */
   function applyAcctMode() {
     const mode = (form.querySelector("input[name=acct]:checked") || {}).value || "guest";
     const create = mode === "create";
     if (acctFields) acctFields.hidden = !create;
-    if (passwordInput) passwordInput.required = create; // 作成時のみパスワード必須
+    if (passwordInput) passwordInput.required = create;
     if (submitBtn) submitBtn.textContent = create
       ? "アカウントを作成して注文（デモ）"
       : "ゲストとして注文を確定（デモ）";
@@ -190,6 +301,7 @@
     if (e.key !== "Escape") return;
     if (!modal.hidden) closeModal();
     else if (drawer.classList.contains("open")) closeCart();
+    else if (navMenu.classList.contains("open")) closeNav();
   });
 
   /* ---- トースト ---- */
@@ -202,6 +314,7 @@
     toastTimer = setTimeout(() => { el.hidden = true; }, ms);
   }
 
-  /* 初期化 */
+  /* ---- 初期化 ---- */
   refreshCount();
+  showView(routeFromHash());
 })();

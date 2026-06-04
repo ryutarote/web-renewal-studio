@@ -45,6 +45,19 @@ a { color: inherit; }
 .skip-link:focus { left: 0; }
 
 :focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; border-radius: 4px; }
+[data-view-title]:focus { outline: none; }
+
+/* ===== SPA ビュー ===== */
+.view { display: none; }
+.view.is-active { display: block; animation: viewFade .28s ease both; }
+@keyframes viewFade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+body.no-scroll { overflow: hidden; }
+.center-cta { text-align: center; margin-top: 2rem; }
+
+/* 本文中のテキストリンク（ボタン/バナー/ナビ以外）は色＋下線で明示 */
+.info-list dd a, .ec-info a, .recruit-tel a, .news-bar a, .greeting-grid a {
+  color: var(--vermilion); text-decoration: underline; text-underline-offset: 2px;
+}
 
 /* ===== Buttons ===== */
 .btn {
@@ -85,6 +98,8 @@ a { color: inherit; }
 .nav-menu { list-style: none; display: flex; gap: 1.4rem; align-items: center; }
 .nav-menu a { text-decoration: none; font-weight: 500; font-size: .95rem; color: var(--ink); padding: .3rem 0; }
 .nav-menu a:hover { color: var(--vermilion); }
+.nav-menu a.active { color: var(--vermilion); font-weight: 700; }
+.nav-cta.active { color: #fff; }
 .nav-cta {
   background: var(--indigo); color: #fff !important; padding: .5em 1em !important;
   border-radius: 999px; font-weight: 700;
@@ -280,18 +295,21 @@ a { color: inherit; }
 }
 
 /* ===== モバイル: ナビをドロワー化 ===== */
-@media (max-width: 820px) {
+/* ナビが詰まり始める手前(〜1024px)でドロワー化。情報バーも省スペース化。 */
+@media (max-width: 1024px) {
   .nav-toggle { display: block; }
   .nav-menu {
     position: fixed; inset: 64px 0 auto 0; flex-direction: column; gap: 0;
     background: var(--cream); border-bottom: 1px solid var(--line);
     padding: .5rem 0; transform: translateY(-120%); transition: transform .3s ease;
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow); max-height: calc(100vh - 64px); overflow-y: auto;
   }
   .nav-menu.open { transform: translateY(0); }
   .nav-menu li { width: 100%; text-align: center; }
   .nav-menu a { display: block; padding: .9rem; width: 100%; }
   .nav-cta { margin: .5rem auto; display: inline-block; }
+  /* 営業情報バーは省スペースのためTELのみ表示 */
+  .header-info-inner span:not(.hi-tel) { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -361,7 +379,7 @@ a { color: inherit; }
 /* ===== バナー導線 ===== */
 .banners { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
 .banner { display: block; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
-  background: var(--paper); transition: transform .2s ease, box-shadow .2s ease; }
+  background: var(--paper); transition: transform .2s ease, box-shadow .2s ease; aspect-ratio: 16 / 9; }
 .banner:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(26,58,92,.18); }
 .banner img { width: 100%; height: 100%; object-fit: cover; }
 @media (max-width: 820px) { .banners { grid-template-columns: repeat(2, 1fr); } }
@@ -392,7 +410,9 @@ a { color: inherit; }
 .pay-all { max-width: 100%; margin-top: .4rem; }
 .ship-table { width: 100%; border-collapse: collapse; margin-top: .8rem; font-size: .85rem; text-align: center; }
 .ship-table td { border: 1px solid var(--line); padding: .4rem .2rem; }
-.ship-table tr:nth-child(odd) td { background: var(--indigo); color: #fff; font-weight: 600; }
+/* 地域名(奇数行)は控えめ、金額(偶数行)を強調 */
+.ship-table tr:nth-child(odd) td { background: var(--cream); color: var(--muted); font-size: .78rem; }
+.ship-table tr:nth-child(even) td { font-weight: 700; color: var(--indigo); }
 @media (max-width: 820px) { .ec-info-grid { grid-template-columns: 1fr; } }
 
 /* ===== 求人情報 ===== */
@@ -427,7 +447,11 @@ a { color: inherit; }
 .menu-table th, .menu-table td { padding: .6rem .9rem; border-bottom: 1px solid var(--line); text-align: left; }
 .menu-table thead th { background: var(--indigo); color: #fff; font-family: var(--serif); }
 .menu-table th:not(:first-child), .menu-table td:not(:first-child) { text-align: right; width: 5.5rem; white-space: nowrap; }
-.menu-row-feature td { background: #fff6e6; font-weight: 700; }
+.menu-table tbody tr:nth-child(even) td { background: #fbf7ee; }
+.menu-table tbody tr:hover td { background: #f3ead6; }
+.menu-row-feature td { background: #fff6e6 !important; font-weight: 700; }
+.scroll-hint { display: none; text-align: center; color: var(--muted); font-size: .8rem; margin-bottom: .5rem; }
+@media (max-width: 560px) { .scroll-hint { display: block; } }
 .menu-cat { font-family: var(--serif); color: var(--indigo); margin: 2rem 0 .8rem; font-size: 1.2rem; }
 
 /* ===== 製麺工程 ===== */

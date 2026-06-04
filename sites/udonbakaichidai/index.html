@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>手打十段 うどんバカ一代｜香川・高松の本格手打ち讃岐うどん｜釜バターうどん発祥の店</title>
-<meta name="description" content="香川県高松市の手打ち讃岐うどん「うどんバカ一代」公式サイト（リニューアル提案）。名物・釜バターうどんをはじめ、打ちたて・茹でたての本格手打ちうどんを早朝6時から。お土産うどんの通販（アカウント登録不要・ゲスト購入OK）もこちらから。" />
+<meta name="description" content="香川県高松市の手打ち讃岐うどん「うどんバカ一代」公式サイト（リニューアル提案）。名物・釜バターうどん、打ちたて・茹でたての手打ちうどんを早朝6時から。お土産うどんの通販（アカウント登録不要・ゲスト購入OK）も。" />
 <meta name="theme-color" content="#1a3a5c" />
 <link rel="canonical" href="https://www.udonbakaichidai.co.jp/" />
 
@@ -35,20 +35,9 @@
   "telephone": "+81-87-862-4705",
   "priceRange": "¥",
   "foundingDate": "2004-04-12",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "多賀町1-6-7",
-    "addressLocality": "高松市",
-    "addressRegion": "香川県",
-    "postalCode": "760-0055",
-    "addressCountry": "JP"
-  },
+  "address": { "@type": "PostalAddress", "streetAddress": "多賀町1-6-7", "addressLocality": "高松市", "addressRegion": "香川県", "postalCode": "760-0063", "addressCountry": "JP" },
   "geo": { "@type": "GeoCoordinates", "latitude": 34.3413, "longitude": 134.0561 },
-  "openingHoursSpecification": [{
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-    "opens": "06:00", "closes": "18:00"
-  }]
+  "openingHoursSpecification": [{ "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "06:00", "closes": "18:00" }]
 }
 </script>
 </head>
@@ -58,7 +47,7 @@
 <!-- ===== Header ===== -->
 <header class="site-header" id="top">
   <div class="container header-inner">
-    <a class="brand" href="#top" aria-label="うどんバカ一代 ホーム">
+    <a class="brand" href="#/" aria-label="うどんバカ一代 ホーム">
       <span class="brand-mark" aria-hidden="true">十</span>
       <span class="brand-text">
         <span class="brand-sub">手打十段</span>
@@ -70,13 +59,13 @@
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-menu" id="nav-menu">
-        <li><a href="#meibutsu">名物</a></li>
-        <li><a href="#shop">店舗紹介</a></li>
-        <li><a href="#menu">お品書き</a></li>
-        <li><a href="#kodawari">うどんができるまで</a></li>
-        <li><a href="#rule">バカイチのルール</a></li>
-        <li><a href="#recruit">求人情報</a></li>
-        <li><a href="#ec" class="nav-cta">お土産うどん</a></li>
+        <li><a href="#/" data-route="home">ホーム</a></li>
+        <li><a href="#/menu" data-route="menu">お品書き</a></li>
+        <li><a href="#/shop" data-route="shop">店舗紹介</a></li>
+        <li><a href="#/craft" data-route="craft">うどんができるまで</a></li>
+        <li><a href="#/rule" data-route="rule">バカイチのルール</a></li>
+        <li><a href="#/recruit" data-route="recruit">求人情報</a></li>
+        <li><a href="#/ec" data-route="ec" class="nav-cta">お土産うどん</a></li>
       </ul>
     </nav>
     <button class="cart-button" id="cart-open" aria-label="カートを開く">
@@ -95,354 +84,346 @@
 
 <main id="main">
 
-  <!-- ===== Hero ===== -->
-  <section class="hero">
-    <picture class="hero-photo">
-      <source media="(max-width: 680px)" srcset="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/sp_main_img.jpg" />
-      <img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/main_img.jpg" alt="美味しいうどんを昨日よりも、提供できるよう頑張ります。" loading="eager" />
-    </picture>
-    <div class="container hero-inner">
-      <p class="hero-eyebrow">香川・高松 / 平成16年創業 / 早朝6時開店</p>
-      <h1 class="hero-title">打ちたて、茹でたて。<br />讃岐の本気を、一杯に。</h1>
-      <p class="hero-lead">名物「釜バターうどん」発祥の店。手打十段の職人が、毎朝その日の小麦と向き合う。</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#meibutsu">名物を見る</a>
-        <a class="btn btn-ghost" href="#ec">お土産うどんを買う</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== お知らせ ===== -->
-  <section class="news-bar">
-    <div class="container news-bar-inner">
-      <span class="news-date">2026/06/02</span>
-      <p>6月も無休で通常どおり <strong>6:00〜18:00</strong> 営業しております。なお当店は、うどん以外の飲食店の経営や県外への出店は一切行っておりません。</p>
-    </div>
-  </section>
-
-  <!-- ===== バナー ===== -->
-  <section class="section">
-    <div class="container">
-      <div class="banners">
-        <a class="banner" href="#ec"><img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/bnr_img001.png" alt="おみやげうどん" loading="lazy" /></a>
-        <a class="banner" href="#ec"><img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/bnr_img002.jpg" alt="ダシ醤油" loading="lazy" /></a>
-        <a class="banner" href="http://www.udonbakaichidai.co.jp/app/Blogarticlelist" target="_blank" rel="noopener"><img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/bnr_img003.jpg" alt="店主日記" loading="lazy" /></a>
-        <a class="banner" href="#shop"><img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/bnr_img004.jpg" alt="店舗案内" loading="lazy" /></a>
-        <a class="banner" href="#kodawari"><img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/bnr_img005.jpg" alt="うどんができるまで" loading="lazy" /></a>
-        <a class="banner" href="#rule"><img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/bnr_img006.jpg" alt="バカイチのルール" loading="lazy" /></a>
-        <a class="banner" href="#recruit"><img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/bnr_img007.jpg" alt="うどんバカ一代の求人情報" loading="lazy" /></a>
-        <a class="banner" href="https://ssl.xaas3.jp/x9135165/login/inquiryedit" target="_blank" rel="noopener"><img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/bnr_img008.jpg" alt="うどんバカ一代へのお問い合わせ" loading="lazy" /></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== 名物 ===== -->
-  <section class="section section--alt" id="meibutsu">
-    <div class="container">
-      <header class="section-head">
-        <p class="section-eyebrow">SIGNATURE</p>
-        <h2 class="section-title">名物・釜バターうどん</h2>
-        <p class="section-desc">釜出しの熱々麺に、バターと卵、特製だし醤油。混ぜた瞬間に立ちのぼる香り。当店発祥の一杯です。</p>
-      </header>
-      <div class="meibutsu-grid">
-        <article class="dish-card dish-card--feature">
-          <div class="dish-photo"><img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/kamabutter3.jpg" alt="釜バターうどん" loading="lazy" /></div>
-          <div class="dish-body">
-            <h3>釜バターうどん</h3>
-            <p>もっちりコシの釜上げ麺×濃厚バター×卵。当店一番人気。提供後すぐに混ぜて、熱いうちにどうぞ。</p>
-            <p class="dish-price">¥560<span>(小・税込)</span></p>
-          </div>
-        </article>
-        <article class="dish-card">
-          <div class="dish-photo"><img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/rank1.jpg" alt="ぶっかけうどん" loading="lazy" /></div>
-          <div class="dish-body">
-            <h3>釜ぶっかけうどん</h3>
-            <p>当店人気ベスト3の一杯。釜出し麺にぶっかけだしを。</p>
-            <p class="dish-price">¥440<span>(小・税込)</span></p>
-          </div>
-        </article>
-        <article class="dish-card">
-          <div class="dish-photo dish-photo--kake" role="img" aria-label="かけうどん"></div>
-          <div class="dish-body">
-            <h3>かけうどん</h3>
-            <p>いりこの効いた黄金だし。讃岐の基本にして頂点。</p>
-            <p class="dish-price">¥350<span>(小・税込)</span></p>
-          </div>
-        </article>
-      </div>
-      <p class="rank-note">当店人気ベスト3：第1位 釜バターうどん／第2位 温玉肉ぶっかけうどん（冷がおすすめ）／第3位 釜ぶっかけうどん</p>
-    </div>
-  </section>
-
-  <!-- ===== 店主あいさつ ===== -->
-  <section class="section" id="greeting">
-    <div class="container greeting-grid">
-      <figure class="greeting-photo">
-        <img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/tenpo001.jpg" alt="店舗外観" loading="lazy" />
-      </figure>
-      <div>
-        <header class="section-head section-head--left">
-          <p class="section-eyebrow">GREETING</p>
-          <h2 class="section-title">店主よりごあいさつ</h2>
-        </header>
-        <p>当店のうどんは、強いだけのコシにこだわるのではなく、舌触りや喉ごし、噛んだときの食感を大切に作っています。</p>
-        <p>「まだ完成形ではない」——それでも、昨日よりおいしいうどんをお出しできるよう、日々改良を重ねています。打ちたて・茹でたてを、ぜひお気軽に味わいにお越しください。</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== お品書き ===== -->
-  <section class="section section--alt" id="menu">
-    <div class="container">
-      <header class="section-head">
-        <p class="section-eyebrow">MENU</p>
-        <h2 class="section-title">お品書き</h2>
-        <p class="section-desc">価格は税込（小・中・大）。令和8年4月17日改定。最新は店頭でご確認ください。</p>
-      </header>
-
-      <div class="menu-table-wrap">
-        <table class="menu-table">
-          <thead><tr><th>うどんメニュー</th><th>小</th><th>中</th><th>大</th></tr></thead>
-          <tbody>
-            <tr><td>かけうどん（温・冷）</td><td>¥350</td><td>¥460</td><td>¥570</td></tr>
-            <tr><td>温だめ／ざる／冷やしうどん</td><td>¥400</td><td>¥510</td><td>¥620</td></tr>
-            <tr><td>ぶっかけ／醤油うどん（温・冷）</td><td>¥420</td><td>¥530</td><td>¥640</td></tr>
-            <tr><td>釜あげ／釜かけうどん（温）</td><td>¥420</td><td>¥530</td><td>¥640</td></tr>
-            <tr><td>釜ぶっかけうどん（温）</td><td>¥440</td><td>¥550</td><td>¥660</td></tr>
-            <tr><td>釜玉うどん（温）</td><td>¥480</td><td>¥580</td><td>¥750</td></tr>
-            <tr><td>キムチ／梅うどん（温・冷）</td><td>¥480</td><td>¥590</td><td>¥700</td></tr>
-            <tr><td>やまかけうどん（温・冷）</td><td>¥580</td><td>¥690</td><td>¥800</td></tr>
-            <tr><td>カレーうどん（温）</td><td>—</td><td>—</td><td>¥860</td></tr>
-            <tr class="menu-row-feature"><td>釜バターうどん（温）</td><td>¥560</td><td>¥710</td><td>¥870</td></tr>
-            <tr><td>肉／肉ぶっかけうどん（温・冷）</td><td>¥690</td><td>¥810</td><td>¥950</td></tr>
-            <tr><td>温玉肉／温玉肉ぶっかけうどん</td><td>¥780</td><td>¥900</td><td>¥1,020</td></tr>
-            <tr><td>日の丸うどん（温・冷）</td><td>¥710</td><td>¥830</td><td>¥950</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="menu-note">◎4玉以上は1玉ごと+¥110　◎おかわりは1玉ごと+¥110（かえ玉に限る）　◎うどん玉のみは1玉¥200（店内）　◎カレーのルーのみ：おたま1杯¥400／2杯¥500／3杯¥600</p>
-
-      <h3 class="menu-cat">サイドメニュー</h3>
-      <div class="menu-cols">
-        <ul class="menu-list">
-          <li><span>おにぎり</span><span class="dots"></span><span>1個 ¥120</span></li>
-          <li><span>いなりずし</span><span class="dots"></span><span>1個 ¥110 / 2個 ¥220</span></li>
-          <li><span>すけろく（いなり＋まきずし）</span><span class="dots"></span><span>1皿 ¥200</span></li>
-          <li><span>生たまご</span><span class="dots"></span><span>¥70</span></li>
-          <li><span>温泉たまご</span><span class="dots"></span><span>¥100</span></li>
-          <li><span>からあげ／わかめ／とろろ</span><span class="dots"></span><span>¥100</span></li>
-        </ul>
-        <ul class="menu-list">
-          <li><span>天ぷら・フライ（とりてん・チキンカツ 他）</span><span class="dots"></span><span>¥200</span></li>
-          <li><span>天ぷら・フライ（かきあげ・あじふらい 他）</span><span class="dots"></span><span>¥180</span></li>
-          <li><span>天ぷら・フライ（ちくわ・コロッケ 他）</span><span class="dots"></span><span>¥150</span></li>
-          <li><span>缶ビール（350ml）</span><span class="dots"></span><span>¥400</span></li>
-          <li><span>ノンアルコール（ビン）</span><span class="dots"></span><span>¥400</span></li>
-        </ul>
-      </div>
-      <p class="menu-note">※セルフのため、トッピングはお好みでどうぞ。アレルギー・食材はスタッフにお尋ねください。</p>
-    </div>
-  </section>
-
-  <!-- ===== うどんができるまで ===== -->
-  <section class="section" id="kodawari">
-    <div class="container">
-      <header class="section-head">
-        <p class="section-eyebrow">CRAFTSMANSHIP</p>
-        <h2 class="section-title">うどんができるまで</h2>
-        <p class="section-desc">当店は専用の粉を使用。他にはない味と食感を、手打ちで仕上げます。</p>
-      </header>
-      <div class="koutei-grid">
-        <figure class="koutei"><img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/koutei01.jpg" alt="工程1 練り" loading="lazy" /><figcaption><b>01 練り</b>独特のコシを生む練りの作業。</figcaption></figure>
-        <figure class="koutei"><img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/koutei02.jpg" alt="工程2 熟成" loading="lazy" /><figcaption><b>02 熟成</b>団子状にまとめ、ねかせて熟成。</figcaption></figure>
-        <figure class="koutei"><img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/koutei03.jpg" alt="工程3 鍛え" loading="lazy" /><figcaption><b>03 鍛える</b>コシを決める重要工程。手打ちにこだわる。</figcaption></figure>
-        <figure class="koutei"><img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/koutei04.jpg" alt="工程4 切る" loading="lazy" /><figcaption><b>04 切る</b>麺切り包丁で生麺に。</figcaption></figure>
-        <figure class="koutei"><img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/koutei05.jpg" alt="工程5 茹でる" loading="lazy" /><figcaption><b>05 茹でる</b>湯温が下がらないよう茹で上げる。</figcaption></figure>
-        <figure class="koutei"><img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/koutei06.jpg" alt="工程6 締め" loading="lazy" /><figcaption><b>06 締め</b>冷水で締め、のど越しを生む。</figcaption></figure>
-        <figure class="koutei"><img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/koutei07.jpg" alt="工程7 小分け" loading="lazy" /><figcaption><b>07 小分け</b>1人前ずつに分ける。</figcaption></figure>
-        <figure class="koutei"><img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/koutei08.jpg" alt="工程8 完成" loading="lazy" /><figcaption><b>08 完成</b>打ちたてをお客様へ。</figcaption></figure>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== バカイチのルール ===== -->
-  <section class="section section--alt" id="rule">
-    <div class="container">
-      <header class="section-head">
-        <p class="section-eyebrow">RULE</p>
-        <h2 class="section-title">バカイチのルール</h2>
-        <p class="section-desc">当店はセルフです。下記の流れでお楽しみください。</p>
-      </header>
-      <ol class="rule-list">
-        <li><span class="rule-no">1</span>メニューを思い浮かべながらお並びください</li>
-        <li><span class="rule-no">2</span>トレーを取り、スタッフへ注文</li>
-        <li><span class="rule-no">3</span>コップにお水を入れる</li>
-        <li><span class="rule-no">4</span>うどんを受け取る</li>
-        <li><span class="rule-no">5</span>好きなトッピングを選ぶ</li>
-        <li><span class="rule-no">6</span>揃ったらお会計</li>
-        <li><span class="rule-no">7</span>席をとる</li>
-        <li><span class="rule-no">8</span>おいしく食べる！</li>
-        <li><span class="rule-no">9</span>食べ終わったらトレーと皿を返却口へ</li>
-        <li><span class="rule-no">10</span>満足気にお店を出る</li>
-      </ol>
-      <p class="menu-note">※お昼の時間帯は混雑します。なお「お土産うどん」は行列に並ばず、直接レジにお越しいただいてOKです。</p>
-    </div>
-  </section>
-
-  <!-- ===== 動画 ===== -->
-  <section class="section" id="movie">
-    <div class="container">
-      <header class="section-head">
-        <p class="section-eyebrow">MOVIE</p>
-        <h2 class="section-title">動画で見るうどんバカ一代</h2>
-      </header>
-      <div class="video-grid">
-        <div class="video"><iframe src="https://www.youtube.com/embed/S8xszCJHZ9s?rel=0" title="うどんバカ一代 紹介動画1" loading="lazy" allowfullscreen></iframe></div>
-        <div class="video"><iframe src="https://www.youtube.com/embed/ygkeSERMkCI?rel=0" title="うどんバカ一代 紹介動画2" loading="lazy" allowfullscreen></iframe></div>
-        <div class="video"><iframe src="https://www.youtube.com/embed/GyxZ4HSYbk0?rel=0" title="ゴールデンウィークの様子" loading="lazy" allowfullscreen></iframe></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== 店舗情報・アクセス ===== -->
-  <section class="section section--alt" id="shop">
-    <div class="container shop-grid">
-      <div class="shop-info">
-        <header class="section-head section-head--left">
-          <p class="section-eyebrow">ACCESS</p>
-          <h2 class="section-title">店舗紹介・アクセス</h2>
-        </header>
-        <dl class="info-list">
-          <div><dt>店名</dt><dd>手打十段 うどんバカ一代</dd></div>
-          <div><dt>創業</dt><dd>平成16年4月12日</dd></div>
-          <div><dt>住所</dt><dd>〒760-0063 香川県高松市多賀町1-6-7</dd></div>
-          <div><dt>電話</dt><dd><a href="tel:+81878624705">087-862-4705</a></dd></div>
-          <div><dt>営業時間</dt><dd>6:00〜18:00</dd></div>
-          <div><dt>定休日</dt><dd>年中無休（1月1日のみ休み）<br>12/31は6:00〜16:00、1/2は10:00〜16:00</dd></div>
-          <div><dt>座席数</dt><dd>42席</dd></div>
-          <div><dt>駐車場</dt><dd>45台</dd></div>
-          <div><dt>アクセス</dt><dd>ことでん「瓦町駅」から徒歩約7分</dd></div>
-        </dl>
-        <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&query=うどんバカ一代+高松" target="_blank" rel="noopener">Googleマップで見る</a>
-      </div>
-      <div class="shop-map">
-        <iframe class="googlemap" title="うどんバカ一代 地図" loading="lazy" allowfullscreen
-          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6589.100933712279!2d134.0561786640432!3d34.3364659645864!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3553eb7624a13ed5%3A0x40ee26dc85bf3446!2z5pel5pysLCDjgJI3NjAtMDA2MyDpppnlt53nnIzpq5jmnb7luILlpJros4DnlLrvvJHkuIHnm67vvJbiiJLvvJc!5e0!3m2!1sja!2sus!4v1481003648320"></iframe>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== オンラインショップ（モックEC） ===== -->
-  <section class="section" id="ec">
-    <div class="container">
-      <header class="section-head">
-        <p class="section-eyebrow">ONLINE SHOP</p>
-        <h2 class="section-title">お土産うどん お取り寄せ</h2>
-        <p class="section-desc">
-          ご自宅で打ちたての味を。<strong>アカウント登録は不要です。ゲストのままご購入いただけます。</strong><br />
-          <span class="ec-demo-note">※このECはデモ（モック）です。決済は行われません。</span>
-        </p>
-      </header>
-      <div class="product-grid" id="product-grid" aria-live="polite"><!-- JSが商品を描画 --></div>
-    </div>
-  </section>
-
-  <!-- ===== お支払い・送料・返品 ===== -->
-  <section class="section section--alt" id="ec-info">
-    <div class="container">
-      <div class="ec-info-grid">
-        <div class="ec-info">
-          <h3>お支払い方法について</h3>
-          <p>代金引換・銀行振込・郵便振替・クレジットカード決済・オンラインコンビニ決済・ネットバンク決済・電子マネー決済がご利用いただけます。</p>
-          <p class="pay-icons">
-            <img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/bill_icon_11.gif" alt="代金引換" loading="lazy" />
-            <img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/bill_icon_07.gif" alt="銀行振込" loading="lazy" />
-            <img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/bill_icon_09.gif" alt="郵便振替" loading="lazy" />
-          </p>
-          <p><img class="pay-all" src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/mydo2_all.png" alt="ご利用いただけるお支払い方法" loading="lazy" /></p>
+  <!-- ============ HOME ============ -->
+  <div class="view is-active" data-route="home">
+    <section class="hero">
+      <picture class="hero-photo">
+        <source media="(max-width: 680px)" srcset="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/sp_main_img.jpg" />
+        <img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/main_img.jpg" width="1600" height="900" alt="美味しいうどんを昨日よりも、提供できるよう頑張ります。" />
+      </picture>
+      <div class="container hero-inner">
+        <p class="hero-eyebrow">香川・高松 / 平成16年創業 / 早朝6時開店</p>
+        <h1 class="hero-title" data-view-title>打ちたて、茹でたて。<br />讃岐の本気を、一杯に。</h1>
+        <p class="hero-lead">名物「釜バターうどん」発祥の店。手打十段の職人が、毎朝その日の小麦と向き合う。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#/menu">お品書きを見る</a>
+          <a class="btn btn-ghost" href="#/ec">お土産うどんを買う</a>
         </div>
-        <div class="ec-info">
-          <h3>送料について</h3>
-          <p>送料は<strong class="text-red">全国一律 ¥1,000</strong>。ただし<strong>北海道・東北・沖縄は ¥1,300</strong>。<br>（東北＝青森・岩手・宮城・秋田・山形・福島）<span class="text-small">（料金はすべて税込）</span></p>
-          <table class="ship-table">
+      </div>
+    </section>
+
+    <section class="news-bar" aria-label="お知らせ">
+      <div class="container news-bar-inner">
+        <span class="news-date">2026/06/02</span>
+        <p>6月も無休で通常どおり <strong>6:00〜18:00</strong> 営業しております。なお当店は、うどん以外の飲食店の経営や県外への出店は一切行っておりません。</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="banners">
+          <a class="banner" href="#/ec"><img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/bnr_img001.png" alt="おみやげうどん" loading="lazy" /></a>
+          <a class="banner" href="#/ec"><img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/bnr_img002.jpg" alt="ダシ醤油" loading="lazy" /></a>
+          <a class="banner" href="http://www.udonbakaichidai.co.jp/app/Blogarticlelist" target="_blank" rel="noopener"><img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/bnr_img003.jpg" alt="店主日記（外部サイト）" loading="lazy" /></a>
+          <a class="banner" href="#/shop"><img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/bnr_img004.jpg" alt="店舗案内" loading="lazy" /></a>
+          <a class="banner" href="#/craft"><img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/bnr_img005.jpg" alt="うどんができるまで" loading="lazy" /></a>
+          <a class="banner" href="#/rule"><img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/bnr_img006.jpg" alt="バカイチのルール" loading="lazy" /></a>
+          <a class="banner" href="#/recruit"><img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/bnr_img007.jpg" alt="うどんバカ一代の求人情報" loading="lazy" /></a>
+          <a class="banner" href="https://ssl.xaas3.jp/x9135165/login/inquiryedit" target="_blank" rel="noopener"><img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/bnr_img008.jpg" alt="お問い合わせ（外部サイト）" loading="lazy" /></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt">
+      <div class="container">
+        <header class="section-head">
+          <p class="section-eyebrow">SIGNATURE</p>
+          <h2 class="section-title">名物・釜バターうどん</h2>
+          <p class="section-desc">釜出しの熱々麺に、バターと卵、特製だし醤油。混ぜた瞬間に立ちのぼる香り。当店発祥の一杯です。</p>
+        </header>
+        <div class="meibutsu-grid">
+          <article class="dish-card dish-card--feature">
+            <div class="dish-photo"><img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/kamabutter3.jpg" alt="釜バターうどん" loading="lazy" /></div>
+            <div class="dish-body"><h3>釜バターうどん</h3><p>もっちりコシの釜上げ麺×濃厚バター×卵。当店一番人気。提供後すぐ混ぜて熱いうちに。</p><p class="dish-price">¥560<span>(小・税込)</span></p></div>
+          </article>
+          <article class="dish-card">
+            <div class="dish-photo"><img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/rank1.jpg" alt="釜ぶっかけうどん" loading="lazy" /></div>
+            <div class="dish-body"><h3>釜ぶっかけうどん</h3><p>当店人気ベスト3の一杯。釜出し麺にぶっかけだしを。</p><p class="dish-price">¥440<span>(小・税込)</span></p></div>
+          </article>
+          <article class="dish-card">
+            <div class="dish-photo dish-photo--kake" role="img" aria-label="かけうどん"></div>
+            <div class="dish-body"><h3>かけうどん</h3><p>いりこの効いた黄金だし。讃岐の基本にして頂点。</p><p class="dish-price">¥350<span>(小・税込)</span></p></div>
+          </article>
+        </div>
+        <p class="rank-note">人気ベスト3：第1位 釜バターうどん／第2位 温玉肉ぶっかけうどん（冷がおすすめ）／第3位 釜ぶっかけうどん</p>
+        <div class="center-cta"><a class="btn btn-primary" href="#/menu">お品書きをすべて見る</a></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container greeting-grid">
+        <figure class="greeting-photo"><img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/tenpo001.jpg" alt="店舗外観" loading="lazy" /></figure>
+        <div>
+          <header class="section-head section-head--left">
+            <p class="section-eyebrow">GREETING</p>
+            <h2 class="section-title">店主よりごあいさつ</h2>
+          </header>
+          <p>当店のうどんは、強いだけのコシにこだわるのではなく、舌触りや喉ごし、噛んだときの食感を大切に作っています。</p>
+          <p>「まだ完成形ではない」——それでも、昨日よりおいしいうどんをお出しできるよう、日々改良を重ねています。打ちたて・茹でたてを、ぜひお気軽に味わいにお越しください。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt">
+      <div class="container">
+        <header class="section-head">
+          <p class="section-eyebrow">MOVIE</p>
+          <h2 class="section-title">動画で見るうどんバカ一代</h2>
+        </header>
+        <div class="video-grid">
+          <div class="video"><iframe src="https://www.youtube.com/embed/S8xszCJHZ9s?rel=0" title="うどんバカ一代 紹介動画1" loading="lazy" allowfullscreen></iframe></div>
+          <div class="video"><iframe src="https://www.youtube.com/embed/ygkeSERMkCI?rel=0" title="うどんバカ一代 紹介動画2" loading="lazy" allowfullscreen></iframe></div>
+          <div class="video"><iframe src="https://www.youtube.com/embed/GyxZ4HSYbk0?rel=0" title="ゴールデンウィークの様子" loading="lazy" allowfullscreen></iframe></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============ お品書き ============ -->
+  <div class="view" data-route="menu">
+    <section class="section">
+      <div class="container">
+        <header class="section-head">
+          <p class="section-eyebrow">MENU</p>
+          <h2 class="section-title" data-view-title>お品書き</h2>
+          <p class="section-desc">価格は税込（小・中・大）。令和8年4月17日改定。最新は店頭でご確認ください。</p>
+        </header>
+        <p class="scroll-hint" aria-hidden="true">← 横にスクロールできます →</p>
+        <div class="menu-table-wrap">
+          <table class="menu-table">
+            <thead><tr><th>うどんメニュー</th><th>小</th><th>中</th><th>大</th></tr></thead>
             <tbody>
-              <tr><td>北海道</td><td>東北</td><td>関東</td><td>信越</td><td>北陸</td><td>中部</td></tr>
-              <tr><td>1,300</td><td>1,300</td><td>1,000</td><td>1,000</td><td>1,000</td><td>1,000</td></tr>
-              <tr><td>関西</td><td>中国</td><td>九州</td><td>四国</td><td>沖縄</td><td>—</td></tr>
-              <tr><td>1,000</td><td>1,000</td><td>1,000</td><td>1,000</td><td>1,300</td><td>—</td></tr>
+              <tr><td>かけうどん（温・冷）</td><td>¥350</td><td>¥460</td><td>¥570</td></tr>
+              <tr><td>温だめ／ざる／冷やしうどん</td><td>¥400</td><td>¥510</td><td>¥620</td></tr>
+              <tr><td>ぶっかけ／醤油うどん（温・冷）</td><td>¥420</td><td>¥530</td><td>¥640</td></tr>
+              <tr><td>釜あげ／釜かけうどん（温）</td><td>¥420</td><td>¥530</td><td>¥640</td></tr>
+              <tr><td>釜ぶっかけうどん（温）</td><td>¥440</td><td>¥550</td><td>¥660</td></tr>
+              <tr><td>釜玉うどん（温）</td><td>¥480</td><td>¥580</td><td>¥750</td></tr>
+              <tr><td>キムチ／梅うどん（温・冷）</td><td>¥480</td><td>¥590</td><td>¥700</td></tr>
+              <tr><td>やまかけうどん（温・冷）</td><td>¥580</td><td>¥690</td><td>¥800</td></tr>
+              <tr><td>カレーうどん（温）</td><td>—</td><td>—</td><td>¥860</td></tr>
+              <tr class="menu-row-feature"><td>釜バターうどん（温）</td><td>¥560</td><td>¥710</td><td>¥870</td></tr>
+              <tr><td>肉／肉ぶっかけうどん（温・冷）</td><td>¥690</td><td>¥810</td><td>¥950</td></tr>
+              <tr><td>温玉肉／温玉肉ぶっかけうどん</td><td>¥780</td><td>¥900</td><td>¥1,020</td></tr>
+              <tr><td>日の丸うどん（温・冷）</td><td>¥710</td><td>¥830</td><td>¥950</td></tr>
             </tbody>
           </table>
         </div>
-        <div class="ec-info">
-          <h3>返品・交換について</h3>
-          <p>商品が不良品であった場合は、商品到着後7日以内に電話またはメールでご連絡ください。新しい商品と交換いたします（返送料は当店負担）。なお、お客様のご都合による返品・交換はお受けできかねます。</p>
+        <p class="menu-note">◎4玉以上は1玉ごと+¥110　◎おかわりは1玉ごと+¥110（かえ玉に限る）　◎うどん玉のみは1玉¥200（店内）　◎カレーのルーのみ：おたま1杯¥400／2杯¥500／3杯¥600</p>
+
+        <h3 class="menu-cat">サイドメニュー</h3>
+        <div class="menu-cols">
+          <ul class="menu-list">
+            <li><span>おにぎり</span><span class="dots"></span><span>1個 ¥120</span></li>
+            <li><span>いなりずし</span><span class="dots"></span><span>1個 ¥110 / 2個 ¥220</span></li>
+            <li><span>すけろく（いなり＋まきずし）</span><span class="dots"></span><span>1皿 ¥200</span></li>
+            <li><span>生たまご</span><span class="dots"></span><span>¥70</span></li>
+            <li><span>温泉たまご</span><span class="dots"></span><span>¥100</span></li>
+            <li><span>からあげ／わかめ／とろろ</span><span class="dots"></span><span>¥100</span></li>
+          </ul>
+          <ul class="menu-list">
+            <li><span>天ぷら・フライ（とりてん・チキンカツ 他）</span><span class="dots"></span><span>¥200</span></li>
+            <li><span>天ぷら・フライ（かきあげ・あじふらい 他）</span><span class="dots"></span><span>¥180</span></li>
+            <li><span>天ぷら・フライ（ちくわ・コロッケ 他）</span><span class="dots"></span><span>¥150</span></li>
+            <li><span>缶ビール（350ml）</span><span class="dots"></span><span>¥400</span></li>
+            <li><span>ノンアルコール（ビン）</span><span class="dots"></span><span>¥400</span></li>
+          </ul>
         </div>
-        <div class="ec-info">
-          <h3>アカウントについて</h3>
-          <p>商品の閲覧・カート追加・ご購入まで<strong>登録不要</strong>です。ご希望の方は購入時に任意でアカウントを作成できます。</p>
+        <p class="menu-note">※セルフのため、トッピングはお好みでどうぞ。アレルギー・食材はスタッフにお尋ねください。</p>
+        <div class="center-cta"><a class="btn btn-ghost btn-ghost--dark" href="#/ec">お土産うどんの通販はこちら</a></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============ 店舗紹介・アクセス ============ -->
+  <div class="view" data-route="shop">
+    <section class="section">
+      <div class="container shop-grid">
+        <div class="shop-info">
+          <header class="section-head section-head--left">
+            <p class="section-eyebrow">ACCESS</p>
+            <h2 class="section-title" data-view-title>店舗紹介・アクセス</h2>
+          </header>
+          <dl class="info-list">
+            <div><dt>店名</dt><dd>手打十段 うどんバカ一代</dd></div>
+            <div><dt>創業</dt><dd>平成16年4月12日</dd></div>
+            <div><dt>住所</dt><dd>〒760-0063 香川県高松市多賀町1-6-7</dd></div>
+            <div><dt>電話</dt><dd><a href="tel:+81878624705">087-862-4705</a></dd></div>
+            <div><dt>営業時間</dt><dd>6:00〜18:00</dd></div>
+            <div><dt>定休日</dt><dd>年中無休（1月1日のみ休み）<br>12/31は6:00〜16:00、1/2は10:00〜16:00</dd></div>
+            <div><dt>座席数</dt><dd>42席</dd></div>
+            <div><dt>駐車場</dt><dd>45台</dd></div>
+            <div><dt>アクセス</dt><dd>ことでん「瓦町駅」から徒歩約7分</dd></div>
+          </dl>
+          <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&query=うどんバカ一代+高松" target="_blank" rel="noopener">Googleマップで見る</a>
+        </div>
+        <div class="shop-map">
+          <iframe class="googlemap" title="うどんバカ一代 地図" loading="lazy" allowfullscreen
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6589.100933712279!2d134.0561786640432!3d34.3364659645864!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3553eb7624a13ed5%3A0x40ee26dc85bf3446!2z5pel5pysLCDjgJI3NjAtMDA2MyDpppnlt53nnIzpq5jmnb7luILlpJros4DnlLrvvJHkuIHnm67vvJbiiJLvvJc!5e0!3m2!1sja!2sus!4v1481003648320"></iframe>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ===== 求人情報 ===== -->
-  <section class="section" id="recruit">
-    <div class="container">
-      <header class="section-head">
-        <p class="section-eyebrow">RECRUIT</p>
-        <h2 class="section-title">求人情報（従業員募集）</h2>
-        <p class="section-desc">厨房・製麺所・休憩所・通路・客席まで<strong>空調完備</strong>。夏でも涼しく、気持ちよく働ける環境です。</p>
-      </header>
+    <section class="section section--alt" id="company">
+      <div class="container">
+        <header class="section-head">
+          <p class="section-eyebrow">COMPANY</p>
+          <h2 class="section-title">会社概要・特定商取引法に基づく表記</h2>
+        </header>
+        <dl class="info-list info-list--wide">
+          <div><dt>ショップ名</dt><dd>手打十段 うどんバカ一代</dd></div>
+          <div><dt>販売責任者</dt><dd>見谷 章</dd></div>
+          <div><dt>創業</dt><dd>平成16年4月12日</dd></div>
+          <div><dt>業務内容</dt><dd>うどんの製麺、販売</dd></div>
+          <div><dt>所在地</dt><dd>〒760-0063 香川県高松市多賀町1-6-7</dd></div>
+          <div><dt>電話</dt><dd><a href="tel:+81878624705">087-862-4705</a></dd></div>
+          <div><dt>メール</dt><dd><a href="mailto:info@udonbakaichidai.co.jp">info@udonbakaichidai.co.jp</a></dd></div>
+          <div><dt>営業時間</dt><dd>6:00〜18:00</dd></div>
+          <div><dt>定休日</dt><dd>年中無休（1月1日のみ休み）</dd></div>
+          <div><dt>送料</dt><dd>全国一律 ¥1,000（北海道・東北・沖縄は ¥1,300）</dd></div>
+          <div><dt>お支払い</dt><dd>代金引換 / 銀行振込 / 郵便振替 / クレジットカード / コンビニ決済 / ネットバンク決済 / 電子マネー決済</dd></div>
+          <div><dt>返品・交換</dt><dd>不良品は到着後7日以内にご連絡で交換（返送料当店負担）。客都合の返品交換は不可。</dd></div>
+        </dl>
+        <p class="menu-note">※本ページはリニューアル提案のデモです。画像・情報は公式サイトの公開内容を基にしています。</p>
+      </div>
+    </section>
+  </div>
 
-      <div class="recruit-grid">
-        <a class="recruit-visual" href="http://www.udonbakaichidai.co.jp/original5.html" target="_blank" rel="noopener">
-          <img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/bnr_img007.jpg" alt="うどんバカ一代の求人情報" loading="lazy" />
-        </a>
-        <div class="recruit-body">
-          <h3 class="recruit-h3">アルバイト・パート募集</h3>
-          <dl class="info-list">
-            <div><dt>勤務時間</dt><dd>朝6:00〜夜19:00の中で1日2時間以上／週1回でもOK（時間応相談）</dd></div>
-            <div><dt>時給</dt><dd><strong>平日 1,200円〜</strong>／<strong>土日祝 1,350円〜</strong>（平日より150円UP）<br>見習期間なし。最初から上記時給、昇給あり。</dd></div>
-            <div><dt>ラスト手当</dt><dd>200円/回（19時まで勤務で支給）<br>例：土日祝16〜19時＝3時間×1,350円＋200円＝4,250円</dd></div>
-            <div><dt>待遇</dt><dd>従業員駐車場あり／おいしい食事付き<br>一人暮らしの学生は、店のものが食べ放題！</dd></div>
-          </dl>
-          <h3 class="recruit-h3">社員募集</h3>
-          <p>各種社会保険完備（厚生年金・社会保険など）。</p>
-          <p class="recruit-tel">まずはお電話ください　📞 <a href="tel:+81878624705">087-862-4705</a> ／ <a href="tel:+818031680223">080-3168-0223</a>（求人担当 ミタニ）</p>
-          <div class="recruit-actions">
-            <a class="btn btn-primary" href="http://www.udonbakaichidai.co.jp/original5.html" target="_blank" rel="noopener">公式の求人ページを見る</a>
+  <!-- ============ うどんができるまで ============ -->
+  <div class="view" data-route="craft">
+    <section class="section">
+      <div class="container">
+        <header class="section-head">
+          <p class="section-eyebrow">CRAFTSMANSHIP</p>
+          <h2 class="section-title" data-view-title>うどんができるまで</h2>
+          <p class="section-desc">当店は専用の粉を使用。他にはない味と食感を、手打ちで仕上げます。</p>
+        </header>
+        <div class="koutei-grid">
+          <figure class="koutei"><img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/koutei01.jpg" alt="工程1 練り" loading="lazy" /><figcaption><b>01 練り</b>独特のコシを生む練りの作業。</figcaption></figure>
+          <figure class="koutei"><img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/koutei02.jpg" alt="工程2 熟成" loading="lazy" /><figcaption><b>02 熟成</b>団子状にまとめ、ねかせて熟成。</figcaption></figure>
+          <figure class="koutei"><img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/koutei03.jpg" alt="工程3 鍛え" loading="lazy" /><figcaption><b>03 鍛える</b>コシを決める重要工程。手打ちにこだわる。</figcaption></figure>
+          <figure class="koutei"><img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/koutei04.jpg" alt="工程4 切る" loading="lazy" /><figcaption><b>04 切る</b>麺切り包丁で生麺に。</figcaption></figure>
+          <figure class="koutei"><img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/koutei05.jpg" alt="工程5 茹でる" loading="lazy" /><figcaption><b>05 茹でる</b>湯温が下がらないよう茹で上げる。</figcaption></figure>
+          <figure class="koutei"><img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/koutei06.jpg" alt="工程6 締め" loading="lazy" /><figcaption><b>06 締め</b>冷水で締め、のど越しを生む。</figcaption></figure>
+          <figure class="koutei"><img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/koutei07.jpg" alt="工程7 小分け" loading="lazy" /><figcaption><b>07 小分け</b>1人前ずつに分ける。</figcaption></figure>
+          <figure class="koutei"><img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/koutei08.jpg" alt="工程8 完成" loading="lazy" /><figcaption><b>08 完成</b>打ちたてをお客様へ。</figcaption></figure>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============ バカイチのルール ============ -->
+  <div class="view" data-route="rule">
+    <section class="section">
+      <div class="container">
+        <header class="section-head">
+          <p class="section-eyebrow">RULE</p>
+          <h2 class="section-title" data-view-title>バカイチのルール</h2>
+          <p class="section-desc">当店はセルフです。下記の流れでお楽しみください。</p>
+        </header>
+        <ol class="rule-list">
+          <li><span class="rule-no">1</span>メニューを思い浮かべながらお並びください</li>
+          <li><span class="rule-no">2</span>トレーを取り、スタッフへ注文</li>
+          <li><span class="rule-no">3</span>コップにお水を入れる</li>
+          <li><span class="rule-no">4</span>うどんを受け取る</li>
+          <li><span class="rule-no">5</span>好きなトッピングを選ぶ</li>
+          <li><span class="rule-no">6</span>揃ったらお会計</li>
+          <li><span class="rule-no">7</span>席をとる</li>
+          <li><span class="rule-no">8</span>おいしく食べる！</li>
+          <li><span class="rule-no">9</span>食べ終わったらトレーと皿を返却口へ</li>
+          <li><span class="rule-no">10</span>満足気にお店を出る</li>
+        </ol>
+        <p class="menu-note">※お昼の時間帯は混雑します。なお「お土産うどん」は行列に並ばず、直接レジにお越しいただいてOKです。</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============ 求人情報 ============ -->
+  <div class="view" data-route="recruit">
+    <section class="section">
+      <div class="container">
+        <header class="section-head">
+          <p class="section-eyebrow">RECRUIT</p>
+          <h2 class="section-title" data-view-title>求人情報（従業員募集）</h2>
+          <p class="section-desc">厨房・製麺所・休憩所・通路・客席まで<strong>空調完備</strong>。夏でも涼しく、気持ちよく働ける環境です。</p>
+        </header>
+        <div class="recruit-grid">
+          <a class="recruit-visual" href="http://www.udonbakaichidai.co.jp/original5.html" target="_blank" rel="noopener">
+            <img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/bnr_img007.jpg" alt="うどんバカ一代の求人情報" loading="lazy" />
+          </a>
+          <div class="recruit-body">
+            <h3 class="recruit-h3">アルバイト・パート募集</h3>
+            <dl class="info-list">
+              <div><dt>勤務時間</dt><dd>朝6:00〜夜19:00の中で1日2時間以上／週1回でもOK（時間応相談）</dd></div>
+              <div><dt>時給</dt><dd><strong>平日 1,200円〜</strong>／<strong>土日祝 1,350円〜</strong>（平日より150円UP）<br>見習期間なし。最初から上記時給、昇給あり。</dd></div>
+              <div><dt>ラスト手当</dt><dd>200円/回（19時まで勤務で支給）<br>例：土日祝16〜19時＝3時間×1,350円＋200円＝4,250円</dd></div>
+              <div><dt>待遇</dt><dd>従業員駐車場あり／おいしい食事付き<br>一人暮らしの学生は、店のものが食べ放題！</dd></div>
+            </dl>
+            <h3 class="recruit-h3">社員募集</h3>
+            <p>各種社会保険完備（厚生年金・社会保険など）。</p>
+            <p class="recruit-tel">まずはお電話ください　📞 <a href="tel:+81878624705">087-862-4705</a> ／ <a href="tel:+818031680223">080-3168-0223</a>（求人担当 ミタニ）</p>
+            <div class="recruit-actions">
+              <a class="btn btn-primary" href="http://www.udonbakaichidai.co.jp/original5.html" target="_blank" rel="noopener">公式の求人ページを見る</a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 
-  <!-- ===== 会社概要・特定商取引法に基づく表記 ===== -->
-  <section class="section section--alt" id="company">
-    <div class="container">
-      <header class="section-head">
-        <p class="section-eyebrow">COMPANY</p>
-        <h2 class="section-title">会社概要・特定商取引法に基づく表記</h2>
-      </header>
-      <dl class="info-list info-list--wide">
-        <div><dt>ショップ名</dt><dd>手打十段 うどんバカ一代</dd></div>
-        <div><dt>販売責任者</dt><dd>見谷 章</dd></div>
-        <div><dt>創業</dt><dd>平成16年4月12日</dd></div>
-        <div><dt>業務内容</dt><dd>うどんの製麺、販売</dd></div>
-        <div><dt>所在地</dt><dd>〒760-0063 香川県高松市多賀町1-6-7</dd></div>
-        <div><dt>電話</dt><dd><a href="tel:+81878624705">087-862-4705</a></dd></div>
-        <div><dt>メール</dt><dd><a href="mailto:info@udonbakaichidai.co.jp">info@udonbakaichidai.co.jp</a></dd></div>
-        <div><dt>URL</dt><dd><a href="http://www.udonbakaichidai.co.jp" target="_blank" rel="noopener">www.udonbakaichidai.co.jp</a></dd></div>
-        <div><dt>営業時間</dt><dd>6:00〜18:00</dd></div>
-        <div><dt>定休日</dt><dd>年中無休（1月1日のみ休み）</dd></div>
-        <div><dt>送料</dt><dd>全国一律 ¥1,000（北海道・東北・沖縄は ¥1,300）</dd></div>
-        <div><dt>お支払い</dt><dd>代金引換 / 銀行振込 / 郵便振替 / クレジットカード / コンビニ決済 / ネットバンク決済 / 電子マネー決済</dd></div>
-        <div><dt>引渡し時期</dt><dd>ご注文確定後、準備でき次第発送</dd></div>
-        <div><dt>返品・交換</dt><dd>不良品は到着後7日以内にご連絡で交換（返送料当店負担）。客都合の返品交換は不可。</dd></div>
-      </dl>
-      <p class="menu-note">※本ページはリニューアル提案のデモです。画像・情報は公式サイトの公開内容を基にしています。</p>
-    </div>
-  </section>
+  <!-- ============ お土産うどん（EC） ============ -->
+  <div class="view" data-route="ec">
+    <section class="section">
+      <div class="container">
+        <header class="section-head">
+          <p class="section-eyebrow">ONLINE SHOP</p>
+          <h2 class="section-title" data-view-title>お土産うどん お取り寄せ</h2>
+          <p class="section-desc">
+            ご自宅で打ちたての味を。<strong>アカウント登録は不要です。ゲストのままご購入いただけます。</strong><br />
+            <span class="ec-demo-note">※このECはデモ（モック）です。決済は行われません。</span>
+          </p>
+        </header>
+        <div class="product-grid" id="product-grid" aria-live="polite"><!-- JSが商品を描画 --></div>
+      </div>
+    </section>
+
+    <section class="section section--alt">
+      <div class="container">
+        <div class="ec-info-grid">
+          <div class="ec-info">
+            <h3>お支払い方法について</h3>
+            <p>代金引換・銀行振込・郵便振替・クレジットカード決済・オンラインコンビニ決済・ネットバンク決済・電子マネー決済がご利用いただけます。</p>
+            <p class="pay-icons">
+              <img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/bill_icon_11.gif" alt="代金引換" loading="lazy" />
+              <img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/bill_icon_07.gif" alt="銀行振込" loading="lazy" />
+              <img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/bill_icon_09.gif" alt="郵便振替" loading="lazy" />
+            </p>
+            <p><img class="pay-all" src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/mydo2_all.png" alt="ご利用いただけるお支払い方法" loading="lazy" /></p>
+          </div>
+          <div class="ec-info">
+            <h3>送料について</h3>
+            <p>送料は<strong class="text-red">全国一律 ¥1,000</strong>。ただし<strong>北海道・東北・沖縄は ¥1,300</strong>。<br>（東北＝青森・岩手・宮城・秋田・山形・福島）<span class="text-small">（料金はすべて税込）</span></p>
+            <table class="ship-table">
+              <tbody>
+                <tr><td>北海道</td><td>東北</td><td>関東</td><td>信越</td><td>北陸</td><td>中部</td></tr>
+                <tr><td>1,300</td><td>1,300</td><td>1,000</td><td>1,000</td><td>1,000</td><td>1,000</td></tr>
+                <tr><td>関西</td><td>中国</td><td>九州</td><td>四国</td><td>沖縄</td><td>—</td></tr>
+                <tr><td>1,000</td><td>1,000</td><td>1,000</td><td>1,000</td><td>1,300</td><td>—</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="ec-info">
+            <h3>返品・交換について</h3>
+            <p>商品が不良品であった場合は、商品到着後7日以内に電話またはメールでご連絡ください。新しい商品と交換いたします（返送料は当店負担）。なお、お客様のご都合による返品・交換はお受けできかねます。</p>
+          </div>
+          <div class="ec-info">
+            <h3>アカウントについて</h3>
+            <p>商品の閲覧・カート追加・ご購入まで<strong>登録不要</strong>です。ご希望の方は購入時に任意でアカウントを作成できます。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 
 </main>
 
@@ -457,10 +438,12 @@
       </div>
     </div>
     <nav class="footer-nav" aria-label="フッターナビ">
-      <a href="http://www.udonbakaichidai.co.jp/sitemap.html" target="_blank" rel="noopener">サイトマップ</a>
-      <a href="http://www.udonbakaichidai.co.jp/privacy.html" target="_blank" rel="noopener">プライバシーポリシー</a>
-      <a href="http://www.udonbakaichidai.co.jp/shopping.html" target="_blank" rel="noopener">ご利用案内</a>
-      <a href="http://www.udonbakaichidai.co.jp/trading.html" target="_blank" rel="noopener">特定商取引法に基づく表示</a>
+      <a href="#/menu">お品書き</a>
+      <a href="#/shop">店舗紹介</a>
+      <a href="#/recruit">求人情報</a>
+      <a href="#/ec">お土産うどん</a>
+      <a href="http://www.udonbakaichidai.co.jp/trading.html" target="_blank" rel="noopener">特定商取引法に基づく表示 ↗</a>
+      <a href="http://www.udonbakaichidai.co.jp/privacy.html" target="_blank" rel="noopener">プライバシーポリシー ↗</a>
     </nav>
     <p class="footer-copy">© <span id="year"></span> 手打十段 うどんバカ一代（リニューアル提案モック）</p>
   </div>
@@ -468,7 +451,7 @@
 
 <!-- ===== カート Drawer ===== -->
 <div class="cart-overlay" id="cart-overlay" hidden></div>
-<aside class="cart-drawer" id="cart-drawer" aria-label="ショッピングカート" aria-hidden="true">
+<aside class="cart-drawer" id="cart-drawer" role="dialog" aria-modal="true" aria-label="ショッピングカート" aria-hidden="true">
   <div class="cart-header">
     <h2>カート</h2>
     <button class="cart-close" id="cart-close" aria-label="カートを閉じる">✕</button>
@@ -493,26 +476,18 @@
     <fieldset class="acct-choice">
       <legend>ご購入方法</legend>
       <p class="acct-note">🛈 アカウント登録は不要です。ゲストのままご購入いただけます。</p>
-      <label class="acct-opt">
-        <input type="radio" name="acct" value="guest" checked />
-        <span><strong>ゲストとして購入</strong>（登録不要・おすすめ）</span>
-      </label>
-      <label class="acct-opt">
-        <input type="radio" name="acct" value="create" />
-        <span><strong>アカウントを作成して購入</strong>（任意）</span>
-      </label>
+      <label class="acct-opt"><input type="radio" name="acct" value="guest" checked /><span><strong>ゲストとして購入</strong>（登録不要・おすすめ）</span></label>
+      <label class="acct-opt"><input type="radio" name="acct" value="create" /><span><strong>アカウントを作成して購入</strong>（任意）</span></label>
     </fieldset>
 
     <form id="checkout-form" novalidate>
       <label>お名前<input type="text" name="name" required autocomplete="name" /></label>
       <label>メールアドレス<input type="email" name="email" required autocomplete="email" /></label>
       <label>お届け先住所<input type="text" name="address" required autocomplete="street-address" /></label>
-
       <div class="acct-fields" id="acct-fields" hidden>
         <label>パスワード（アカウント作成用）<input type="password" name="password" autocomplete="new-password" minlength="8" placeholder="8文字以上" /></label>
         <p class="hint">作成すると、次回から購入履歴の確認やお届け先の保存ができます（デモ）。</p>
       </div>
-
       <fieldset class="card-fieldset">
         <legend>お支払い（ダミー）</legend>
         <p class="secure-note">🔒 本番は決済代行のトークン方式（カード非保持／PCI DSS準拠）で実装します。ここでは番号は送信・保存されません。</p>
@@ -522,19 +497,16 @@
           <label>CVC<input type="text" placeholder="123" /></label>
         </div>
       </fieldset>
-
       <div class="checkout-summary">
         <div class="cart-line-row"><span>商品小計</span><span id="co-subtotal">¥0</span></div>
         <div class="cart-line-row"><span>送料</span><span id="co-shipping">¥0</span></div>
         <div class="cart-total"><span>お支払い合計</span><span id="co-total">¥0</span></div>
       </div>
-
       <button type="submit" class="btn btn-primary btn-block" id="checkout-submit">注文を確定する（デモ）</button>
     </form>
   </div>
 </div>
 
-<!-- ===== 完了トースト ===== -->
 <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 
 <script src="js/shop.js"></script>
