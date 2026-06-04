@@ -191,7 +191,8 @@ body.no-scroll { overflow: hidden; }
 .dish-photo { aspect-ratio: 16 / 10; background-size: cover; background-position: center; }
 .dish-photo--kamabutter { background: radial-gradient(circle at 50% 40%, #f6d97a, #e0a526 60%, #b9851a); }
 .dish-photo--shoyu { background: linear-gradient(135deg, #e9d9b0, #c9a85f); }
-.dish-photo--kake { background: linear-gradient(135deg, #d9c9a3, #b59b6a); }
+.dish-photo--kake { background: radial-gradient(circle at 50% 38%, #f3e7c6, #d9c08a 72%); display: grid; place-items: center; }
+.dish-photo--kake::after { content: "🍜"; font-size: clamp(2.6rem, 6vw, 3.6rem); filter: drop-shadow(0 4px 8px rgba(0,0,0,.18)); }
 .dish-body { padding: 1.2rem 1.3rem 1.5rem; }
 .dish-body h3 { font-family: var(--serif); font-size: 1.3rem; color: var(--indigo); }
 .dish-body p { color: var(--muted); font-size: .95rem; margin-top: .4rem; }
