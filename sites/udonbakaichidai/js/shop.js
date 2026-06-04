@@ -56,13 +56,22 @@ const PAYMENT_METHODS = [
   "電子マネー決済"
 ];
 
-const CART_KEY = "udon_cart_v1";
+const CART_KEY = "udon_cart_v2";
 const yen = (n) => "¥" + n.toLocaleString("ja-JP");
 
 const Cart = {
   load() {
-    try { return JSON.parse(localStorage.getItem(CART_KEY)) || {}; }
-    catch { return {}; }
+    let c;
+    try { c = JSON.parse(localStorage.getItem(CART_KEY)) || {}; }
+    catch { c = {}; }
+    // 旧バージョン等で存在しない商品IDが残っていたら除去（空カートで件数が出る不具合の防止）
+    let changed = false;
+    for (const id of Object.keys(c)) {
+      const q = c[id];
+      if (!PRODUCTS.some((p) => p.id === id) || !(q > 0)) { delete c[id]; changed = true; }
+    }
+    if (changed) this.save(c);
+    return c;
   },
   save(c) { localStorage.setItem(CART_KEY, JSON.stringify(c)); },
   add(id) {

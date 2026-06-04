@@ -93,7 +93,7 @@
       </ul>
     </nav>
     <button class="cart-button" id="cart-open" aria-label="カートを開く">
-      🛒<span class="cart-count" id="cart-count" aria-live="polite">0</span>
+      🛒<span class="cart-count" id="cart-count" aria-live="polite" hidden>0</span>
     </button>
   </div>
   <div class="header-info">
@@ -117,11 +117,13 @@
   <!-- ============ HOME ============ -->
   <div class="view is-active" data-route="home">
     <section class="hero">
-      <picture class="hero-photo">
-        <source media="(max-width: 680px)" srcset="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/sp_main_img.jpg" />
-        <img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/main_img.jpg" width="1600" height="900" fetchpriority="high" decoding="async" alt="美味しいうどんを昨日よりも、提供できるよう頑張ります。" />
-      </picture>
-      <div class="container hero-inner">
+      <div class="hero-media">
+        <picture>
+          <source media="(max-width: 680px)" srcset="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/sp_main_img.jpg" />
+          <img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/main_img.jpg" width="1600" height="900" fetchpriority="high" decoding="async" alt="打ちたて・茹でたての讃岐うどん" />
+        </picture>
+      </div>
+      <div class="hero-inner">
         <div class="hero-panel">
           <p class="hero-eyebrow">香川・高松 / 平成16年創業 / 早朝6時開店</p>
           <h1 class="hero-title" data-view-title>打ちたて、茹でたて。<br />讃岐の本気を、一杯に。</h1>

@@ -185,6 +185,7 @@
   function refreshCount() {
     const n = Cart.count();
     cartCountEl.textContent = n;
+    cartCountEl.hidden = n === 0;          // 空のときはバッジ自体を非表示
     checkoutBtn.disabled = n === 0;
   }
 
