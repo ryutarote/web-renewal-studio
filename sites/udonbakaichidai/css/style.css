@@ -335,10 +335,10 @@ body.no-scroll { overflow: hidden; }
 @media (max-width: 1024px) {
   .nav-toggle { display: block; }
   .nav-menu {
-    position: fixed; inset: 64px 0 auto 0; flex-direction: column; gap: 0;
+    position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; gap: 0;
     background: var(--cream); border-bottom: 1px solid var(--line);
     padding: .5rem 0; transform: translateY(-120%); transition: transform .3s ease;
-    box-shadow: var(--shadow); max-height: calc(100vh - 64px); overflow-y: auto;
+    box-shadow: var(--shadow); max-height: 80vh; overflow-y: auto; z-index: 90;
   }
   .nav-menu.open { transform: translateY(0); }
   .nav-menu li { width: 100%; text-align: center; }
@@ -349,7 +349,8 @@ body.no-scroll { overflow: hidden; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  * { scroll-behavior: auto !important; transition: none !important; }
+  * { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+  .view.is-active { animation: none !important; }
 }
 
 /* ===== はじめての方へ ===== */

@@ -101,6 +101,7 @@
     const open = navMenu.classList.toggle("open");
     navToggle.setAttribute("aria-expanded", String(open));
     navToggle.setAttribute("aria-label", open ? "メニューを閉じる" : "メニューを開く");
+    if (open) { const first = navMenu.querySelector("a"); if (first) first.focus(); }
   });
   // ルーター遷移時に閉じるので、リンククリック個別処理は不要
 
