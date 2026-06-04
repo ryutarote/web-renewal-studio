@@ -279,8 +279,9 @@ body.no-scroll { overflow: hidden; }
 .cart-line .thumb { width: 56px; height: 56px; border-radius: 8px; background-size: cover; background-position: center; }
 .cart-line .nm { font-size: .92rem; font-weight: 700; color: var(--indigo); }
 .cart-line .pr { font-size: .85rem; color: var(--muted); }
-.qty { display: inline-flex; align-items: center; gap: .4rem; margin-top: .3rem; }
-.qty button { width: 26px; height: 26px; border: 1px solid var(--line); background: #fff; border-radius: 6px; cursor: pointer; font-weight: 700; }
+.qty { display: inline-flex; align-items: center; gap: .5rem; margin-top: .45rem; flex-wrap: wrap; }
+.qty button { min-width: 32px; height: 32px; border: 1px solid var(--line); background: #fff; border-radius: 8px; cursor: pointer; font-weight: 700; }
+.qty button:hover { background: var(--cream); }
 .cart-remove { background: none; border: 0; color: var(--vermilion); cursor: pointer; font-size: .8rem; }
 .cart-footer { padding: 1.2rem 1.4rem; border-top: 1px solid var(--line); }
 .cart-total { display: flex; justify-content: space-between; font-weight: 700; font-size: 1.2rem; color: var(--indigo); margin-bottom: 1rem; }
