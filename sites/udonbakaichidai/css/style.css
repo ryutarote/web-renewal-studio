@@ -394,3 +394,13 @@ a { color: inherit; }
 .ship-table td { border: 1px solid var(--line); padding: .4rem .2rem; }
 .ship-table tr:nth-child(odd) td { background: var(--indigo); color: #fff; font-weight: 600; }
 @media (max-width: 820px) { .ec-info-grid { grid-template-columns: 1fr; } }
+
+/* ===== 求人情報 ===== */
+.recruit-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 2rem; align-items: center; }
+.recruit-visual { display: block; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+.recruit-visual img { width: 100%; display: block; }
+.recruit-note { color: var(--muted); font-size: .9rem; margin: .6rem 0 1.1rem; }
+.recruit-actions { display: flex; flex-wrap: wrap; gap: .8rem; }
+.btn-ghost--dark { color: var(--indigo); border-color: var(--indigo); }
+.btn-ghost--dark:hover { background: var(--indigo); color: #fff; }
+@media (max-width: 820px) { .recruit-grid { grid-template-columns: 1fr; } }
