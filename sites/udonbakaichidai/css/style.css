@@ -148,27 +148,24 @@ body.no-scroll { overflow: hidden; }
 }
 .cart-count[hidden] { display: none; }
 
-/* ===== Hero（画像と文字を分割：重ねないレイアウト） ===== */
+/* ===== Hero（画像を切らずに全体表示→下に文字。重ねない） ===== */
 .hero {
-  display: grid; grid-template-columns: 1fr 1fr; align-items: stretch;
   color: #fff; overflow: hidden;
   background-color: var(--indigo-dark);
   background-image: linear-gradient(160deg, var(--indigo) 0%, var(--indigo-dark) 75%);
 }
-.hero-media { position: relative; min-height: clamp(260px, 38vw, 520px); }
-.hero-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.hero-inner { display: flex; align-items: center; padding: clamp(2rem, 5vw, 4.5rem); }
-.hero-panel { max-width: 40rem; }
+.hero-media {
+  position: relative; width: 100%;
+  aspect-ratio: 16 / 9; max-height: 64vh;
+  background: #0e1f31;
+}
+.hero-media img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.hero-inner { display: flex; justify-content: center; padding: clamp(1.8rem, 4vw, 3.2rem) clamp(1.2rem, 4vw, 2rem); }
+.hero-panel { max-width: 60rem; width: 100%; text-align: center; }
 .hero-eyebrow { letter-spacing: .2em; font-size: .8rem; color: var(--gold); font-weight: 700; }
 .hero-title { font-family: var(--serif); font-size: clamp(1.9rem, 4.2vw, 3.4rem); line-height: 1.3; margin: .6rem 0 1rem; }
-.hero-lead { font-size: clamp(1rem, 1.6vw, 1.18rem); max-width: 40ch; color: rgba(255,255,255,.92); }
-.hero-actions { display: flex; flex-wrap: wrap; gap: .8rem; margin: 1.8rem 0 0; }
-
-/* モバイル：画像を上、文字を下（重ならない） */
-@media (max-width: 860px) {
-  .hero { grid-template-columns: 1fr; }
-  .hero-media { min-height: 0; aspect-ratio: 16 / 10; order: -1; }
-}
+.hero-lead { font-size: clamp(1rem, 1.6vw, 1.18rem); max-width: 46ch; margin-inline: auto; color: rgba(255,255,255,.92); }
+.hero-actions { display: flex; flex-wrap: wrap; gap: .8rem; margin: 1.8rem 0 0; justify-content: center; }
 
 /* ===== Section base ===== */
 .section { padding: clamp(3rem, 8vw, 6rem) 0; }
@@ -190,17 +187,18 @@ body.no-scroll { overflow: hidden; }
   overflow: hidden; box-shadow: var(--shadow); transition: transform .2s ease;
 }
 .dish-card:hover { transform: translateY(-4px); }
-.dish-photo { aspect-ratio: 16 / 10; background-size: cover; background-position: center; }
+.dish-photo { aspect-ratio: 4 / 3; overflow: hidden; display: grid; place-items: center;
+  background: linear-gradient(135deg, #f6ead0, #e9d6ad); }
 .dish-photo--kamabutter { background: radial-gradient(circle at 50% 40%, #f6d97a, #e0a526 60%, #b9851a); }
 .dish-photo--shoyu { background: linear-gradient(135deg, #e9d9b0, #c9a85f); }
 .dish-photo--kake { background: radial-gradient(circle at 50% 38%, #f3e7c6, #d9c08a 72%); display: grid; place-items: center; }
 .dish-photo--kake::after { content: "🍜"; font-size: clamp(2.6rem, 6vw, 3.6rem); filter: drop-shadow(0 4px 8px rgba(0,0,0,.18)); }
 .dish-body { padding: 1.2rem 1.3rem 1.5rem; }
+.dish-photo img { width: 100%; height: 100%; object-fit: contain; display: block; }
 .dish-body h3 { font-family: var(--serif); font-size: 1.3rem; color: var(--indigo); }
 .dish-body p { color: var(--muted); font-size: .95rem; margin-top: .4rem; }
 .dish-price { font-family: var(--serif); font-size: 1.5rem; color: var(--vermilion); font-weight: 700; margin-top: .8rem !important; }
 .dish-price span { font-size: .8rem; color: var(--muted); margin-left: .2em; }
-.dish-card--feature .dish-photo { aspect-ratio: 16 / 11; }
 
 /* ===== Steps ===== */
 .steps { list-style: none; display: grid; gap: 1.2rem; grid-template-columns: 1fr; counter-reset: step; }
@@ -310,9 +308,6 @@ body.no-scroll { overflow: hidden; }
    ========================================================= */
 @media (min-width: 640px) {
   .meibutsu-grid { grid-template-columns: repeat(2, 1fr); }
-  .dish-card--feature { grid-column: 1 / -1; }
-  .dish-card--feature { display: grid; grid-template-columns: 1.2fr 1fr; }
-  .dish-card--feature .dish-photo { aspect-ratio: auto; height: 100%; }
   .steps { grid-template-columns: repeat(2, 1fr); }
   .voice-grid { grid-template-columns: repeat(3, 1fr); }
   .menu-cols { grid-template-columns: 1fr 1fr; }
@@ -472,8 +467,7 @@ body.no-scroll { overflow: hidden; }
 @media (max-width: 820px) { .recruit-grid { grid-template-columns: 1fr; } }
 
 /* ===== 料理写真（名物） ===== */
-.dish-photo { aspect-ratio: 4 / 3; overflow: hidden; }
-.dish-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* 料理写真は切らずに全体表示（暖色フレーム）。比率は全カード統一(4/3)。 */
 .rank-note { margin-top: 1.4rem; text-align: center; color: var(--muted); font-size: .92rem; }
 
 /* ===== 商品写真（EC） ===== */
