@@ -28,6 +28,15 @@
     recruit: "求人情報",
     ec:      "お土産うどん お取り寄せ"
   };
+  const DESC = {
+    home:    "香川県高松市の手打ち讃岐うどん「うどんバカ一代」。名物・釜バターうどん発祥の店。早朝6時から打ちたて・茹でたて。お土産うどんの通販も。",
+    menu:    "うどんバカ一代のお品書き。釜バターうどん¥560〜、かけ・ぶっかけ・釜玉・肉うどん等を小・中・大の価格でご案内。サイドメニューも。",
+    shop:    "うどんバカ一代の店舗紹介・アクセス。高松市多賀町、6:00〜18:00、年中無休（元旦のみ休み）、駐車場45台、瓦町駅徒歩7分。",
+    craft:   "うどんバカ一代のうどんができるまで。専用の粉を使い、練り・熟成・手打ち・茹で・締めの工程で打ちたてを提供します。",
+    rule:    "うどんバカ一代のセルフの流れ「バカイチのルール」。注文から会計、返却までのステップをご案内します。",
+    recruit: "うどんバカ一代の求人情報。空調完備、平日時給1,200円〜・土日祝1,350円〜、ラスト手当、食事付き。アルバイト・社員募集。",
+    ec:      "うどんバカ一代のお土産うどん通販。おみやげうどん・伝の助うどん・だし醤油。アカウント登録不要のゲスト購入OK（デモ）。"
+  };
   const views = $$(".view");
   const navLinks = $$('.nav-menu a[data-route]');
 
@@ -51,6 +60,17 @@
     document.title = (route === "home" ? "" : ROUTES[route] + "｜") + SITE + "（リニューアル提案）";
     const status = $("#route-status");
     if (status) status.textContent = ROUTES[route] + " のページを表示しました";
+
+    // メタディスクリプション（SEO/シェア）
+    const metaDesc = $('meta[name="description"]');
+    if (metaDesc && DESC[route]) metaDesc.setAttribute("content", DESC[route]);
+
+    // パンくず
+    const crumb = $("#crumb-bar");
+    if (crumb) {
+      if (route === "home") { crumb.hidden = true; }
+      else { crumb.hidden = false; $("#crumb-current").textContent = ROUTES[route]; }
+    }
 
     // 開いているUIを閉じる
     closeCart();
@@ -171,7 +191,7 @@
     const c = Cart.load();
     const ids = Object.keys(c);
     if (ids.length === 0) {
-      cartItemsEl.innerHTML = `<p class="cart-empty">カートは空です。<br>お土産うどんはいかがですか？</p>`;
+      cartItemsEl.innerHTML = `<div class="cart-empty"><p>カートは空です。<br>お土産うどんはいかがですか？</p><a class="btn btn-primary" href="#/ec">お土産うどんを見る</a></div>`;
     } else {
       cartItemsEl.innerHTML = ids.map((id) => {
         const p = PRODUCTS.find((x) => x.id === id);
@@ -347,6 +367,28 @@
       t.classList.add("img-failed");
     }
   }, true);
+
+  /* =========================================================
+     ページ先頭へ戻るボタン
+     ========================================================= */
+  const toTop = $("#to-top");
+  if (toTop) {
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        toTop.hidden = window.scrollY < 600;
+        ticking = false;
+      });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    toTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      const t = document.querySelector(".view.is-active [data-view-title]");
+      if (t) { t.setAttribute("tabindex", "-1"); t.focus({ preventScroll: true }); }
+    });
+  }
 
   /* ---- 初期化 ---- */
   refreshCount();

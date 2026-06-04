@@ -54,6 +54,23 @@ a { color: inherit; }
 body.no-scroll { overflow: hidden; }
 .center-cta { text-align: center; margin-top: 2rem; }
 
+/* パンくず */
+.crumb-bar { background: var(--paper); border-bottom: 1px solid var(--line); font-size: .82rem; }
+.crumb-bar .container { padding: .55rem 0; color: var(--muted); }
+.crumb-bar a { color: var(--indigo); text-decoration: none; }
+.crumb-bar a:hover { text-decoration: underline; }
+.crumb-sep { margin: 0 .4rem; color: var(--muted); }
+#crumb-current { color: var(--ink); font-weight: 700; }
+
+/* 先頭へ戻る */
+.to-top {
+  position: fixed; right: 18px; bottom: 18px; z-index: 150;
+  width: 46px; height: 46px; border-radius: 50%; border: 0; cursor: pointer;
+  background: var(--indigo); color: #fff; font-size: 1.2rem; box-shadow: var(--shadow);
+  transition: background .2s ease, transform .2s ease;
+}
+.to-top:hover { background: var(--indigo-dark); transform: translateY(-2px); }
+
 /* スクリーンリーダー専用 */
 .sr-only {
   position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
@@ -221,7 +238,8 @@ body.no-scroll { overflow: hidden; }
 
 /* ===== Products (mock EC) ===== */
 .product-grid { display: grid; gap: 1.3rem; grid-template-columns: 1fr; }
-.product-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column; }
+.product-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column; transition: transform .2s ease, box-shadow .2s ease; }
+.product-card:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(26,58,92,.16); }
 .product-thumb { aspect-ratio: 4 / 3; background-size: cover; background-position: center; }
 .product-body { padding: 1.1rem 1.2rem 1.3rem; display: flex; flex-direction: column; flex: 1; }
 .product-name { font-family: var(--serif); font-size: 1.12rem; color: var(--indigo); }
@@ -256,7 +274,7 @@ body.no-scroll { overflow: hidden; }
 .cart-close, .modal-close { background: none; border: 0; font-size: 1.3rem; cursor: pointer; width: 40px; height: 40px; border-radius: 8px; }
 .cart-close:hover, .modal-close:hover { background: rgba(0,0,0,.06); }
 .cart-items { flex: 1; overflow-y: auto; padding: 1rem 1.4rem; display: grid; gap: 1rem; align-content: start; }
-.cart-empty { color: var(--muted); text-align: center; margin-top: 2rem; }
+.cart-empty { color: var(--muted); text-align: center; margin-top: 2rem; display: grid; gap: 1rem; justify-items: center; }
 .cart-line { display: grid; grid-template-columns: 56px 1fr auto; gap: .8rem; align-items: center; }
 .cart-line .thumb { width: 56px; height: 56px; border-radius: 8px; background-size: cover; background-position: center; }
 .cart-line .nm { font-size: .92rem; font-weight: 700; color: var(--indigo); }

@@ -93,6 +93,12 @@
   </div>
 </header>
 
+<nav class="crumb-bar" id="crumb-bar" aria-label="パンくずリスト" hidden>
+  <div class="container">
+    <a href="#/">ホーム</a> <span class="crumb-sep" aria-hidden="true">›</span> <span id="crumb-current"></span>
+  </div>
+</nav>
+
 <main id="main">
 
   <!-- ============ HOME ============ -->
@@ -165,7 +171,7 @@
 
     <section class="section">
       <div class="container greeting-grid">
-        <figure class="greeting-photo"><img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/tenpo001.jpg" alt="店舗外観" loading="lazy" /></figure>
+        <figure class="greeting-photo"><img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/tenpo001.jpg" width="640" height="480" decoding="async" alt="店舗外観" loading="lazy" /></figure>
         <div>
           <header class="section-head section-head--left">
             <p class="section-eyebrow">GREETING</p>
@@ -371,7 +377,7 @@
         </header>
         <div class="recruit-grid">
           <a class="recruit-visual" href="http://www.udonbakaichidai.co.jp/original5.html" target="_blank" rel="noopener">
-            <img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/bnr_img007.jpg" alt="うどんバカ一代の求人情報" loading="lazy" />
+            <img src="https://images.weserv.nl/?url=www.udonbakaichidai.co.jp/images/material/bnr_img007.jpg" width="600" height="338" decoding="async" alt="うどんバカ一代の求人情報" loading="lazy" />
           </a>
           <div class="recruit-body">
             <h3 class="recruit-h3">アルバイト・パート募集</h3>
@@ -530,6 +536,8 @@
 </div>
 
 <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<button class="to-top" id="to-top" aria-label="ページの先頭へ戻る" hidden>↑</button>
 
 <script src="js/shop.js"></script>
 <script src="js/main.js"></script>
