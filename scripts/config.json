@@ -1,0 +1,56 @@
+{
+  "_comment": "古いWebサイトを使う中小・個人店の候補を収集するための設定。無料データソース(OpenStreetMap + Wayback Machine)のみを使用する。",
+
+  "site_age_cutoff_year": 2015,
+  "_site_age_cutoff_year_note": "Wayback Machineの最古スナップショットがこの年以前なら『2015年以前に作られたサイト』の候補とみなす。",
+
+  "min_reviews": 50,
+  "_min_reviews_note": "Google Mapの評価数。無料では自動取得できないため、収集段階ではフィルタせず候補として残し、後段(verify)で埋める。",
+
+  "prefectures": [
+    "北海道", "青森県", "岩手県", "宮城県", "秋田県", "山形県", "福島県",
+    "茨城県", "栃木県", "群馬県", "埼玉県", "千葉県", "東京都", "神奈川県",
+    "新潟県", "富山県", "石川県", "福井県", "山梨県", "長野県",
+    "岐阜県", "静岡県", "愛知県", "三重県",
+    "滋賀県", "京都府", "大阪府", "兵庫県", "奈良県", "和歌山県",
+    "鳥取県", "島根県", "岡山県", "広島県", "山口県",
+    "徳島県", "香川県", "愛媛県", "高知県",
+    "福岡県", "佐賀県", "長崎県", "熊本県", "大分県", "宮崎県", "鹿児島県", "沖縄県"
+  ],
+  "_prefectures_note": "全国47都道府県。テスト時は1〜2県に絞ると速い(--prefectures オプション)。",
+
+  "osm_filters": [
+    "nwr[\"shop\"][\"website\"](area.a);",
+    "nwr[\"shop\"][\"contact:website\"](area.a);",
+    "nwr[\"amenity\"~\"restaurant|cafe|bar|fast_food|pub|clinic|dentist|veterinary|pharmacy\"][\"website\"](area.a);",
+    "nwr[\"amenity\"~\"restaurant|cafe|bar|fast_food|pub|clinic|dentist|veterinary|pharmacy\"][\"contact:website\"](area.a);",
+    "nwr[\"craft\"][\"website\"](area.a);",
+    "nwr[\"craft\"][\"contact:website\"](area.a);",
+    "nwr[\"office\"][\"website\"](area.a);",
+    "nwr[\"office\"][\"contact:website\"](area.a);",
+    "nwr[\"tourism\"~\"hotel|guest_house|hostel|motel\"][\"website\"](area.a);",
+    "nwr[\"tourism\"~\"hotel|guest_house|hostel|motel\"][\"contact:website\"](area.a);",
+    "nwr[\"leisure\"][\"website\"](area.a);"
+  ],
+  "_osm_filters_note": "個人経営・中小が多い業種カテゴリ。website / contact:website のいずれかを持つ店舗のみ収集。",
+
+  "chain_blacklist": [
+    "セブン", "ローソン", "ファミリーマート", "ミニストップ", "デイリーヤマザキ",
+    "マクドナルド", "McDonald", "ケンタッキー", "KFC", "モスバーガー", "ロッテリア",
+    "スターバックス", "Starbucks", "ドトール", "タリーズ", "コメダ", "サンマルク",
+    "すき家", "吉野家", "松屋", "なか卯", "ガスト", "サイゼリヤ", "バーミヤン", "ジョナサン",
+    "ココス", "デニーズ", "ロイヤルホスト", "ジョイフル", "大戸屋", "やよい軒",
+    "餃子の王将", "日高屋", "リンガーハット", "丸亀製麺", "はなまるうどん",
+    "スシロー", "くら寿司", "はま寿司", "かっぱ寿司", "くらコーポレーション",
+    "ユニクロ", "GU", "しまむら", "無印良品", "ニトリ", "イオン", "イトーヨーカドー",
+    "ドン・キホーテ", "マツモトキヨシ", "ウエルシア", "ツルハ", "スギ薬局", "サンドラッグ",
+    "ココカラ", "クリエイト", "コスモス", "業務スーパー", "西松屋",
+    "ヤマダ電機", "ビックカメラ", "ヨドバシ", "エディオン", "ケーズデンキ", "ジョーシン",
+    "GEO", "ゲオ", "TSUTAYA", "ブックオフ", "ハードオフ",
+    "ガソリン", "ENEOS", "出光", "コスモ石油", "アポロ", "シェル",
+    "QBハウス", "ホットペッパー", "JINS", "Zoff", "眼鏡市場", "メガネスーパー",
+    "ABCマート", "東横イン", "アパホテル", "ルートイン", "スーパーホテル",
+    "ダイソー", "セリア", "キャンドゥ", "サーティワン", "ミスタードーナツ"
+  ],
+  "_chain_blacklist_note": "店名にこれらを含む場合は大手チェーンとして除外。中小・個人店に絞るための簡易フィルタ。"
+}

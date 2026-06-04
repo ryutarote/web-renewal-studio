@@ -1,0 +1,49 @@
+name: Deploy うどんバカ一代 site to GitHub Pages
+
+# sites/udonbakaichidai/ をサイトのルートとして GitHub Pages に公開する。
+# 初回のみ Settings → Pages → Source を「GitHub Actions」に設定する必要がある。
+# github-pages 環境は既定で main からのデプロイのみ許可するため main で実行する。
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "sites/udonbakaichidai/**"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 同時実行は1つに。実行中のデプロイはキャンセルしない。
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Disable Jekyll processing
+        run: touch sites/udonbakaichidai/.nojekyll
+
+      - name: Upload site artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: sites/udonbakaichidai
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
