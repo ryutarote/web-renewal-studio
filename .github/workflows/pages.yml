@@ -2,6 +2,7 @@ name: Deploy うどんバカ一代 site to GitHub Pages
 
 # sites/udonbakaichidai/ をサイトのルートとして GitHub Pages に公開する。
 # 初回のみ Settings → Pages → Source を「GitHub Actions」に設定する必要がある。
+# Source設定後の初回デプロイをトリガーするための更新。
 
 on:
   push:
