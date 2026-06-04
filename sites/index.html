@@ -9,29 +9,36 @@
   :root { --ink:#2b2620; --muted:#6b6155; }
   body { font-family: "Noto Sans JP", system-ui, sans-serif; background: #faf7f0; color: var(--ink);
     display: grid; place-items: center; min-height: 100vh; margin: 0; padding: 2rem; }
-  .wrap { width: min(680px, 92vw); text-align: center; }
+  .wrap { width: min(900px, 94vw); text-align: center; }
   h1 { font-size: 1.3rem; margin-bottom: .3rem; }
   p.lead { color: var(--muted); margin-bottom: 1.6rem; font-size: .95rem; }
-  .cards { display: grid; gap: 1rem; grid-template-columns: 1fr 1fr; }
-  @media (max-width: 560px) { .cards { grid-template-columns: 1fr; } }
-  a.card { display: block; text-decoration: none; color: #fff; border-radius: 14px; padding: 1.6rem 1.2rem;
-    box-shadow: 0 10px 30px rgba(0,0,0,.12); font-weight: 700; }
-  a.card .emoji { font-size: 2.2rem; display: block; margin-bottom: .4rem; }
-  a.card .sub { display: block; font-weight: 400; font-size: .82rem; opacity: .9; margin-top: .3rem; }
-  .udon { background: linear-gradient(160deg, #1a3a5c, #12283f); }
-  .minmin { background: linear-gradient(160deg, #9c1f1f, #6f1414); }
+  .cards { display: grid; gap: 1rem; grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 760px) { .cards { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 480px) { .cards { grid-template-columns: 1fr; } }
+  a.card { display: block; text-decoration: none; color: #fff; border-radius: 14px; padding: 1.5rem 1.1rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,.12); font-weight: 700; line-height: 1.4; }
+  a.card .emoji { font-size: 2rem; display: block; margin-bottom: .4rem; }
+  a.card .sub { display: block; font-weight: 400; font-size: .8rem; opacity: .9; margin-top: .3rem; }
+  .udon    { background: linear-gradient(160deg, #1a3a5c, #12283f); }
+  .minmin  { background: linear-gradient(160deg, #9c1f1f, #6f1414); }
+  .mitchan { background: linear-gradient(160deg, #b3471f, #7c2f12); }
+  .shikai  { background: linear-gradient(160deg, #1f5673, #123c52); }
+  .jaja    { background: linear-gradient(160deg, #6b4423, #4a2f17); }
   footer { margin-top: 1.6rem; color: var(--muted); font-size: .78rem; }
 </style>
 </head>
 <body>
   <div class="wrap">
     <h1>リニューアル提案サイト</h1>
-    <p class="lead">制作したデモサイト（モック）の一覧です。</p>
+    <p class="lead">制作したデモサイト（モック）の一覧です。いずれも決済は発生しません。</p>
     <div class="cards">
-      <a class="card udon" href="udonbakaichidai/"><span class="emoji" aria-hidden="true">🍜</span>手打十段 うどんバカ一代<span class="sub">香川・高松の讃岐うどん</span></a>
-      <a class="card minmin" href="utsunomiya-minmin/"><span class="emoji" aria-hidden="true">🥟</span>宇都宮みんみん<span class="sub">栃木・宇都宮の餃子専門店</span></a>
+      <a class="card udon" href="udonbakaichidai/"><span class="emoji" aria-hidden="true">🍜</span>手打十段 うどんバカ一代<span class="sub">香川・讃岐うどん</span></a>
+      <a class="card minmin" href="utsunomiya-minmin/"><span class="emoji" aria-hidden="true">🥟</span>宇都宮みんみん<span class="sub">栃木・餃子</span></a>
+      <a class="card mitchan" href="hiroshima-mitchan/"><span class="emoji" aria-hidden="true">🍳</span>みっちゃん総本店<span class="sub">広島・お好み焼</span></a>
+      <a class="card shikai" href="nagasaki-shikairou/"><span class="emoji" aria-hidden="true">🍜</span>四海樓<span class="sub">長崎・ちゃんぽん</span></a>
+      <a class="card jaja" href="morioka-jajamen/"><span class="emoji" aria-hidden="true">🍜</span>白龍（パイロン）本店<span class="sub">盛岡・じゃじゃ麺</span></a>
     </div>
-    <footer>※いずれもリニューアル提案のデモ（決済は発生しません）。</footer>
+    <footer>※すべてリニューアル提案のデモ。情報は公開内容を基にした参考です。</footer>
   </div>
 </body>
 </html>
