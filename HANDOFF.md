@@ -49,8 +49,22 @@ done
 | `morioka-jajamen` | 白龍（パイロン）本店 | じゃじゃ麺/盛岡 | …/morioka-jajamen/ | https://www.pairon.iwate.jp/ | 味噌茶 #6b4423 | 🍜 |
 | `fukui-yoroppaken` | ヨーロッパ軒 総本店 | ソースカツ丼/福井 | …/fukui-yoroppaken/ | http://yo-roppaken.gourmet.coocan.jp/ | ソース茶 #6b3f1f | 🍱（shadcn設計） |
 
-### 第2弾（リニューアル候補10件 / shadcn設計で展開中）
-1着手済=ヨーロッパ軒(福井/ソースカツ丼)。残り9件: 味太助(仙台/牛タン), 味の三平(札幌/味噌ラーメン), 源来軒(喜多方/ラーメン), 元祖もつ鍋楽天地(博多/もつ鍋), 串かつだるま(大阪/串カツ), 明神丸(高知/藁焼き鰹たたき), 献上そば羽根屋(出雲/そば), 東江そば(沖縄/沖縄そば), あつた蓬莱軒(名古屋/ひつまぶし)。
+### 第2弾（リニューアル候補10件 / shadcn設計）— ✅全10件 完成・公開
+| slug | 店舗 | ジャンル/地域 | 配色(primary) | モチーフ | 備考 |
+|---|---|---|---|---|---|
+| `fukui-yoroppaken` | ヨーロッパ軒 総本店 | ソースカツ丼/福井 | ソース茶 #6b3f1f | 🍱 | 雛形 |
+| `sendai-ajitasuke` | 味太助 | 牛タン/仙台 | 炭黒 #2f2a26 | 🥩 | 牛タン焼発祥 |
+| `sapporo-ajinosanpei` | 味の三平 | 味噌ラーメン/札幌 | 味噌茶 #6b4a26 | 🍜 | 味噌ラーメン発祥／自社通販でない旨明記 |
+| `osaka-daruma` | 串かつだるま | 串カツ/大阪 | だるま朱赤 #b32d28 | 🍢 | 串カツ発祥・二度づけ禁止 |
+| `hakata-rakutenchi` | 元祖もつ鍋 楽天地 | もつ鍋/博多 | 緑 #27512f | 🍲 | 公式通販の実価格反映 |
+| `kochi-myojinmaru` | 藁焼き鰹たたき 明神丸 | 鰹たたき/高知 | 土佐の海紺 #234d5e | 🐟 | 塩たたき発祥・明神水産 |
+| `izumo-haneya` | 献上そば 羽根屋 | 出雲そば/島根 | 藍墨 #33475c | 🥢 | 江戸末期創業・献上そば |
+| `okinawa-agarie` | 東江そば | 沖縄そば/沖縄 | 海teal #1f6f76 | 🍜 | 自家製生麺・公式通販反映 |
+| `kitakata-genraiken` | 源来軒 | 喜多方ラーメン/福島 | 醤油茶 #5e4126 | 🍜 | 元祖。**2024年閉店**のため“新規構築型提案”と明記 |
+| `nagoya-houraiken` | あつた蓬莱軒 | ひつまぶし/名古屋 | 漆 #5a2f22 | 🍱 | ひつまぶし発祥(登録商標)・四つの食べ方 |
+
+- 全15サイト（第1弾5＋第2弾10）をPlaywrightで一括検証済み: 各サイト全ルートで`.view`単一表示・可視h1=1・カート計算正常・pageError 0。
+- 各サイトは公式/食べログ/観光サイト等で実データ取得。確証なき値は「目安」と可視明記、自社通販でない店はECにその旨補足、ECは全て「デモ（決済なし）」明記。
 
 > **デザイン方針（第2弾〜）**: shadcn/ui（New York）を**素のCSSへ移植**して適用（ビルド不要・MCP不使用）。`fukui-yoroppaken/css/style.css` の `:root` が雛形＝HSLトークン(`--background/--foreground/--card/--primary/--secondary/--accent/--border/--input/--ring/--radius`)＋`hsl(var(--x))`参照、`--shadow-sm/--shadow/--shadow-lg`、角丸`.625rem`、フォーカスは2pxオフセットのリング、`.badge/.btn(primary|outline)/.card/.menu-table` 等のコンポーネント。新サイトはこのCSSを雛形に色トークンだけ差し替える。
 
