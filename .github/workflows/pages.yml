@@ -1,7 +1,7 @@
 name: Deploy うどんバカ一代 site to GitHub Pages
 
 # sites/ をルートとして公開し、サイト本体は /udonbakaichidai/ サブディレクトリで配信する。
-# 公開URL: https://ryutarote.github.io/moneytize-claude-code/udonbakaichidai/
+# 公開URL: https://ryutarote.github.io/web-renewal-studio/udonbakaichidai/
 # 初回のみ Settings → Pages → Source を「GitHub Actions」に設定する必要がある。
 # github-pages 環境は既定で main からのデプロイのみ許可するため main で実行する。
 
