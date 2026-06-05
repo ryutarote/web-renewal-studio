@@ -30,7 +30,7 @@
     home:  "長崎・松が枝町の中華料理「四海樓」。明治32年創業、ちゃんぽん・皿うどん発祥の店。長崎港を望む展望レストランとちゃんぽんミュージアム。",
     menu:  "四海樓のメニュー。長崎ちゃんぽん・皿うどんをはじめ、本格中華のコースも。長崎港を一望する5階の展望レストラン。",
     story: "ちゃんぽん・皿うどん発祥の店、四海樓の物語。明治32年、創業者・陳平順が留学生のために考案した一杯。",
-    shop:  "四海樓の店舗・アクセス。長崎市松が枝町、大浦天主堂駅近く。2階ちゃんぽんミュージアム（無料）、5階展望レストラン。",
+    shop:  "四海樓の店舗・アクセス。〒850-0921 長崎市松が枝町4-5、大浦天主堂電停すぐ。昼11:30〜15:00／夜17:00〜20:00、水曜（隔週）定休。",
     order: "四海樓のお取り寄せ（ちゃんぽん・皿うどん・デモ）。アカウント登録不要のゲスト購入OK。"
   };
   const views = $$(".view");
@@ -189,7 +189,7 @@
     const c = Cart.load();
     const ids = Object.keys(c);
     if (ids.length === 0) {
-      cartItemsEl.innerHTML = `<div class="cart-empty"><p>カートは空です。<br>お土産うどんはいかがですか？</p><a class="btn btn-primary" href="#/ec">お土産うどんを見る</a></div>`;
+      cartItemsEl.innerHTML = `<div class="cart-empty"><p>カートは空です。<br>ちゃんぽん・皿うどんのお取り寄せはいかがですか？</p><a class="btn btn-primary" href="#/order">お取り寄せを見る</a></div>`;
     } else {
       cartItemsEl.innerHTML = ids.map((id) => {
         const p = PRODUCTS.find((x) => x.id === id);

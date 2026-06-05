@@ -20,7 +20,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@600;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="css/style.css" />
 <script type="application/ld+json">
-{ "@context":"https://schema.org","@type":"Restaurant","name":"白龍（パイロン）本店","servesCuisine":"じゃじゃ麺","url":"https://www.pairon.iwate.jp/","priceRange":"¥","foundingDate":"1953",
+{ "@context":"https://schema.org","@type":"Restaurant","name":"白龍（パイロン）本店","servesCuisine":"じゃじゃ麺","url":"https://www.pairon.iwate.jp/","telephone":"+81-19-624-2247","priceRange":"¥","foundingDate":"1953",
 "address":{"@type":"PostalAddress","streetAddress":"内丸5-15","addressLocality":"盛岡市","addressRegion":"岩手県","addressCountry":"JP"},
 "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"09:00","closes":"21:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Sunday"],"opens":"11:30","closes":"16:00"}] }
 </script>
@@ -52,7 +52,7 @@
   </div>
   <div class="header-info">
     <div class="container header-info-inner">
-      <span class="hi-tel">盛岡じゃじゃ麺 発祥</span>
+      <span class="hi-tel">TEL <a href="tel:+81196242247">019-624-2247</a></span>
       <span>月〜土 9:00〜21:00（L.O.20:40）</span>
       <span>日 11:30〜16:00</span>
       <span>岩手県盛岡市内丸5-15</span>
@@ -67,7 +67,9 @@
 <main id="main">
   <div class="view is-active" data-route="home">
     <section class="hero">
-      <div class="hero-media" role="img" aria-label="じゃじゃ麺のイメージ"></div>
+      <div class="hero-media hero-media--photo" role="img" aria-label="盛岡じゃじゃ麺とちーたんたん">
+        <img src="https://images.weserv.nl/?url=www.pairon.iwate.jp/img/jaja004.jpg&w=1600&h=900&fit=cover&output=webp" width="1600" height="900" fetchpriority="high" decoding="async" alt="盛岡じゃじゃ麺とちーたんたん" />
+      </div>
       <div class="hero-inner"><div class="hero-panel">
         <p class="hero-eyebrow">盛岡・内丸 / 昭和28年創業</p>
         <h1 class="hero-title" data-view-title>盛岡じゃじゃ麺は、<br />この一杯から。</h1>
@@ -103,7 +105,7 @@
       </header>
       <div class="meibutsu-grid">
         <article class="dish-card dish-card--feature">
-          <div class="dish-photo dish-photo--kamabutter" role="img" aria-label="じゃじゃ麺のイメージ"></div>
+          <div class="dish-photo dish-photo--photo" role="img" aria-label="じゃじゃ麺"><img src="https://images.weserv.nl/?url=www.pairon.iwate.jp/img/jaja004.jpg&w=640&h=480&fit=cover&output=webp" width="640" height="480" decoding="async" alt="じゃじゃ麺とちーたんたん" loading="lazy" /></div>
           <div class="dish-body"><h3>じゃじゃ麺（中）</h3><p>もちもち平打ち麺＋秘伝の肉味噌。お好みでラー油・酢・にんにくを。大・中・小から選べます。</p><p class="dish-price">¥550<span>(中)</span></p></div>
         </article>
         <article class="dish-card">
@@ -120,7 +122,7 @@
     </div></section>
 
     <section class="section"><div class="container greeting-grid">
-      <div class="greeting-photo dish-photo dish-photo--kamabutter" role="img" aria-label="じゃじゃ麺イメージ"></div>
+      <figure class="greeting-photo"><img src="https://images.weserv.nl/?url=www.pairon.iwate.jp/img/shop001.jpg&w=640&h=480&fit=cover&output=webp" width="640" height="480" decoding="async" alt="白龍（パイロン）本店 外観" loading="lazy" /></figure>
       <div>
         <header class="section-head section-head--left"><p class="section-eyebrow">STORY</p><h2 class="section-title">昭和28年、屋台から。</h2></header>
         <p>創業者・高階貫勝が、かつて大陸で親しんだ「炸醤麺（ジャージャー麺）」の味を、盛岡の人の口に合うよう独自にアレンジ。屋台で出したのが「盛岡じゃじゃ麺」の始まりです。</p>
@@ -135,6 +137,7 @@
         <div class="shop-info">
           <dl class="info-list">
             <div><dt>住所</dt><dd>岩手県盛岡市内丸5-15</dd></div>
+            <div><dt>電話</dt><dd><a href="tel:+81196242247">019-624-2247</a></dd></div>
             <div><dt>営業時間</dt><dd>月〜土 9:00〜21:00（L.O.20:40）／日 11:30〜16:00</dd></div>
             <div><dt>定休日</dt><dd>無休（盆時期・年始は休業）</dd></div>
             <div><dt>アクセス</dt><dd>盛岡城跡公園（岩手公園）近く／盛岡駅からバス約10分</dd></div>
@@ -184,12 +187,12 @@
       <header class="section-head"><p class="section-eyebrow">ABOUT</p><h1 class="section-title" data-view-title>じゃじゃ麺とは</h1>
         <p class="section-desc">食べ方も楽しい、盛岡三大麺のひとつ。</p></header>
       <ol class="guide-list">
-        <li><span class="guide-no">1</span><div><h3>まずよく混ぜる</h3><p>麺・肉味噌・きゅうり・ねぎを、底からしっかり混ぜ合わせます。</p></div></li>
-        <li><span class="guide-no">2</span><div><h3>味を調える</h3><p>お好みでラー油・酢・おろしにんにくを足して、自分好みの味に。</p></div></li>
-        <li><span class="guide-no">3</span><div><h3>食べ進める</h3><p>途中で味変も楽しい。最後は麺を少し残しておくのがコツ。</p></div></li>
-        <li><span class="guide-no">4</span><div><h3>締めのちーたんたん</h3><p>残った器に生卵を割り入れ、肉味噌と茹で汁を加えて卵スープに。これぞ盛岡流。</p></div></li>
+        <li><span class="guide-no">1</span><div><h3>まず味を調える</h3><p>「酢」「ラー油」「にんにく」などを少量ずつ加えて、自分好みの味にととのえます。</p></div></li>
+        <li><span class="guide-no">2</span><div><h3>色が変わるまで混ぜる</h3><p>麺と肉味噌を、色が変わるまで底からしっかり混ぜ合わせて、いただきます。</p></div></li>
+        <li><span class="guide-no">3</span><div><h3>麺を少し残して卵を割る</h3><p>麺を少し残したところで、器に生卵を割り入れてかき混ぜます。これが「ちーたんたん」の始まり。</p></div></li>
+        <li><span class="guide-no">4</span><div><h3>店員に「ちーたんたん」を頼む</h3><p>お箸ごと渡すと、ゆで汁・ねぎ・味噌を加えて卵スープに。茶色に変わるまで混ぜて飲み干せば、ごちそうさま。これぞ盛岡流。</p></div></li>
       </ol>
-      <p class="menu-note">※由来は公開情報を基にした要約です。昭和28年、満州の炸醤麺を盛岡風にアレンジしたのが始まりとされます。</p>
+      <p class="menu-note">※食べ方は公式サイトの案内に基づきます。お好みで「塩」「胡椒」「ラー油」「味噌」を加えても。創業者・高階貫勝が、旧満州の炸醤麺を盛岡の味にアレンジしたのが始まりとされます。</p>
     </div></section>
   </div>
 
@@ -202,8 +205,10 @@
           <dl class="info-list">
             <div><dt>店名</dt><dd>白龍（パイロン）本店</dd></div>
             <div><dt>住所</dt><dd>岩手県盛岡市内丸5-15</dd></div>
+            <div><dt>電話</dt><dd><a href="tel:+81196242247">019-624-2247</a></dd></div>
             <div><dt>営業時間</dt><dd>月〜土 9:00〜21:00（L.O.20:40）／日 11:30〜16:00</dd></div>
             <div><dt>定休日</dt><dd>無休（盆時期・年始は休業）</dd></div>
+            <div><dt>姉妹店</dt><dd>分店（内丸5-16）／川徳店／フェザン店</dd></div>
             <div><dt>アクセス</dt><dd>盛岡城跡公園（岩手公園）近く／盛岡駅からバス約10分</dd></div>
           </dl>
           <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&query=白龍+本店+盛岡市内丸" target="_blank" rel="noopener">Googleマップで見る</a>
@@ -219,6 +224,7 @@
         <div><dt>創業者</dt><dd>高階 貫勝</dd></div>
         <div><dt>業態</dt><dd>盛岡じゃじゃ麺（発祥）</dd></div>
         <div><dt>所在地</dt><dd>岩手県盛岡市内丸5-15</dd></div>
+        <div><dt>電話</dt><dd><a href="tel:+81196242247">019-624-2247</a></dd></div>
         <div><dt>営業時間</dt><dd>月〜土 9:00〜21:00（L.O.20:40）／日 11:30〜16:00</dd></div>
         <div><dt>定休日</dt><dd>無休（盆時期・年始は休業）</dd></div>
       </dl>
@@ -247,7 +253,7 @@
 <footer class="site-footer">
   <div class="container footer-inner">
     <div class="footer-brand"><span class="brand-mark" aria-hidden="true">龍</span>
-      <div><p class="footer-name">白龍（パイロン）本店</p><p class="footer-addr">岩手県盛岡市内丸5-15</p></div></div>
+      <div><p class="footer-name">白龍（パイロン）本店</p><p class="footer-addr">岩手県盛岡市内丸5-15 / TEL 019-624-2247</p></div></div>
     <nav class="footer-nav" aria-label="フッターナビ">
       <a href="#/menu">メニュー</a><a href="#/story">じゃじゃ麺とは</a><a href="#/shop">店舗・アクセス</a><a href="#/order">お取り寄せ</a>
     </nav>
