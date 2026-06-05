@@ -47,6 +47,12 @@ done
 | `hiroshima-mitchan` | みっちゃん総本店 八丁堀本店 | お好み焼/広島 | …/hiroshima-mitchan/ | 橙赤 #b3471f | https://www.okonomi.co.jp/ | 🍳 |
 | `nagasaki-shikairou` | 中華料理 四海樓 | ちゃんぽん/長崎 | …/nagasaki-shikairou/ | https://shikairou.com/ | 紺 #1f5673 | 🍜 |
 | `morioka-jajamen` | 白龍（パイロン）本店 | じゃじゃ麺/盛岡 | …/morioka-jajamen/ | https://www.pairon.iwate.jp/ | 味噌茶 #6b4423 | 🍜 |
+| `fukui-yoroppaken` | ヨーロッパ軒 総本店 | ソースカツ丼/福井 | …/fukui-yoroppaken/ | http://yo-roppaken.gourmet.coocan.jp/ | ソース茶 #6b3f1f | 🍱（shadcn設計） |
+
+### 第2弾（リニューアル候補10件 / shadcn設計で展開中）
+1着手済=ヨーロッパ軒(福井/ソースカツ丼)。残り9件: 味太助(仙台/牛タン), 味の三平(札幌/味噌ラーメン), 源来軒(喜多方/ラーメン), 元祖もつ鍋楽天地(博多/もつ鍋), 串かつだるま(大阪/串カツ), 明神丸(高知/藁焼き鰹たたき), 献上そば羽根屋(出雲/そば), 東江そば(沖縄/沖縄そば), あつた蓬莱軒(名古屋/ひつまぶし)。
+
+> **デザイン方針（第2弾〜）**: shadcn/ui（New York）を**素のCSSへ移植**して適用（ビルド不要・MCP不使用）。`fukui-yoroppaken/css/style.css` の `:root` が雛形＝HSLトークン(`--background/--foreground/--card/--primary/--secondary/--accent/--border/--input/--ring/--radius`)＋`hsl(var(--x))`参照、`--shadow-sm/--shadow/--shadow-lg`、角丸`.625rem`、フォーカスは2pxオフセットのリング、`.badge/.btn(primary|outline)/.card/.menu-table` 等のコンポーネント。新サイトはこのCSSを雛形に色トークンだけ差し替える。
 
 ---
 
