@@ -189,7 +189,7 @@
     const c = Cart.load();
     const ids = Object.keys(c);
     if (ids.length === 0) {
-      cartItemsEl.innerHTML = `<div class="cart-empty"><p>カートは空です。<br>お土産うどんはいかがですか？</p><a class="btn btn-primary" href="#/ec">お土産うどんを見る</a></div>`;
+      cartItemsEl.innerHTML = `<div class="cart-empty"><p>カートは空です。<br>冷凍お好み焼きはいかがですか？</p><a class="btn btn-primary" href="#/order">お取り寄せを見る</a></div>`;
     } else {
       cartItemsEl.innerHTML = ids.map((id) => {
         const p = PRODUCTS.find((x) => x.id === id);
