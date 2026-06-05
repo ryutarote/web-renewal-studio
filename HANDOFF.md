@@ -1,7 +1,7 @@
 # プロジェクト引き継ぎ（HANDOFF）— リニューアル提案サイト群
 
 > このファイルは「新しいセッション（ネットワーク許可済み環境）」へ作業文脈を完全に引き継ぐためのものです。
-> 新セッションでこのリポジトリ（`ryutarote/moneytize-claude-code` / ブランチ `main`）を開き、本ファイルを最初に読んでから着手してください。
+> 新セッションでこのリポジトリ（`ryutarote/web-renewal-studio` / ブランチ `main`）を開き、本ファイルを最初に読んでから着手してください。
 
 ---
 
@@ -35,9 +35,9 @@ done
 ## 1. プロジェクト概要
 
 実在の有名飲食店の**リニューアル提案デモ（モック）**を、共通のSPA基盤で複数制作している。
-- リポジトリ: `ryutarote/moneytize-claude-code` / 作業ブランチ: **`main`**（既定ブランチも `main`）
+- リポジトリ: `ryutarote/web-renewal-studio` / 作業ブランチ: **`main`**（既定ブランチも `main`）
 - 公開: **GitHub Pages**（`sites/` をルートにサブディレクトリ配信）
-- 公開トップ（5サイト一覧）: https://ryutarote.github.io/moneytize-claude-code/
+- 公開トップ（5サイト一覧）: https://ryutarote.github.io/web-renewal-studio/
 
 ### サイト一覧
 | slug（`sites/<slug>/`） | 店舗 | ジャンル/地域 | 公開URL | 公式サイト | 配色(primary) | モチーフ |
