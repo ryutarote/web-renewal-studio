@@ -218,3 +218,41 @@ node /tmp/check.mjs
 - 残課題（⚠）：四海樓のメニュー価格（公式非掲載）、白龍の小/大価格・楽天通販（bot遮断）は「目安」のまま。別接続での楽天再取得 or 店舗確認が必要。
 
 > 新セッションでは、まず §0 の到達確認 → 公式取得 → §3 の⚠項目を実データへ置換 → §5 で検証 → §6 でデプロイ、の順で進めてください。
+
+---
+
+## 9. UI/UXレビュー反映（全15サイト一括改修・2026-06）
+
+グッドパッチ・シニアディレクター視点のレビューを受け、全15サイトへ一括適用（`scripts/uiux_refine.py`／冪等）。各サイトの `css/style.css` 末尾に共通上書きブロック（マーカー: `UI/UX 改修（レビュー反映・全サイト共通追記）`）、`index.html`・`js/main.js` を編集。
+
+**適用済み**
+- **P0 絵文字撤去**: ヒーローの巨大絵文字を撤去しクリーンなカラーバンドに（`.hero-media::after{content:""}`）。空の料理/商品タイルは絵文字を抑制（grayscale+低opacity）し「写真は準備中です」の控えめプレースホルダを表示。※実写真タイル（`--photo`/`<img>`入り＝`:empty`非該当）は無影響。
+- **P0 SEO**: 全サイト `robots` を `noindex, nofollow` に。公式URL向きの `canonical` を除去（本物との混同・誤クロール防止）。
+- **P0/P2 信頼**: 画面左下に「提案デモ（モック）」リボンを常時表示（`.demo-ribbon`）。
+- **P1 A11y**: モバイルナビ閉時に `inert`（画面外メニューへのTab侵入を防止）。**デスクトップ幅では inert にしない**よう `matchMedia("(max-width:1024px)")` でガード＋リサイズ追従。現在地ナビを色のみ依存から下線＋太字へ。タップ領域拡大（`.qty button`/`.cart-remove` を最小40px）。ghostボタンのコントラスト確保。
+- **P1 UX**: カート追加時の**ドロワー自動展開を廃止**（トーストのみ／文言「右上のカートからご確認いただけます」）。回遊（複数商品検討）を阻害しない。
+- **P2**: 画面遷移アニメを短縮（`.16s`、reduced-motion時はほぼ無効）。
+
+**検証**: Playwrightで全15サイト合格（全ルートで .view 単一表示・可視h1=1・カート計算正常・autoOpen=false・モバイルinert=true/デスクトップinert=false・noindex・canonical無・ribbon有・pageError 0）。console error は外部地図iframe/画像のTLS失敗（`ERR_CERT_AUTHORITY_INVALID`／ローカル制約・§5既知）のみ。
+
+**見送り項目への着手（2026-06・続き）**
+- ✅ **地図iframeのプライバシー/パフォーマンス**（`scripts/uiux_refine2.py`）: Google Maps を「クリックで読み込むファサード」化。表示時に第三者iframeを自動ロードしない。
+- ✅ **チェックアウトのインラインエラー**（`scripts/uiux_refine2.py`）: ネイティブ依存を廃し、デザインに馴染むエラー＋`aria-invalid`/`role=alert`、入力時に自動解除。
+- ✅ **トークン体系の統一**（`scripts/uiux_tokens.py`）: 第1弾5サイト（udon/mitchan/nagasaki/morioka/minmin）を shadcn系HSLセマンティックトークン（`--primary`/`--accent`/`--background`/`--foreground`/`--border`/`--ring`/`--destructive` 等）を唯一の真実とする構成へ。既存コンポーネントは無改修、旧名（`--indigo` 等）は同色エイリアスとして保持。Playwright計測で**レンダリング色差Δ≤2（HSL丸めのみ・視覚的に等価）**を確認。※旧 `--muted` はテキスト色のため `--muted-foreground` を参照（shadcnの背景用 `--muted` とは別運用）。
+- ✅ **ヒーローのレイアウト多様化**（`scripts/uiux_layout.py`）: 全サイト同型を解消し3バリエーションを店ごとに割当て＝**default(中央/実写真ヒーロー3) / hero--minimal(左寄せテキスト先行・6) / hero--split(PCで左テキスト＋右カラーパネル・6)**。
+- ✅ **バナー導線のコンテンツ化**（`scripts/uiux_layout.py`）: `banners--text` の4サイト（mitchan/morioka/nagasaki/minmin）の導線を「タイトル＋説明」のコンテンツカードへ（絵文字撤去・ナビとの重複解消）。
+
+**未対応（次セッションの判断事項）**
+- **実料理写真**: ユーザー判断で当面「写真準備中」プレースホルダ維持。AI生成は「誤った写真の流用は厳禁」(§4)の趣旨に反するため不採用。実写真は公式取り込み or 撮影ディレクションが前提。
+- **セクション順序のバリエーション**（ヒーロー以外の構成多様化）は店ごとの内容依存のため未着手。necessなら個別に。
+
+---
+
+## 10. 営業リード抽出 & 試作モック（2026-06）
+
+- **営業リード抽出ツール** `scripts/find_renewal_leads.py`: OSM(Overpass)で地方中核市の飲食店を抽出→チェーン除外→各サイトを軽量点検（SSL/viewport/文字コード/旧記法/Copyright年）し「サイト無し/古い/要改善」をランク付け。**Googleレビュー数は無料自動取得不可**のため各店にGoogle Map確認リンクを付与（レビュー数は手動TODO）。生成CSV `data/renewal_leads*.csv` は**公開リポジトリに含めない**（`data/.gitignore`）。
+- 仙台/名古屋/福岡 中心部で実行: 古い/要改善サイト121件・到達不可96件・サイト無し2,711件を抽出。
+- **試作モック2件**（上位リードから・公式現行サイトの実データで構築）:
+  - `sendai-yamanashi` … たん焼き 山梨（仙台・牛たん炭火焼／hero--minimal・炭×ember）。住所/電話/営業/定休・ヤマちゃんラーメン¥630は確証、他メニューは「目安」。
+  - `nagoya-tentori` … 天下鳥ます（名古屋・からあげ専門／hero--split・金茶）。弁当の実価格反映、L・増量等は「目安」。
+- いずれも noindex・「提案デモ」リボン付き。Playwrightで全ルート単一view/h1・カート計算・autoOpen=false・pageError0を確認。一覧 `sites/index.html` にカード追加済み（全17サイト）。

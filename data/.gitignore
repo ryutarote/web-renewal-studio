@@ -1,0 +1,6 @@
+# 生成データ（営業リスト等）は公開リポジトリに含めない。.gitkeep のみ追跡。
+candidates_*.csv
+*_leads*.csv
+renewal_leads*.csv
+seed_*.csv
+*.csv

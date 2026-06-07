@@ -5,17 +5,38 @@
    ========================================================= */
 
 :root {
-  --indigo: #6b4423;
-  --indigo-dark: #4a2f17;
-  --gold: #e0a526;
-  --gold-deep: #b9851a;
-  --cream: #fbf5ee;
-  --paper: #fffdf9;
-  --vermilion: #c0392b;
-  --ink: #2b2018;
-  --muted: #6e6055;
-  --line: #ead9c6;
+  /* ===== 統一デザイントークン（shadcn系・HSL／唯一の真実） ===== */
+  --background: 32 62% 96%;
+  --foreground: 25 28% 13%;
+  --card: 40 100% 99%;
+  --card-foreground: 25 28% 13%;
+  --primary: 27 51% 28%;
+  --primary-strong: 28 53% 19%;
+  --primary-foreground: 32 62% 96%;
+  --secondary: 40 100% 99%;
+  --secondary-foreground: 28 53% 19%;
+  --muted-foreground: 26 13% 38%;
+  --accent: 41 75% 51%;
+  --accent-strong: 40 75% 41%;
+  --accent-foreground: 28 53% 19%;
+  --destructive: 6 63% 46%;
+  --border: 32 46% 85%;
+  --input: 32 46% 85%;
+  --ring: 41 75% 51%;
   --radius: 14px;
+
+  /* ===== 後方互換エイリアス（既存コンポーネントは無改修・同色） =====
+     ※旧 --muted はテキスト色のため --muted-foreground を参照（shadcnの背景用--mutedとは別） */
+  --indigo: hsl(var(--primary));
+  --indigo-dark: hsl(var(--primary-strong));
+  --gold: hsl(var(--accent));
+  --gold-deep: hsl(var(--accent-strong));
+  --cream: hsl(var(--background));
+  --paper: hsl(var(--card));
+  --vermilion: hsl(var(--destructive));
+  --ink: hsl(var(--foreground));
+  --muted: hsl(var(--muted-foreground));
+  --line: hsl(var(--border));
   --shadow: 0 10px 30px rgba(70,45,20,0.14);
   --serif: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
   --sans: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
@@ -555,3 +576,118 @@ body.no-scroll { overflow: hidden; }
 .hero-media--photo { height: clamp(240px, 40vw, 440px); min-height: 0; }
 .hero-media--photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .dish-photo--photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+
+/* =========================================================
+   UI/UX 改修（レビュー反映・全サイト共通追記）
+   ========================================================= */
+/* P0: ヒーローの絵文字を撤去し、クリーンなカラーバンドに */
+.hero-media::after { content: "" !important; }
+.hero-media:empty { min-height: clamp(110px, 16vw, 170px); }
+
+/* P0: 空の料理/商品タイルは「写真準備中」の控えめなプレースホルダに
+   （実写真タイル= --photo / <img>入りは :empty に該当しないため影響なし） */
+.dish-photo:empty::after,
+.product-thumb:empty::after {
+  opacity: .32 !important;
+  filter: grayscale(.45) drop-shadow(0 2px 4px rgba(0,0,0,.12)) !important;
+  font-size: clamp(1.9rem, 4vw, 2.5rem) !important;
+}
+.dish-photo:empty, .product-thumb:empty { position: relative; }
+.dish-photo:empty::before,
+.product-thumb:empty::before {
+  content: "写真は準備中です";
+  position: absolute; left: 0; right: 0; bottom: .55rem;
+  text-align: center; font-size: .66rem; letter-spacing: .06em;
+  color: rgba(40,32,24,.5); pointer-events: none;
+}
+
+/* P1: 画面遷移を短縮（回遊のテンポ優先） */
+.view.is-active { animation-duration: .16s; }
+
+/* P1: タップ/クリックターゲット拡大（WCAG 2.5.5） */
+.qty button { min-width: 40px; height: 40px; }
+.cart-remove { min-height: 40px; padding-inline: .5rem; }
+
+/* P1: 現在地ナビを色のみに依存させない（下線＋太字） */
+.nav-menu a.active,
+.nav-menu a[aria-current="page"] {
+  text-decoration: underline; text-underline-offset: 6px;
+  text-decoration-thickness: 2px; font-weight: 700;
+}
+
+/* P1: ヒーロー第2ボタン（ghost）の可読性確保 */
+.btn-ghost { background: rgba(0,0,0,.5); }
+.btn-ghost:hover { background: rgba(0,0,0,.62); }
+
+/* P2: 提案デモであることを常時明示（誤認・誤クロール防止） */
+.demo-ribbon {
+  position: fixed; left: 10px; bottom: 12px; z-index: 140;
+  background: rgba(20,18,16,.82); color: #fff;
+  font-size: .7rem; font-weight: 700; letter-spacing: .05em;
+  padding: .3rem .65rem; border-radius: 999px;
+  pointer-events: none; backdrop-filter: blur(4px);
+}
+@media (max-width: 560px) { .demo-ribbon { font-size: .6rem; left: 8px; bottom: 8px; } }
+@media (prefers-reduced-motion: reduce) { .view.is-active { animation-duration: .001s; } }
+
+
+/* =========================================================
+   見送り項目 着手（地図ファサード / インラインエラー）
+   ========================================================= */
+/* #3 地図ファサード（クリックでGoogleマップを読み込む） */
+.map-facade {
+  width: 100%; height: 100%; min-height: 280px; border: 0; cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: .45rem; font-family: inherit; color: #33475c;
+  background:
+    radial-gradient(120% 80% at 50% 0%, rgba(255,255,255,.6), transparent 60%),
+    repeating-linear-gradient(45deg, #e9eef2 0 22px, #e3e9ee 22px 44px);
+  transition: filter .15s ease;
+}
+.map-facade:hover { filter: brightness(.97); }
+.map-facade svg { width: 40px; height: 40px; }
+.map-facade-label { font-weight: 700; font-size: 1rem; }
+.map-facade-sub { font-size: .74rem; opacity: .72; }
+
+/* #6 チェックアウト：インラインエラー */
+.field-error {
+  display: block; color: #c0392b; font-size: .8rem; font-weight: 600;
+  margin-top: .3rem; font-family: inherit;
+}
+.field-error::before { content: "⚠ "; }
+#checkout-form input[aria-invalid="true"] {
+  border-color: #c0392b !important;
+  box-shadow: 0 0 0 1px #c0392b !important;
+}
+
+
+/* =========================================================
+   ヒーロー・レイアウトのバリエーション / バナーのコンテンツ化
+   ========================================================= */
+/* #4 minimal: ヒーロー帯を省きテキスト先行・左寄せ */
+.hero--minimal .hero-media { display: none; }
+.hero--minimal .hero-inner { justify-content: flex-start; padding-block: clamp(2.6rem, 7vw, 5rem); }
+.hero--minimal .hero-panel { text-align: left; margin-inline: 0; max-width: 46rem; }
+.hero--minimal .hero-lead { margin-inline: 0; }
+.hero--minimal .hero-actions { justify-content: flex-start; }
+.hero--minimal .hero-title { font-size: clamp(2.1rem, 5.2vw, 3.8rem); }
+
+/* #4 split: PCで左テキスト＋右カラーパネル */
+@media (min-width: 860px) {
+  .hero.hero--split { display: grid; grid-template-columns: 1.05fr .95fr; align-items: stretch; }
+  .hero.hero--split .hero-inner { order: 1; align-items: center; }
+  .hero.hero--split .hero-panel { text-align: left; margin-inline: 0; }
+  .hero.hero--split .hero-lead { margin-inline: 0; }
+  .hero.hero--split .hero-actions { justify-content: flex-start; }
+  .hero.hero--split .hero-media { order: 2; min-height: 100%; height: auto;
+     border-bottom: 0; border-left: 4px solid hsl(var(--accent)); }
+  .hero.hero--split .hero-media:empty { min-height: 100%; }
+}
+
+/* #2 バナー導線をコンテンツ化（タイトル＋説明・絵文字なし） */
+.banners--text .banner-card { align-items: flex-start; text-align: left;
+   justify-content: center; gap: .28rem; padding: 1.1rem 1.15rem; }
+.banner-card .banner-title { font-weight: 700; font-size: 1.02rem; line-height: 1.3; }
+.banner-card .banner-sub { font-weight: 400; font-size: .78rem; line-height: 1.4;
+   color: hsl(var(--muted-foreground)); }
