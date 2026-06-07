@@ -235,6 +235,13 @@ node /tmp/check.mjs
 
 **検証**: Playwrightで全15サイト合格（全ルートで .view 単一表示・可視h1=1・カート計算正常・autoOpen=false・モバイルinert=true/デスクトップinert=false・noindex・canonical無・ribbon有・pageError 0）。console error は外部地図iframe/画像のTLS失敗（`ERR_CERT_AUTHORITY_INVALID`／ローカル制約・§5既知）のみ。
 
+**見送り項目への着手（2026-06・続き）**
+- ✅ **地図iframeのプライバシー/パフォーマンス**（`scripts/uiux_refine2.py`）: Google Maps を「クリックで読み込むファサード」化。表示時に第三者iframeを自動ロードしない。
+- ✅ **チェックアウトのインラインエラー**（`scripts/uiux_refine2.py`）: ネイティブ依存を廃し、デザインに馴染むエラー＋`aria-invalid`/`role=alert`、入力時に自動解除。
+- ✅ **トークン体系の統一**（`scripts/uiux_tokens.py`）: 第1弾5サイト（udon/mitchan/nagasaki/morioka/minmin）を shadcn系HSLセマンティックトークン（`--primary`/`--accent`/`--background`/`--foreground`/`--border`/`--ring`/`--destructive` 等）を唯一の真実とする構成へ。既存コンポーネントは無改修、旧名（`--indigo` 等）は同色エイリアスとして保持。Playwright計測で**レンダリング色差Δ≤2（HSL丸めのみ・視覚的に等価）**を確認。※旧 `--muted` はテキスト色のため `--muted-foreground` を参照（shadcnの背景用 `--muted` とは別運用）。
+- ✅ **ヒーローのレイアウト多様化**（`scripts/uiux_layout.py`）: 全サイト同型を解消し3バリエーションを店ごとに割当て＝**default(中央/実写真ヒーロー3) / hero--minimal(左寄せテキスト先行・6) / hero--split(PCで左テキスト＋右カラーパネル・6)**。
+- ✅ **バナー導線のコンテンツ化**（`scripts/uiux_layout.py`）: `banners--text` の4サイト（mitchan/morioka/nagasaki/minmin）の導線を「タイトル＋説明」のコンテンツカードへ（絵文字撤去・ナビとの重複解消）。
+
 **未対応（次セッションの判断事項）**
-- **実料理写真**: 本質的な食欲喚起にはシズル写真が必須。公式写真の取り込み or 撮影ディレクションが要。AI生成は「誤った写真の流用は厳禁」(§4)の趣旨に反するため未実施。現状は「写真準備中」プレースホルダで明示。
-- **バナー導線のコンテンツ化**（ナビと重複）/ **ホーム・店舗の地図iframe重複解消** / **レイアウトのバリエーション**（全サイト同型・色のみ差し替え）/ **トークン体系の統一**（第1弾の独自命名 `--indigo` 等を shadcn 系へ）/ **チェックアウトのインラインエラー表示**。いずれも構造変更を伴うため個別対応推奨。
+- **実料理写真**: ユーザー判断で当面「写真準備中」プレースホルダ維持。AI生成は「誤った写真の流用は厳禁」(§4)の趣旨に反するため不採用。実写真は公式取り込み or 撮影ディレクションが前提。
+- **セクション順序のバリエーション**（ヒーロー以外の構成多様化）は店ごとの内容依存のため未着手。necessなら個別に。
