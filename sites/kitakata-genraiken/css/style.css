@@ -480,3 +480,33 @@ body.no-scroll { overflow: hidden; }
 }
 @media (max-width: 560px) { .demo-ribbon { font-size: .6rem; left: 8px; bottom: 8px; } }
 @media (prefers-reduced-motion: reduce) { .view.is-active { animation-duration: .001s; } }
+
+
+/* =========================================================
+   見送り項目 着手（地図ファサード / インラインエラー）
+   ========================================================= */
+/* #3 地図ファサード（クリックでGoogleマップを読み込む） */
+.map-facade {
+  width: 100%; height: 100%; min-height: 280px; border: 0; cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: .45rem; font-family: inherit; color: #33475c;
+  background:
+    radial-gradient(120% 80% at 50% 0%, rgba(255,255,255,.6), transparent 60%),
+    repeating-linear-gradient(45deg, #e9eef2 0 22px, #e3e9ee 22px 44px);
+  transition: filter .15s ease;
+}
+.map-facade:hover { filter: brightness(.97); }
+.map-facade svg { width: 40px; height: 40px; }
+.map-facade-label { font-weight: 700; font-size: 1rem; }
+.map-facade-sub { font-size: .74rem; opacity: .72; }
+
+/* #6 チェックアウト：インラインエラー */
+.field-error {
+  display: block; color: #c0392b; font-size: .8rem; font-weight: 600;
+  margin-top: .3rem; font-family: inherit;
+}
+.field-error::before { content: "⚠ "; }
+#checkout-form input[aria-invalid="true"] {
+  border-color: #c0392b !important;
+  box-shadow: 0 0 0 1px #c0392b !important;
+}

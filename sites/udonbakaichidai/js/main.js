@@ -311,7 +311,7 @@
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    if (!form.checkValidity()) { form.reportValidity(); return; }
+    if (typeof window.__checkoutValidate === "function") { if (!window.__checkoutValidate(form)) return; } else if (!form.checkValidity()) { form.reportValidity(); return; }
     const mode = (form.querySelector("input[name=acct]:checked") || {}).value || "guest";
     const total = Cart.total();
     Cart.clear();
@@ -377,4 +377,90 @@
   /* ---- 初期化 ---- */
   refreshCount();
   showView(routeFromHash());
+})();
+
+
+/* ===== UI/UX 第2弾（見送り項目）: 地図ファサード / インラインエラー ===== */
+/* __uiux2_appended */
+(function () {
+  "use strict";
+  // ---- #3 Google Maps を「クリックで読み込む」ファサード化 ----
+  var PIN = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">'
+    + '<path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"/></svg>';
+  function facade(map) {
+    var iframe = map.querySelector("iframe.googlemap");
+    if (!iframe) return;
+    var src = iframe.getAttribute("src");
+    var title = iframe.getAttribute("title") || "地図";
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "map-facade";
+    btn.setAttribute("aria-label", title + "を表示（Googleマップを読み込みます）");
+    btn.innerHTML = PIN
+      + '<span class="map-facade-label">地図を表示</span>'
+      + '<span class="map-facade-sub">タップでGoogleマップを読み込みます</span>';
+    iframe.remove();
+    map.appendChild(btn);
+    btn.addEventListener("click", function () {
+      var f = document.createElement("iframe");
+      f.className = "googlemap";
+      f.title = title;
+      f.loading = "lazy";
+      f.setAttribute("allowfullscreen", "");
+      f.setAttribute("referrerpolicy", "no-referrer-when-downgrade");
+      f.src = src;
+      btn.replaceWith(f);
+    });
+  }
+  Array.prototype.forEach.call(document.querySelectorAll(".shop-map"), facade);
+
+  // ---- #6 チェックアウト：インラインエラー ----
+  var form = document.getElementById("checkout-form");
+  if (form) {
+    function errId(inp) { return "err-" + (inp.name || "f"); }
+    function clearErr(inp) {
+      inp.removeAttribute("aria-invalid");
+      var e = document.getElementById(errId(inp));
+      if (e) e.remove();
+      inp.removeAttribute("aria-describedby");
+    }
+    function setErr(inp, msg) {
+      inp.setAttribute("aria-invalid", "true");
+      var id = errId(inp);
+      var e = document.getElementById(id);
+      if (!e) {
+        e = document.createElement("span");
+        e.className = "field-error";
+        e.id = id;
+        e.setAttribute("role", "alert");
+        (inp.parentNode || inp).appendChild(e);
+      }
+      e.textContent = msg;
+      inp.setAttribute("aria-describedby", id);
+    }
+    window.__checkoutValidate = function (f) {
+      f = f || form;
+      var inputs = Array.prototype.slice.call(
+        f.querySelectorAll("input[required], input[name=password]"));
+      var ok = true, firstBad = null;
+      inputs.forEach(function (inp) {
+        clearErr(inp);
+        if (inp.name === "password" && !inp.required) return; // ゲスト時は対象外
+        var v = (inp.value || "").trim(), msg = "";
+        if (!v) msg = "入力してください。";
+        else if (inp.type === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v))
+          msg = "メールアドレスの形式をご確認ください。";
+        else if (inp.name === "password" && v.length < 8)
+          msg = "8文字以上で入力してください。";
+        if (msg) { setErr(inp, msg); ok = false; if (!firstBad) firstBad = inp; }
+      });
+      if (firstBad) firstBad.focus();
+      return ok;
+    };
+    // 入力時にエラーを解除
+    form.addEventListener("input", function (e) {
+      var t = e.target;
+      if (t && t.matches("input")) clearErr(t);
+    });
+  }
 })();
