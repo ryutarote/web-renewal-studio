@@ -92,14 +92,18 @@
   /* ---- モバイルナビ ---- */
   const navToggle = $(".nav-toggle");
   const navMenu = $("#nav-menu");
+  const NAV_MQ = window.matchMedia("(max-width: 1024px)");
+  NAV_MQ.addEventListener("change", (e) => { navMenu.inert = e.matches && !navMenu.classList.contains("open"); });
   function closeNav() {
     navMenu.classList.remove("open");
+    navMenu.inert = NAV_MQ.matches;
     navToggle.setAttribute("aria-expanded", "false");
     navToggle.setAttribute("aria-label", "メニューを開く");
   }
   navToggle.addEventListener("click", () => {
     const open = navMenu.classList.toggle("open");
     navToggle.setAttribute("aria-expanded", String(open));
+    navMenu.inert = !open;
     navToggle.setAttribute("aria-label", open ? "メニューを閉じる" : "メニューを開く");
     if (open) { const first = navMenu.querySelector("a"); if (first) first.focus(); }
   });
@@ -231,8 +235,7 @@
     if (!btn) return;
     Cart.add(btn.dataset.id);
     refreshCount();
-    toast("カートに追加しました");
-    openCart();
+    toast("カートに追加しました（右上のカートからご確認いただけます）");
   });
 
   cartItemsEl.addEventListener("click", (e) => {

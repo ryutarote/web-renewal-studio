@@ -426,3 +426,57 @@ body.no-scroll { overflow: hidden; }
   * { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
   .view.is-active { animation: none !important; }
 }
+
+
+/* =========================================================
+   UI/UX 改修（レビュー反映・全サイト共通追記）
+   ========================================================= */
+/* P0: ヒーローの絵文字を撤去し、クリーンなカラーバンドに */
+.hero-media::after { content: "" !important; }
+.hero-media:empty { min-height: clamp(110px, 16vw, 170px); }
+
+/* P0: 空の料理/商品タイルは「写真準備中」の控えめなプレースホルダに
+   （実写真タイル= --photo / <img>入りは :empty に該当しないため影響なし） */
+.dish-photo:empty::after,
+.product-thumb:empty::after {
+  opacity: .32 !important;
+  filter: grayscale(.45) drop-shadow(0 2px 4px rgba(0,0,0,.12)) !important;
+  font-size: clamp(1.9rem, 4vw, 2.5rem) !important;
+}
+.dish-photo:empty, .product-thumb:empty { position: relative; }
+.dish-photo:empty::before,
+.product-thumb:empty::before {
+  content: "写真は準備中です";
+  position: absolute; left: 0; right: 0; bottom: .55rem;
+  text-align: center; font-size: .66rem; letter-spacing: .06em;
+  color: rgba(40,32,24,.5); pointer-events: none;
+}
+
+/* P1: 画面遷移を短縮（回遊のテンポ優先） */
+.view.is-active { animation-duration: .16s; }
+
+/* P1: タップ/クリックターゲット拡大（WCAG 2.5.5） */
+.qty button { min-width: 40px; height: 40px; }
+.cart-remove { min-height: 40px; padding-inline: .5rem; }
+
+/* P1: 現在地ナビを色のみに依存させない（下線＋太字） */
+.nav-menu a.active,
+.nav-menu a[aria-current="page"] {
+  text-decoration: underline; text-underline-offset: 6px;
+  text-decoration-thickness: 2px; font-weight: 700;
+}
+
+/* P1: ヒーロー第2ボタン（ghost）の可読性確保 */
+.btn-ghost { background: rgba(0,0,0,.5); }
+.btn-ghost:hover { background: rgba(0,0,0,.62); }
+
+/* P2: 提案デモであることを常時明示（誤認・誤クロール防止） */
+.demo-ribbon {
+  position: fixed; left: 10px; bottom: 12px; z-index: 140;
+  background: rgba(20,18,16,.82); color: #fff;
+  font-size: .7rem; font-weight: 700; letter-spacing: .05em;
+  padding: .3rem .65rem; border-radius: 999px;
+  pointer-events: none; backdrop-filter: blur(4px);
+}
+@media (max-width: 560px) { .demo-ribbon { font-size: .6rem; left: 8px; bottom: 8px; } }
+@media (prefers-reduced-motion: reduce) { .view.is-active { animation-duration: .001s; } }
