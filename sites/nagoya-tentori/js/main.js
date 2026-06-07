@@ -1,5 +1,5 @@
 /* =========================================================
-   ヨーロッパ軒 総本店 リニューアル（モック）
+   天下鳥ます リニューアル（モック）
    - ハッシュルーティングのSPA（クリックでビュー切替・リロードなし）
    - 商品描画 / カートDrawer / チェックアウト(モック)
    - ドロワー/モーダルはフォーカストラップ＋背面スクロール固定
@@ -193,7 +193,7 @@
     const c = Cart.load();
     const ids = Object.keys(c);
     if (ids.length === 0) {
-      cartItemsEl.innerHTML = `<div class="cart-empty"><p>カートは空です。<br>特製ソース＆パン粉のお取り寄せはいかがですか？</p><a class="btn btn-primary" href="#/order">お取り寄せを見る</a></div>`;
+      cartItemsEl.innerHTML = `<div class="cart-empty"><p>カートは空です。<br>からあげ弁当のテイクアウトはいかがですか？</p><a class="btn btn-primary" href="#/order">テイクアウトを見る</a></div>`;
     } else {
       cartItemsEl.innerHTML = ids.map((id) => {
         const p = PRODUCTS.find((x) => x.id === id);
