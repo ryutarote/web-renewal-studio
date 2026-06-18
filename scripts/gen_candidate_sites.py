@@ -215,7 +215,7 @@ def jsonld(s):
     j=s["jsonld"]
     data={"@context":"https://schema.org","@type":"Restaurant","name":s["name"],
           "servesCuisine":j["cuisine"],"priceRange":j.get("price_range","¥¥"),
-          "telephone":j["tel_intl"],
+          **({"telephone":j["tel_intl"]} if j.get("tel_intl") else {}),
           "address":{"@type":"PostalAddress","streetAddress":j["street"],"addressLocality":j["locality"],
                      "addressRegion":j["region"],"postalCode":j["postal"],"addressCountry":"JP"}}
     if j.get("founding"): data["foundingDate"]=j["founding"]
@@ -263,7 +263,7 @@ def build_index(s):
 <header class="site-header" id="top">
   <div class="header-info">
     <div class="container header-info-inner">
-      <span class="hi-tel">TEL <a href="tel:{h["tel_intl"]}">{h["tel_disp"]}</a></span>
+      <span class="hi-tel">TEL {(f'<a href="tel:'+h["tel_intl"]+'">'+h["tel_disp"]+'</a>') if h.get("tel_intl") else h["tel_disp"]}</span>
       <span>{h["hours"]}</span>
       <span>{h["closed"]}</span>
       <span>{h["addr"]}</span>
@@ -377,7 +377,7 @@ def build_index(s):
           <div class="shop-info card">
             <dl class="info-list">
               <div><dt>住所</dt><dd>{acc["addr_full"]}</dd></div>
-              <div><dt>電話</dt><dd><a href="tel:{acc["tel_intl"]}">{acc["tel_disp"]}</a></dd></div>
+              <div><dt>電話</dt><dd>{(f'<a href="tel:'+acc["tel_intl"]+'">'+acc["tel_disp"]+'</a>') if acc.get("tel_intl") else acc["tel_disp"]}</dd></div>
               <div><dt>営業時間</dt><dd>{acc["hours"]}</dd></div>
               <div><dt>定休日</dt><dd>{acc["closed"]}</dd></div>
               <div><dt>アクセス</dt><dd>{acc["access"]}</dd></div>
