@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Irish PUB field/カレーとカレーパンの店　野原屋｜リニューアル提案デモ（コエテク合同会社）</title>
+<meta name="description" content="Irish PUB field/カレーとカレーパンの店　野原屋（京都市・fish_and_chips・pizza・curry・sandwich）のWebサイト リニューアル提案デモ。コエテク合同会社が公開情報をもとに試作したサンプルです。">
+<meta property="og:title" content="Irish PUB field/カレーとカレーパンの店　野原屋｜リニューアル提案デモ">
+<meta property="og:description" content="スマホ対応・高速表示・予約導線を備えた、現代的な構成案（サンプル）。">
+<style>
+/* =========================================================================
+   web-renewal-studio Design System  ver.2 「Editorial Washoku」
+   飲食店リニューアル提案デモ向けの共通デザイン。明朝見出し＋余白＋ヘアライン。
+   ジャンル別アクセントは各ページが --accent / --accent-ink を上書きして注入する。
+   ========================================================================= */
+
+:root{
+  /* color — warm paper / ink */
+  --bg:#faf8f4; --surface:#ffffff; --surface-2:#f4f1ea;
+  --ink:#1c1917; --ink-soft:#57534e; --muted:#8c857a; --line:#e8e2d6;
+  /* accent (genre injects these) */
+  --accent:#0f766e; --accent-ink:#0b5a53; --accent-wash:rgba(15,118,110,.08);
+  /* type */
+  --font-display:"Hiragino Mincho ProN","Yu Mincho",YuMincho,"Noto Serif JP",serif;
+  --font-sans:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif;
+  /* shape */
+  --radius:14px; --radius-lg:24px; --maxw:1080px;
+  --shadow-sm:0 1px 2px rgba(28,25,23,.05);
+  --shadow:0 18px 50px -24px rgba(28,25,23,.28);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-sans);
+  line-height:1.8;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:inherit}
+img{max-width:100%;display:block}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+/* ---- demo notice bar ---- */
+.ds-demo-bar{background:var(--ink);color:#f4f1ea;font-size:12.5px;letter-spacing:.02em;
+  text-align:center;padding:9px 14px}
+.ds-demo-bar b{color:#fff;font-weight:600}
+
+/* ---- header / nav ---- */
+.ds-header{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 86%,transparent);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.ds-header .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.ds-brand{font-family:var(--font-display);font-size:21px;letter-spacing:.04em;display:flex;align-items:center;gap:10px}
+.ds-brand .mk{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;
+  background:var(--accent-wash);font-size:18px}
+.ds-nav{display:flex;gap:28px;font-size:13.5px;letter-spacing:.04em}
+.ds-nav a{text-decoration:none;color:var(--ink-soft);position:relative;padding:4px 0}
+.ds-nav a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:1px;background:var(--accent);transition:width .25s}
+.ds-nav a:hover{color:var(--ink)}.ds-nav a:hover::after{width:100%}
+
+/* ---- buttons ---- */
+.ds-btn{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;letter-spacing:.03em;
+  padding:13px 26px;border-radius:999px;text-decoration:none;transition:transform .15s,box-shadow .15s,background .2s;cursor:pointer}
+.ds-btn:hover{transform:translateY(-1px)}
+.ds-btn--fill{background:var(--accent);color:#fff;box-shadow:0 10px 24px -12px var(--accent)}
+.ds-btn--fill:hover{background:var(--accent-ink)}
+.ds-btn--line{border:1px solid currentColor;color:var(--accent-ink)}
+.ds-btn--ghost{border:1px solid rgba(255,255,255,.55);color:#fff}
+.ds-btn--ghost:hover{background:rgba(255,255,255,.12)}
+
+/* ---- hero ---- */
+.ds-hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 120% at 85% -10%,var(--accent-wash),transparent 60%),var(--surface);
+  border-bottom:1px solid var(--line)}
+.ds-hero .wrap{padding:96px 24px 104px;position:relative}
+.ds-hero .eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--accent-ink);
+  font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:600}
+.ds-hero .eyebrow::before{content:"";width:28px;height:1px;background:var(--accent)}
+.ds-hero .mark{font-size:52px;line-height:1;margin-bottom:14px}
+.ds-hero h1{font-family:var(--font-display);font-weight:600;letter-spacing:.02em;
+  font-size:clamp(34px,7vw,68px);line-height:1.12;margin:.18em 0 .28em}
+.ds-hero .lead{font-size:clamp(15px,2.4vw,19px);color:var(--ink-soft);max-width:32em;margin:0 0 30px}
+.ds-hero .actions{display:flex;flex-wrap:wrap;gap:12px}
+
+/* ---- section scaffolding ---- */
+.ds-section{padding:88px 0;border-top:1px solid var(--line)}
+.ds-section:first-of-type{border-top:0}
+.ds-section--alt{background:var(--surface)}
+.ds-head{display:flex;align-items:baseline;gap:16px;margin-bottom:34px}
+.ds-index{font-family:var(--font-display);font-size:15px;color:var(--accent);letter-spacing:.1em}
+.ds-label{font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.ds-h2{font-family:var(--font-display);font-weight:600;font-size:clamp(24px,4.5vw,34px);letter-spacing:.03em;margin:0}
+.ds-lead-text{color:var(--ink-soft);max-width:40em;margin:0}
+
+/* ---- menu ---- */
+.ds-menu{display:grid;gap:0}
+.ds-menu-item{display:grid;grid-template-columns:auto 1fr auto;align-items:baseline;gap:16px;
+  padding:22px 4px;border-bottom:1px solid var(--line)}
+.ds-menu-item .mi-emoji{font-size:22px}
+.ds-menu-item .mi-name{font-family:var(--font-display);font-size:19px;letter-spacing:.02em}
+.ds-menu-item .mi-dot{border-bottom:1px dotted var(--line);transform:translateY(-4px);align-self:stretch}
+.ds-menu-item .mi-sub{display:block;font-size:12.5px;color:var(--muted);font-family:var(--font-sans);letter-spacing:.04em}
+.ds-menu-item .mi-price{color:var(--accent-ink);font-weight:600;white-space:nowrap}
+.ds-note{font-size:12.5px;color:var(--muted);margin-top:18px}
+
+/* ---- access ---- */
+.ds-access{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+.ds-info{border-top:1px solid var(--line)}
+.ds-info .row{display:flex;gap:14px;padding:15px 2px;border-bottom:1px solid var(--line)}
+.ds-info .k{width:88px;flex:none;color:var(--muted);font-size:13px;letter-spacing:.06em}
+.ds-info .tel{font-weight:600;color:var(--accent-ink);text-decoration:none}
+.ds-map{aspect-ratio:5/4;border-radius:var(--radius-lg);border:1px solid var(--line);
+  background:linear-gradient(135deg,var(--surface-2),#ece7dc);
+  display:grid;place-items:center;color:var(--muted);font-size:14px;letter-spacing:.06em}
+
+/* ---- CTA band ---- */
+.ds-cta{background:var(--ink);color:#f4f1ea;border-radius:var(--radius-lg);padding:54px 40px;text-align:center;
+  background-image:radial-gradient(80% 140% at 50% -20%,var(--accent-wash),transparent 60%)}
+.ds-cta .ds-label{color:var(--accent)}
+.ds-cta h2{font-family:var(--font-display);font-weight:600;color:#fff;font-size:clamp(22px,4vw,32px);margin:.2em 0 .4em}
+.ds-cta p{color:#d8d2c6;max-width:34em;margin:0 auto 22px}
+.ds-cta .actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+/* ---- footer ---- */
+.ds-footer{padding:46px 0 64px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+.ds-footer .disc{background:var(--accent-wash);border:1px solid color-mix(in srgb,var(--accent) 22%,transparent);
+  color:var(--accent-ink);border-radius:var(--radius);padding:15px 18px;margin-bottom:20px;line-height:1.7}
+.ds-footer a{color:var(--accent-ink)}
+
+/* ---- gallery (一覧) ---- */
+.ds-gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:18px}
+.ds-gal a{display:block;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);
+  padding:24px;text-decoration:none;color:inherit;transition:transform .16s,box-shadow .16s,border-color .16s}
+.ds-gal a:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:color-mix(in srgb,var(--accent) 40%,var(--line))}
+.ds-gal .em{font-size:30px}
+.ds-gal .nm{font-family:var(--font-display);font-size:19px;margin-top:10px;letter-spacing:.02em}
+.ds-gal .sb{color:var(--muted);font-size:12.5px;margin-top:4px;letter-spacing:.04em}
+
+/* =========================================================================
+   Conversion / usability layer  （lazyweb research を反映）
+   原則: 1画面に主要CTAは1つ / 予約・電話を常時手の届く位置に / 余計な装飾で
+   コンバージョン地点を散らさない / 価値訴求と社会的証明をスキャナブルに。
+   ========================================================================= */
+
+/* header に予約CTA（PCの主要導線） */
+.ds-header .wrap{gap:18px}
+.ds-nav-wrap{display:flex;align-items:center;gap:26px}
+.ds-header .ds-btn--fill{padding:10px 20px;font-size:13px}
+
+/* social proof（社会的証明・実装イメージ） */
+.ds-proof{background:var(--surface);border-bottom:1px solid var(--line)}
+.ds-proof .wrap{display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center;justify-content:center;text-align:center;padding:18px 24px}
+.ds-proof .stars{color:#e0a106;letter-spacing:2px;font-size:15px}
+.ds-proof .quote{font-family:var(--font-display);font-size:16px}
+.ds-proof .src{font-size:12px;color:var(--muted)}
+
+/* 選ばれる理由（価値訴求 3-up） */
+.ds-highlights{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.ds-hl{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);padding:28px}
+.ds-hl .ic{font-size:26px}
+.ds-hl h3{font-family:var(--font-display);font-size:18px;margin:.55em 0 .3em;letter-spacing:.02em}
+.ds-hl p{color:var(--ink-soft);font-size:13.5px;margin:0}
+
+/* 人気バッジ */
+.ds-badge{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.06em;color:#fff;
+  background:var(--accent);border-radius:999px;padding:2px 9px;margin-left:8px;vertical-align:middle}
+
+/* 予約導線の補助（電話・営業時間を目立たせる） */
+.ds-reserve-aux{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:center;margin-top:16px;font-size:14px;color:#d8d2c6}
+.ds-reserve-aux a{color:#fff;text-decoration:none;font-weight:600}
+
+/* sticky モバイル予約バー（常時手の届く主要CTA） */
+.ds-actionbar{position:fixed;left:0;right:0;bottom:0;z-index:40;display:none;gap:10px;
+  padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+  background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(10px);
+  border-top:1px solid var(--line);box-shadow:0 -8px 24px -16px rgba(28,25,23,.4)}
+.ds-actionbar a{flex:1;justify-content:center;padding:14px}
+
+/* ---- responsive ---- */
+@media(max-width:760px){
+  .ds-nav{display:none}
+  .ds-header .ds-btn--fill{display:none}      /* モバイルは下部の予約バーに集約 */
+  .ds-access{grid-template-columns:1fr;gap:26px}
+  .ds-highlights{grid-template-columns:1fr}
+  .ds-section{padding:60px 0}
+  .ds-hero .wrap{padding:72px 24px 80px}
+  .ds-menu-item{grid-template-columns:auto 1fr;row-gap:2px}
+  .ds-menu-item .mi-dot{display:none}
+  .ds-menu-item .mi-price{grid-column:2;justify-self:end}
+  .ds-actionbar{display:flex}
+  body{padding-bottom:74px}
+}
+
+:root{--accent:#15803d;--accent-ink:#106030;--accent-wash:color-mix(in srgb,#15803d 9%,transparent)}
+</style>
+</head>
+<body>
+<div class="ds-demo-bar">これは <b>コエテク合同会社</b> による<b>リニューアル提案デモ</b>です。実在の Irish PUB field/カレーとカレーパンの店　野原屋 様の公式サイトではありません（料金は発生しません）。</div>
+
+<header class="ds-header"><div class="wrap">
+  <div class="ds-brand"><span class="mk">🍝</span>Irish PUB field/カレーとカレーパンの店　野原屋</div>
+  <div class="ds-nav-wrap">
+    <nav class="ds-nav"><a href="#reasons">選ばれる理由</a><a href="#menu">お品書き</a><a href="#access">アクセス</a></nav>
+    <a class="ds-btn ds-btn--fill" href="#contact">ご予約</a>
+  </div>
+</div></header>
+
+<section class="ds-hero"><div class="wrap">
+  <div class="mark">🍝</div>
+  <span class="eyebrow">京都市 ／ fish_and_chips・pizza・curry・sandwich</span>
+  <h1>Irish PUB field/カレーとカレーパンの店　野原屋</h1>
+  <p class="lead">素材を、素直に。<br>旬の食材を活かしたイタリアンを、肩肘張らずに楽しめる一軒です。</p>
+  <div class="actions">
+    <a class="ds-btn ds-btn--fill" href="#contact">ご予約・お問い合わせ</a>
+    <a class="ds-btn ds-btn--line" href="#menu">お品書きを見る</a>
+  </div>
+</div></section>
+
+<div class="ds-proof"><div class="wrap">
+  <span class="stars">★★★★★</span>
+  <span class="quote">「また来たくなる、京都市の一軒。」</span>
+  <span class="src">— お客様の声（実装イメージ。実サイトではGoogle口コミ等を掲載）</span>
+</div></div>
+
+<section class="ds-section" id="reasons"><div class="wrap">
+  <div class="ds-head"><span class="ds-index">01</span><span class="ds-label">Why us</span></div>
+  <h2 class="ds-h2" style="margin-bottom:.7em">選ばれる理由</h2>
+  <div class="ds-highlights">
+      <div class="ds-hl"><div class="ic">🍝</div><h3>こだわりのfish_and_chips・pizza・curry・sandwich</h3><p>素材と手仕事を大切に、ていねいに仕上げます。</p></div>
+      <div class="ds-hl"><div class="ic">🪑</div><h3>落ち着いた店内で</h3><p>京都市で、ゆっくりとお過ごしいただけます。</p></div>
+      <div class="ds-hl"><div class="ic">📅</div><h3>かんたんご予約</h3><p>お電話・オンラインからスムーズにご予約いただけます。</p></div>
+  </div>
+</div></section>
+
+<section class="ds-section ds-section--alt" id="concept"><div class="wrap">
+  <div class="ds-head"><span class="ds-index">02</span><span class="ds-label">Concept</span></div>
+  <h2 class="ds-h2" style="margin-bottom:.5em">こだわり</h2>
+  <p class="ds-lead-text">旬の食材を活かしたイタリアンを、肩肘張らずに楽しめる一軒です。<br><span style="color:var(--muted);font-size:14px">※本デモの紹介文はジャンルに合わせた構成サンプルです。実制作では貴店の歴史・看板メニュー・写真を反映します。</span></p>
+</div></section>
+
+<section class="ds-section" id="menu"><div class="wrap">
+  <div class="ds-head"><span class="ds-index">03</span><span class="ds-label">Menu</span></div>
+  <h2 class="ds-h2" style="margin-bottom:.6em">お品書き</h2>
+  <div class="ds-menu">
+      <div class="ds-menu-item">
+        <span class="mi-emoji">🍝</span>
+        <span><span class="mi-name">本日のパスタ<span class="ds-badge">人気</span></span><span class="mi-sub">サンプル表示</span></span>
+        <span class="mi-dot"></span>
+        <span class="mi-price">¥—</span>
+      </div>
+      <div class="ds-menu-item">
+        <span class="mi-emoji">🍝</span>
+        <span><span class="mi-name">窯焼きピッツァ</span><span class="mi-sub">サンプル表示</span></span>
+        <span class="mi-dot"></span>
+        <span class="mi-price">¥—</span>
+      </div>
+      <div class="ds-menu-item">
+        <span class="mi-emoji">🍝</span>
+        <span><span class="mi-name">前菜の盛り合わせ</span><span class="mi-sub">サンプル表示</span></span>
+        <span class="mi-dot"></span>
+        <span class="mi-price">¥—</span>
+      </div>
+  </div>
+  <p class="ds-note">※メニュー名・価格は提案用のサンプル表示です。実データ（実メニュー・写真・価格）を反映して正式版を制作します。</p>
+</div></section>
+
+<section class="ds-section ds-section--alt" id="access"><div class="wrap">
+  <div class="ds-head"><span class="ds-index">04</span><span class="ds-label">Access</span></div>
+  <h2 class="ds-h2" style="margin-bottom:.7em">アクセス・ご利用案内</h2>
+  <div class="ds-access">
+    <div class="ds-info">
+      <div class="row"><span class="k">エリア</span><span>京都市</span></div>
+      <div class="row"><span class="k">ジャンル</span><span>fish_and_chips・pizza・curry・sandwich</span></div>
+      <div class="row"><span class="k">電話</span><a class="tel" href="tel:075-231-1213">075-231-1213</a></div>
+      <div class="row"><span class="k">営業時間</span><span style="color:var(--muted)">提案後に実データを反映</span></div>
+    </div>
+    <div class="ds-map">📍 地図はこの位置に表示されます</div>
+  </div>
+</div></section>
+
+<section class="ds-section" id="contact"><div class="wrap">
+  <div class="ds-cta">
+    <span class="ds-label">Renewal Proposal</span>
+    <h2>このデザインで、正式サイトを無料でご提案します</h2>
+    <p>スマホ対応・表示速度・予約/通販導線・常時SSLを備えた構成案です。実データを反映したお見積り・正式提案をご案内します。</p>
+    <div class="actions">
+      <a class="ds-btn ds-btn--fill" href="https://timerex.net/s/ryutarote_5007/d6cb0d61">お打ち合わせを予約する</a>
+      <a class="ds-btn ds-btn--ghost" href="mailto:support@koetech.jp">メールで問い合わせ</a>
+    </div>
+    <div class="ds-reserve-aux">ご予約・お問い合わせはお気軽に　/　<a href="tel:075-231-1213">☎ 075-231-1213</a></div>
+  </div>
+</div></section>
+
+<footer class="ds-footer"><div class="wrap">
+  <div class="disc">※本ページは コエテク合同会社 が公開情報をもとに独自に制作した<b>リニューアル提案サンプル</b>です。掲載情報は参考値で、Irish PUB field/カレーとカレーパンの店　野原屋 様の公式サイトではありません。料金は一切発生しません。</div>
+  <div>コエテク合同会社　Mail: support@koetech.jp　／　制作実績: <a href="https://ryutarote.github.io/web-renewal-studio/">https://ryutarote.github.io/web-renewal-studio/</a></div>
+</div></footer>
+
+<div class="ds-actionbar">
+  <a class="ds-btn ds-btn--line" style="background:var(--surface)" href="tel:075-231-1213">☎ お電話</a>
+  <a class="ds-btn ds-btn--fill" href="#contact">ご予約・お問い合わせ</a>
+</div>
+</body>
+</html>
