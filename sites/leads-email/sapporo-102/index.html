@@ -4,297 +4,483 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>叙々苑｜リニューアル提案デモ（コエテク合同会社）</title>
-<meta name="description" content="叙々苑（札幌市・barbecue）のWebサイト リニューアル提案デモ。コエテク合同会社が公開情報をもとに試作したサンプルです。">
-<meta property="og:title" content="叙々苑｜リニューアル提案デモ">
-<meta property="og:description" content="スマホ対応・高速表示・予約導線を備えた、現代的な構成案（サンプル）。">
+<title>叙々苑｜Webリニューアル提案LP（コエテク合同会社）</title>
+<meta name="description" content="叙々苑（札幌市・焼肉・グリル）向けのプロフェッショナルなWebリニューアル提案LP。">
+<meta property="og:title" content="叙々苑｜Webリニューアル提案LP">
+<meta property="og:description" content="スマホ来店導線、店舗の世界観、更新しやすさを重視したランディングページ提案。">
 <style>
-/* =========================================================================
-   web-renewal-studio Design System  ver.2 「Editorial Washoku」
-   飲食店リニューアル提案デモ向けの共通デザイン。明朝見出し＋余白＋ヘアライン。
-   ジャンル別アクセントは各ページが --accent / --accent-ink を上書きして注入する。
-   ========================================================================= */
 
-:root{
-  /* color — warm paper / ink */
-  --bg:#faf8f4; --surface:#ffffff; --surface-2:#f4f1ea;
-  --ink:#1c1917; --ink-soft:#57534e; --muted:#8c857a; --line:#e8e2d6;
-  /* accent (genre injects these) */
-  --accent:#0f766e; --accent-ink:#0b5a53; --accent-wash:rgba(15,118,110,.08);
-  /* type */
-  --font-display:"Hiragino Mincho ProN","Yu Mincho",YuMincho,"Noto Serif JP",serif;
-  --font-sans:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif;
-  /* shape */
-  --radius:14px; --radius-lg:24px; --maxw:1080px;
-  --shadow-sm:0 1px 2px rgba(28,25,23,.05);
-  --shadow:0 18px 50px -24px rgba(28,25,23,.28);
+:root {
+  --ink: #171717;
+  --muted: #66615b;
+  --line: #e8e1d8;
+  --paper: #fbfaf7;
+  --panel: #ffffff;
+  --accent: #6d28d9;
+  --accent-ink: #561fb0;
+  --accent-soft: color-mix(in srgb, #6d28d9 12%, #ffffff);
+  --shadow: 0 24px 70px rgba(23, 23, 23, .12);
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-sans);
-  line-height:1.8;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-a{color:inherit}
-img{max-width:100%;display:block}
-.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
-
-/* ---- demo notice bar ---- */
-.ds-demo-bar{background:var(--ink);color:#f4f1ea;font-size:12.5px;letter-spacing:.02em;
-  text-align:center;padding:9px 14px}
-.ds-demo-bar b{color:#fff;font-weight:600}
-
-/* ---- header / nav ---- */
-.ds-header{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 86%,transparent);
-  backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.ds-header .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
-.ds-brand{font-family:var(--font-display);font-size:21px;letter-spacing:.04em;display:flex;align-items:center;gap:10px}
-.ds-brand .mk{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;
-  background:var(--accent-wash);font-size:18px}
-.ds-nav{display:flex;gap:28px;font-size:13.5px;letter-spacing:.04em}
-.ds-nav a{text-decoration:none;color:var(--ink-soft);position:relative;padding:4px 0}
-.ds-nav a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:1px;background:var(--accent);transition:width .25s}
-.ds-nav a:hover{color:var(--ink)}.ds-nav a:hover::after{width:100%}
-
-/* ---- buttons ---- */
-.ds-btn{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;letter-spacing:.03em;
-  padding:13px 26px;border-radius:999px;text-decoration:none;transition:transform .15s,box-shadow .15s,background .2s;cursor:pointer}
-.ds-btn:hover{transform:translateY(-1px)}
-.ds-btn--fill{background:var(--accent);color:#fff;box-shadow:0 10px 24px -12px var(--accent)}
-.ds-btn--fill:hover{background:var(--accent-ink)}
-.ds-btn--line{border:1px solid currentColor;color:var(--accent-ink)}
-.ds-btn--ghost{border:1px solid rgba(255,255,255,.55);color:#fff}
-.ds-btn--ghost:hover{background:rgba(255,255,255,.12)}
-
-/* ---- hero ---- */
-.ds-hero{position:relative;overflow:hidden;background:
-  radial-gradient(120% 120% at 85% -10%,var(--accent-wash),transparent 60%),var(--surface);
-  border-bottom:1px solid var(--line)}
-.ds-hero .wrap{padding:96px 24px 104px;position:relative}
-.ds-hero .eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--accent-ink);
-  font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:600}
-.ds-hero .eyebrow::before{content:"";width:28px;height:1px;background:var(--accent)}
-.ds-hero .mark{font-size:52px;line-height:1;margin-bottom:14px}
-.ds-hero h1{font-family:var(--font-display);font-weight:600;letter-spacing:.02em;
-  font-size:clamp(34px,7vw,68px);line-height:1.12;margin:.18em 0 .28em}
-.ds-hero .lead{font-size:clamp(15px,2.4vw,19px);color:var(--ink-soft);max-width:32em;margin:0 0 30px}
-.ds-hero .actions{display:flex;flex-wrap:wrap;gap:12px}
-
-/* ---- section scaffolding ---- */
-.ds-section{padding:88px 0;border-top:1px solid var(--line)}
-.ds-section:first-of-type{border-top:0}
-.ds-section--alt{background:var(--surface)}
-.ds-head{display:flex;align-items:baseline;gap:16px;margin-bottom:34px}
-.ds-index{font-family:var(--font-display);font-size:15px;color:var(--accent);letter-spacing:.1em}
-.ds-label{font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:600}
-.ds-h2{font-family:var(--font-display);font-weight:600;font-size:clamp(24px,4.5vw,34px);letter-spacing:.03em;margin:0}
-.ds-lead-text{color:var(--ink-soft);max-width:40em;margin:0}
-
-/* ---- menu ---- */
-.ds-menu{display:grid;gap:0}
-.ds-menu-item{display:grid;grid-template-columns:auto 1fr auto;align-items:baseline;gap:16px;
-  padding:22px 4px;border-bottom:1px solid var(--line)}
-.ds-menu-item .mi-emoji{font-size:22px}
-.ds-menu-item .mi-name{font-family:var(--font-display);font-size:19px;letter-spacing:.02em}
-.ds-menu-item .mi-dot{border-bottom:1px dotted var(--line);transform:translateY(-4px);align-self:stretch}
-.ds-menu-item .mi-sub{display:block;font-size:12.5px;color:var(--muted);font-family:var(--font-sans);letter-spacing:.04em}
-.ds-menu-item .mi-price{color:var(--accent-ink);font-weight:600;white-space:nowrap}
-.ds-note{font-size:12.5px;color:var(--muted);margin-top:18px}
-
-/* ---- access ---- */
-.ds-access{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
-.ds-info{border-top:1px solid var(--line)}
-.ds-info .row{display:flex;gap:14px;padding:15px 2px;border-bottom:1px solid var(--line)}
-.ds-info .k{width:88px;flex:none;color:var(--muted);font-size:13px;letter-spacing:.06em}
-.ds-info .tel{font-weight:600;color:var(--accent-ink);text-decoration:none}
-.ds-map{aspect-ratio:5/4;border-radius:var(--radius-lg);border:1px solid var(--line);
-  background:linear-gradient(135deg,var(--surface-2),#ece7dc);
-  display:grid;place-items:center;color:var(--muted);font-size:14px;letter-spacing:.06em}
-
-/* ---- CTA band ---- */
-.ds-cta{background:var(--ink);color:#f4f1ea;border-radius:var(--radius-lg);padding:54px 40px;text-align:center;
-  background-image:radial-gradient(80% 140% at 50% -20%,var(--accent-wash),transparent 60%)}
-.ds-cta .ds-label{color:var(--accent)}
-.ds-cta h2{font-family:var(--font-display);font-weight:600;color:#fff;font-size:clamp(22px,4vw,32px);margin:.2em 0 .4em}
-.ds-cta p{color:#d8d2c6;max-width:34em;margin:0 auto 22px}
-.ds-cta .actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-
-/* ---- footer ---- */
-.ds-footer{padding:46px 0 64px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
-.ds-footer .disc{background:var(--accent-wash);border:1px solid color-mix(in srgb,var(--accent) 22%,transparent);
-  color:var(--accent-ink);border-radius:var(--radius);padding:15px 18px;margin-bottom:20px;line-height:1.7}
-.ds-footer a{color:var(--accent-ink)}
-
-/* ---- gallery (一覧) ---- */
-.ds-gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:18px}
-.ds-gal a{display:block;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);
-  padding:24px;text-decoration:none;color:inherit;transition:transform .16s,box-shadow .16s,border-color .16s}
-.ds-gal a:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:color-mix(in srgb,var(--accent) 40%,var(--line))}
-.ds-gal .em{font-size:30px}
-.ds-gal .nm{font-family:var(--font-display);font-size:19px;margin-top:10px;letter-spacing:.02em}
-.ds-gal .sb{color:var(--muted);font-size:12.5px;margin-top:4px;letter-spacing:.04em}
-
-/* =========================================================================
-   Conversion / usability layer  （lazyweb research を反映）
-   原則: 1画面に主要CTAは1つ / 予約・電話を常時手の届く位置に / 余計な装飾で
-   コンバージョン地点を散らさない / 価値訴求と社会的証明をスキャナブルに。
-   ========================================================================= */
-
-/* header に予約CTA（PCの主要導線） */
-.ds-header .wrap{gap:18px}
-.ds-nav-wrap{display:flex;align-items:center;gap:26px}
-.ds-header .ds-btn--fill{padding:10px 20px;font-size:13px}
-
-/* social proof（社会的証明・実装イメージ） */
-.ds-proof{background:var(--surface);border-bottom:1px solid var(--line)}
-.ds-proof .wrap{display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center;justify-content:center;text-align:center;padding:18px 24px}
-.ds-proof .stars{color:#e0a106;letter-spacing:2px;font-size:15px}
-.ds-proof .quote{font-family:var(--font-display);font-size:16px}
-.ds-proof .src{font-size:12px;color:var(--muted)}
-
-/* 選ばれる理由（価値訴求 3-up） */
-.ds-highlights{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.ds-hl{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);padding:28px}
-.ds-hl .ic{font-size:26px}
-.ds-hl h3{font-family:var(--font-display);font-size:18px;margin:.55em 0 .3em;letter-spacing:.02em}
-.ds-hl p{color:var(--ink-soft);font-size:13.5px;margin:0}
-
-/* 人気バッジ */
-.ds-badge{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.06em;color:#fff;
-  background:var(--accent);border-radius:999px;padding:2px 9px;margin-left:8px;vertical-align:middle}
-
-/* 予約導線の補助（電話・営業時間を目立たせる） */
-.ds-reserve-aux{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:center;margin-top:16px;font-size:14px;color:#d8d2c6}
-.ds-reserve-aux a{color:#fff;text-decoration:none;font-weight:600}
-
-/* sticky モバイル予約バー（常時手の届く主要CTA） */
-.ds-actionbar{position:fixed;left:0;right:0;bottom:0;z-index:40;display:none;gap:10px;
-  padding:10px 14px calc(10px + env(safe-area-inset-bottom));
-  background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(10px);
-  border-top:1px solid var(--line);box-shadow:0 -8px 24px -16px rgba(28,25,23,.4)}
-.ds-actionbar a{flex:1;justify-content:center;padding:14px}
-
-/* ---- responsive ---- */
-@media(max-width:760px){
-  .ds-nav{display:none}
-  .ds-header .ds-btn--fill{display:none}      /* モバイルは下部の予約バーに集約 */
-  .ds-access{grid-template-columns:1fr;gap:26px}
-  .ds-highlights{grid-template-columns:1fr}
-  .ds-section{padding:60px 0}
-  .ds-hero .wrap{padding:72px 24px 80px}
-  .ds-menu-item{grid-template-columns:auto 1fr;row-gap:2px}
-  .ds-menu-item .mi-dot{display:none}
-  .ds-menu-item .mi-price{grid-column:2;justify-self:end}
-  .ds-actionbar{display:flex}
-  body{padding-bottom:74px}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: "Inter", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", Meiryo, sans-serif;
+  line-height: 1.75;
+}
+a { color: inherit; text-decoration: none; }
+.wrap { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+.proposal-strip {
+  background: #111;
+  color: rgba(255,255,255,.82);
+  font-size: 12px;
+  letter-spacing: .02em;
+  padding: 8px 0;
+}
+.proposal-strip b { color: #fff; font-weight: 700; }
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(251, 250, 247, .86);
+  border-bottom: 1px solid rgba(232, 225, 216, .78);
+  backdrop-filter: blur(14px);
+}
+.site-header .wrap {
+  min-height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.brand {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  min-width: 0;
+  font-weight: 800;
+  letter-spacing: .03em;
+}
+.brand span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.brand small {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: #4a4743;
+  font-size: 13px;
+  font-weight: 700;
+}
+.nav a { min-height: 36px; display: inline-flex; align-items: center; }
+.btn {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+.btn-primary { background: var(--accent); color: #fff; box-shadow: 0 14px 34px color-mix(in srgb, var(--accent) 28%, transparent); }
+.btn-secondary { background: rgba(255,255,255,.14); color: #fff; border-color: rgba(255,255,255,.36); }
+.btn-outline { background: #fff; color: var(--accent-ink); border-color: color-mix(in srgb, var(--accent) 28%, #d9d0c5); }
+.hero {
+  position: relative;
+  min-height: min(720px, calc(100svh - 40px));
+  display: grid;
+  align-items: end;
+  padding: clamp(110px, 16vh, 170px) 0 56px;
+  color: #fff;
+  isolation: isolate;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.70) 0%, rgba(0,0,0,.48) 45%, rgba(0,0,0,.18) 100%),
+    linear-gradient(0deg, rgba(0,0,0,.48) 0%, transparent 38%),
+    url("https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=1800&q=82") center / cover no-repeat;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 130px;
+  background: linear-gradient(0deg, var(--paper), transparent);
+  z-index: -1;
+}
+.hero-content { max-width: 760px; }
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255,255,255,.86);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.eyebrow::before {
+  content: "";
+  width: 36px;
+  height: 2px;
+  background: var(--accent);
+}
+h1 {
+  margin: 18px 0 18px;
+  max-width: 12em;
+  font-family: Georgia, "Times New Roman", "Hiragino Mincho ProN", serif;
+  font-size: clamp(44px, 8vw, 84px);
+  line-height: .98;
+  letter-spacing: 0;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+}
+.hero-lead {
+  max-width: 650px;
+  margin: 0;
+  color: rgba(255,255,255,.88);
+  font-size: clamp(16px, 2.1vw, 21px);
+  font-weight: 600;
+}
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.hero-meta {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 44px;
+  max-width: 780px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(255,255,255,.18);
+  border: 1px solid rgba(255,255,255,.18);
+  backdrop-filter: blur(12px);
+}
+.hero-meta div { padding: 16px 18px; background: rgba(0,0,0,.18); min-width: 0; }
+.hero-meta b { display: block; color: #fff; font-size: 13px; }
+.hero-meta span { color: rgba(255,255,255,.78); font-size: 12px; }
+.section { padding: clamp(64px, 8vw, 104px) 0; }
+.section + .section { border-top: 1px solid var(--line); }
+.section.alt { background: #fff; }
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+.section-kicker {
+  color: var(--accent-ink);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+h2 {
+  margin: 8px 0 0;
+  font-size: clamp(28px, 4vw, 48px);
+  line-height: 1.12;
+  letter-spacing: 0;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+}
+.section-copy { max-width: 560px; color: var(--muted); margin: 0; font-size: 15px; }
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+.feature {
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 26px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 14px 42px rgba(23,23,23,.05);
+}
+.feature strong { font-size: 24px; line-height: 1.25; letter-spacing: 0; }
+.feature p { color: var(--muted); margin: 18px 0 0; font-size: 14px; }
+.number { color: var(--accent); font-size: 13px; font-weight: 900; letter-spacing: .16em; }
+.story {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  gap: clamp(30px, 6vw, 72px);
+  align-items: center;
+}
+.story-visual {
+  min-height: 430px;
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.22)),
+    url("https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=1800&q=82") center / cover no-repeat;
+  box-shadow: var(--shadow);
+}
+.story-text p { color: var(--muted); font-size: 17px; margin: 0 0 18px; }
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.menu-item {
+  min-height: 162px;
+  padding: 22px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.menu-item b { font-size: 18px; line-height: 1.35; }
+.menu-item span { color: var(--muted); font-size: 13px; }
+.reserve {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 24px;
+  align-items: stretch;
+}
+.reserve-panel {
+  padding: clamp(28px, 5vw, 56px);
+  border-radius: 8px;
+  background: var(--ink);
+  color: #fff;
+}
+.reserve-panel p { color: rgba(255,255,255,.72); max-width: 660px; }
+.reserve-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.info-card {
+  padding: 26px;
+  border-radius: 8px;
+  background: var(--accent-soft);
+  border: 1px solid color-mix(in srgb, var(--accent) 24%, var(--line));
+}
+.info-row {
+  display: grid;
+  grid-template-columns: 86px minmax(0, 1fr);
+  gap: 12px;
+  padding: 13px 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 18%, #ddd);
+  font-size: 14px;
+}
+.info-row:last-child { border-bottom: 0; }
+.info-row b { color: var(--accent-ink); }
+.note { color: var(--muted); font-size: 12px; margin-top: 18px; }
+.footer {
+  padding: 30px 0 92px;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+}
+.footer .wrap { display: grid; gap: 8px; }
+.actionbar {
+  position: fixed;
+  z-index: 20;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+  width: min(720px, calc(100% - 28px));
+  display: none;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 8px;
+  background: rgba(255,255,255,.92);
+  border: 1px solid var(--line);
+  box-shadow: 0 18px 50px rgba(23,23,23,.16);
+  backdrop-filter: blur(12px);
+}
+.actionbar .btn { flex: 1; }
+@media (max-width: 820px) {
+  body { overflow-x: hidden; }
+  .wrap { width: min(100% - 28px, 1120px); }
+  .proposal-strip { font-size: 11px; line-height: 1.55; overflow-wrap: anywhere; word-break: break-all; }
+  .proposal-strip .wrap { width: min(100% - 24px, 1120px); white-space: normal; }
+  .site-header .wrap { min-height: 58px; gap: 10px; }
+  .brand { flex: 1; font-size: 15px; }
+  .nav { display: none; }
+  .nav a:not(.btn) { display: none; }
+  .nav .btn { min-height: 38px; padding: 8px 11px; font-size: 13px; }
+  .brand small { display: none; }
+  .hero { min-height: 690px; padding: 96px 0 42px; background-position: center; }
+  .hero-content { min-width: 0; max-width: 100%; }
+  h1 { max-width: 100%; font-size: clamp(38px, 12vw, 54px); line-height: 1.05; word-break: break-all; }
+  h2 { word-break: break-all; }
+  .hero-lead { font-size: 15px; line-height: 1.75; overflow-wrap: anywhere; word-break: break-all; }
+  .hero-meta { grid-template-columns: 1fr; margin-top: 32px; }
+  .section-head { display: block; }
+  .section-copy { margin-top: 14px; }
+  .feature-grid, .menu-grid, .story, .reserve { grid-template-columns: 1fr; }
+  .story-visual { min-height: 300px; order: -1; }
+  .reserve { gap: 14px; }
+  .actionbar { display: none; }
+  .hide-mobile { display: none; }
 }
 
-:root{--accent:#6d28d9;--accent-ink:#561fb0;--accent-wash:color-mix(in srgb,#6d28d9 9%,transparent)}
 </style>
 </head>
 <body>
-<div class="ds-demo-bar">これは <b>コエテク合同会社</b> による<b>リニューアル提案デモ</b>です。実在の 叙々苑 様の公式サイトではありません（料金は発生しません）。</div>
+<div class="proposal-strip"><div class="wrap">これは <b>コエテク合同会社</b> によるWebリニューアル提案LPです。公式サイトではありません。</div></div>
 
-<header class="ds-header"><div class="wrap">
-  <div class="ds-brand"><span class="mk">🍶</span>叙々苑</div>
-  <div class="ds-nav-wrap">
-    <nav class="ds-nav"><a href="#reasons">選ばれる理由</a><a href="#menu">お品書き</a><a href="#access">アクセス</a></nav>
-    <a class="ds-btn ds-btn--fill" href="#contact">ご予約</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#"><span>叙々苑</span><small>札幌市 / 焼肉・グリル</small></a>
+    <nav class="nav">
+      <a href="#story">Concept</a>
+      <a href="#menu">Menu</a>
+      <a href="#visit">Visit</a>
+      <a class="btn btn-outline" href="#contact">相談する</a>
+    </nav>
   </div>
-</div></header>
+</header>
 
-<section class="ds-hero"><div class="wrap">
-  <div class="mark">🍶</div>
-  <span class="eyebrow">札幌市 ／ barbecue</span>
-  <h1>叙々苑</h1>
-  <p class="lead">一日の終わりに、一杯を。<br>気の合う人と、旨い酒と肴で過ごす。そんな夜にちょうどいい一軒です。</p>
-  <div class="actions">
-    <a class="ds-btn ds-btn--fill" href="#contact">ご予約・お問い合わせ</a>
-    <a class="ds-btn ds-btn--line" href="#menu">お品書きを見る</a>
-  </div>
-</div></section>
-
-<div class="ds-proof"><div class="wrap">
-  <span class="stars">★★★★★</span>
-  <span class="quote">「また来たくなる、札幌市の一軒。」</span>
-  <span class="src">— お客様の声（実装イメージ。実サイトではGoogle口コミ等を掲載）</span>
-</div></div>
-
-<section class="ds-section" id="reasons"><div class="wrap">
-  <div class="ds-head"><span class="ds-index">01</span><span class="ds-label">Why us</span></div>
-  <h2 class="ds-h2" style="margin-bottom:.7em">選ばれる理由</h2>
-  <div class="ds-highlights">
-      <div class="ds-hl"><div class="ic">🍶</div><h3>こだわりのbarbecue</h3><p>素材と手仕事を大切に、ていねいに仕上げます。</p></div>
-      <div class="ds-hl"><div class="ic">🪑</div><h3>落ち着いた店内で</h3><p>札幌市で、ゆっくりとお過ごしいただけます。</p></div>
-      <div class="ds-hl"><div class="ic">📅</div><h3>かんたんご予約</h3><p>お電話・オンラインからスムーズにご予約いただけます。</p></div>
-  </div>
-</div></section>
-
-<section class="ds-section ds-section--alt" id="concept"><div class="wrap">
-  <div class="ds-head"><span class="ds-index">02</span><span class="ds-label">Concept</span></div>
-  <h2 class="ds-h2" style="margin-bottom:.5em">こだわり</h2>
-  <p class="ds-lead-text">気の合う人と、旨い酒と肴で過ごす。そんな夜にちょうどいい一軒です。<br><span style="color:var(--muted);font-size:14px">※本デモの紹介文はジャンルに合わせた構成サンプルです。実制作では貴店の歴史・看板メニュー・写真を反映します。</span></p>
-</div></section>
-
-<section class="ds-section" id="menu"><div class="wrap">
-  <div class="ds-head"><span class="ds-index">03</span><span class="ds-label">Menu</span></div>
-  <h2 class="ds-h2" style="margin-bottom:.6em">お品書き</h2>
-  <div class="ds-menu">
-      <div class="ds-menu-item">
-        <span class="mi-emoji">🍶</span>
-        <span><span class="mi-name">おすすめの一品<span class="ds-badge">人気</span></span><span class="mi-sub">サンプル表示</span></span>
-        <span class="mi-dot"></span>
-        <span class="mi-price">¥—</span>
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-content">
+        <span class="eyebrow">札幌市 / 焼肉・グリル</span>
+        <h1>叙々苑</h1>
+        <p class="hero-lead">一日の終わりに、一杯を。 気の合う人と、旨い酒と肴で過ごす。そんな夜にちょうどいい一軒です。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contact">リニューアル相談</a>
+          <a class="btn btn-secondary" href="#menu">メニューを見る</a>
+        </div>
+        <div class="hero-meta" aria-label="店舗情報">
+          <div><b>Area</b><span>札幌市</span></div>
+          <div><b>Style</b><span>焼肉・グリル</span></div>
+          <div><b>Phone</b><span>011-223-8989</span></div>
+        </div>
       </div>
-      <div class="ds-menu-item">
-        <span class="mi-emoji">🍶</span>
-        <span><span class="mi-name">厳選地酒</span><span class="mi-sub">サンプル表示</span></span>
-        <span class="mi-dot"></span>
-        <span class="mi-price">¥—</span>
-      </div>
-      <div class="ds-menu-item">
-        <span class="mi-emoji">🍶</span>
-        <span><span class="mi-name">季節のおつまみ</span><span class="mi-sub">サンプル表示</span></span>
-        <span class="mi-dot"></span>
-        <span class="mi-price">¥—</span>
-      </div>
-  </div>
-  <p class="ds-note">※メニュー名・価格は提案用のサンプル表示です。実データ（実メニュー・写真・価格）を反映して正式版を制作します。</p>
-</div></section>
-
-<section class="ds-section ds-section--alt" id="access"><div class="wrap">
-  <div class="ds-head"><span class="ds-index">04</span><span class="ds-label">Access</span></div>
-  <h2 class="ds-h2" style="margin-bottom:.7em">アクセス・ご利用案内</h2>
-  <div class="ds-access">
-    <div class="ds-info">
-      <div class="row"><span class="k">エリア</span><span>札幌市</span></div>
-      <div class="row"><span class="k">ジャンル</span><span>barbecue</span></div>
-      <div class="row"><span class="k">電話</span><a class="tel" href="tel:011-223-8989">011-223-8989</a></div>
-      <div class="row"><span class="k">営業時間</span><span style="color:var(--muted)">提案後に実データを反映</span></div>
     </div>
-    <div class="ds-map">📍 地図はこの位置に表示されます</div>
-  </div>
-</div></section>
+  </section>
 
-<section class="ds-section" id="contact"><div class="wrap">
-  <div class="ds-cta">
-    <span class="ds-label">Renewal Proposal</span>
-    <h2>このデザインで、正式サイトを無料でご提案します</h2>
-    <p>スマホ対応・表示速度・予約/通販導線・常時SSLを備えた構成案です。実データを反映したお見積り・正式提案をご案内します。</p>
-    <div class="actions">
-      <a class="ds-btn ds-btn--fill" href="https://timerex.net/s/ryutarote_5007/d6cb0d61">お打ち合わせを予約する</a>
-      <a class="ds-btn ds-btn--ghost" href="mailto:support@koetech.jp">メールで問い合わせ</a>
+  <section class="section alt">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Landing Page Design</div>
+          <h2>来店前の期待感を、予約行動につなげる構成。</h2>
+        </div>
+        <p class="section-copy">スマホで見た瞬間に「どんな店か」「何を食べられるか」「どう予約するか」が伝わるよう、ファーストビューからCTAまでを整理した提案です。</p>
+      </div>
+      <div class="feature-grid">
+      <article class="feature">
+        <div class="number">01</div>
+        <div><strong>焼肉・グリルらしさを一目で伝える</strong><p>初見でも料理・雰囲気・価格帯が伝わる構成で、検索後の離脱を抑えます。</p></div>
+      </article>
+      <article class="feature">
+        <div class="number">02</div>
+        <div><strong>予約と来店導線を近くする</strong><p>電話・Web予約・地図への移動を、スマホ画面でも迷わず押せる位置に配置します。</p></div>
+      </article>
+      <article class="feature">
+        <div class="number">03</div>
+        <div><strong>最新情報を更新しやすくする</strong><p>メニュー、営業時間、臨時休業などを運用しやすい形で整理します。</p></div>
+      </article>
+      </div>
     </div>
-    <div class="ds-reserve-aux">ご予約・お問い合わせはお気軽に　/　<a href="tel:011-223-8989">☎ 011-223-8989</a></div>
+  </section>
+
+  <section class="section" id="story">
+    <div class="wrap story">
+      <div class="story-text">
+        <div class="section-kicker">Concept</div>
+        <h2>一日の終わりに、一杯を。</h2>
+        <p>気の合う人と、旨い酒と肴で過ごす。そんな夜にちょうどいい一軒です。</p>
+        <p>正式制作では、店内写真、看板メニュー、店主の想い、Googleビジネスプロフィールの情報を反映し、検索から来店までの流れを自然につくります。</p>
+      </div>
+      <div class="story-visual" aria-label="店舗イメージ"></div>
+    </div>
+  </section>
+
+  <section class="section alt" id="menu">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Menu Highlights</div>
+          <h2>看板メニューを、迷わず選べる見せ方に。</h2>
+        </div>
+        <p class="section-copy">料理写真と説明文を組み合わせ、初めてのお客様にもおすすめが伝わるメニュー導線を用意します。</p>
+      </div>
+      <div class="menu-grid">
+      <article class="menu-item">
+        <b>おすすめの一品</b>
+        <span>実制作では写真・価格・説明文を貴店データに差し替えます</span>
+      </article>
+      <article class="menu-item">
+        <b>厳選地酒</b>
+        <span>実制作では写真・価格・説明文を貴店データに差し替えます</span>
+      </article>
+      <article class="menu-item">
+        <b>季節のおつまみ</b>
+        <span>実制作では写真・価格・説明文を貴店データに差し替えます</span>
+      </article>
+      </div>
+      <p class="note">掲載メニューは提案用サンプルです。正式版では実メニュー・価格・写真に差し替えます。</p>
+    </div>
+  </section>
+
+  <section class="section" id="visit">
+    <div class="wrap reserve">
+      <div class="reserve-panel">
+        <div class="section-kicker">Visit</div>
+        <h2>予約、問い合わせ、地図をひとつの流れに。</h2>
+        <p>スマートフォンでの閲覧を前提に、来店直前のユーザーが必要とする情報を下部CTAと店舗情報に集約します。</p>
+        <div class="reserve-actions">
+          <a class="btn btn-primary" href="https://timerex.net/s/ryutarote_5007/d6cb0d61">打ち合わせ予約</a>
+          <a class="btn btn-outline" href="tel:011-223-8989">電話する</a>
+        </div>
+      </div>
+      <aside class="info-card" aria-label="店舗情報">
+        <div class="info-row"><b>店舗</b><span>叙々苑</span></div>
+        <div class="info-row"><b>エリア</b><span>札幌市</span></div>
+        <div class="info-row"><b>ジャンル</b><span>焼肉・グリル</span></div>
+        <div class="info-row"><b>電話</b><a href="tel:011-223-8989">011-223-8989</a></div>
+        <div class="info-row"><b>更新課題</b><span>font/table旧記法</span></div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section alt" id="contact">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Renewal Proposal</div>
+          <h2>この方向性で、正式な改善案を作成します。</h2>
+        </div>
+        <p class="section-copy">写真・営業時間・実メニューを反映したうえで、公開までの作業範囲と費用感をご案内します。</p>
+      </div>
+      <div class="reserve-actions">
+        <a class="btn btn-primary" href="https://timerex.net/s/ryutarote_5007/d6cb0d61">無料相談を予約する</a>
+        <a class="btn btn-outline" href="mailto:support@koetech.jp">メールで相談する</a>
+      </div>
+      <p class="note">コエテク合同会社 / support@koetech.jp / 011-223-8989</p>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div>本ページは コエテク合同会社 が公開情報をもとに制作した提案サンプルです。叙々苑 様の公式サイトではありません。</div>
+    <div>制作元: コエテク合同会社 / <a href="https://ryutarote.github.io/web-renewal-studio/">https://ryutarote.github.io/web-renewal-studio/</a></div>
   </div>
-</div></section>
+</footer>
 
-<footer class="ds-footer"><div class="wrap">
-  <div class="disc">※本ページは コエテク合同会社 が公開情報をもとに独自に制作した<b>リニューアル提案サンプル</b>です。掲載情報は参考値で、叙々苑 様の公式サイトではありません。料金は一切発生しません。</div>
-  <div>コエテク合同会社　Mail: support@koetech.jp　／　制作実績: <a href="https://ryutarote.github.io/web-renewal-studio/">https://ryutarote.github.io/web-renewal-studio/</a></div>
-</div></footer>
-
-<div class="ds-actionbar">
-  <a class="ds-btn ds-btn--line" style="background:var(--surface)" href="tel:011-223-8989">☎ お電話</a>
-  <a class="ds-btn ds-btn--fill" href="#contact">ご予約・お問い合わせ</a>
+<div class="actionbar" aria-label="固定アクション">
+  <a class="btn btn-outline" href="tel:011-223-8989">電話する</a>
+  <a class="btn btn-primary" href="#contact">相談する</a>
 </div>
 </body>
 </html>

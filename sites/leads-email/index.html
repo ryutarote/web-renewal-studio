@@ -4,318 +4,198 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>リニューアル提案デモ集（メール取得済み候補 24件）｜コエテク合同会社</title>
+<title>プロフェッショナルLP提案デモ集（メール取得済み候補 24件）｜コエテク合同会社</title>
 <style>
-/* =========================================================================
-   web-renewal-studio Design System  ver.2 「Editorial Washoku」
-   飲食店リニューアル提案デモ向けの共通デザイン。明朝見出し＋余白＋ヘアライン。
-   ジャンル別アクセントは各ページが --accent / --accent-ink を上書きして注入する。
-   ========================================================================= */
-
-:root{
-  /* color — warm paper / ink */
-  --bg:#faf8f4; --surface:#ffffff; --surface-2:#f4f1ea;
-  --ink:#1c1917; --ink-soft:#57534e; --muted:#8c857a; --line:#e8e2d6;
-  /* accent (genre injects these) */
-  --accent:#0f766e; --accent-ink:#0b5a53; --accent-wash:rgba(15,118,110,.08);
-  /* type */
-  --font-display:"Hiragino Mincho ProN","Yu Mincho",YuMincho,"Noto Serif JP",serif;
-  --font-sans:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif;
-  /* shape */
-  --radius:14px; --radius-lg:24px; --maxw:1080px;
-  --shadow-sm:0 1px 2px rgba(28,25,23,.05);
-  --shadow:0 18px 50px -24px rgba(28,25,23,.28);
+:root {
+  --ink: #171717;
+  --muted: #66615b;
+  --line: #e8e1d8;
+  --paper: #fbfaf7;
+  --accent: #0f766e;
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-sans);
-  line-height:1.8;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-a{color:inherit}
-img{max-width:100%;display:block}
-.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
-
-/* ---- demo notice bar ---- */
-.ds-demo-bar{background:var(--ink);color:#f4f1ea;font-size:12.5px;letter-spacing:.02em;
-  text-align:center;padding:9px 14px}
-.ds-demo-bar b{color:#fff;font-weight:600}
-
-/* ---- header / nav ---- */
-.ds-header{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 86%,transparent);
-  backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.ds-header .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
-.ds-brand{font-family:var(--font-display);font-size:21px;letter-spacing:.04em;display:flex;align-items:center;gap:10px}
-.ds-brand .mk{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;
-  background:var(--accent-wash);font-size:18px}
-.ds-nav{display:flex;gap:28px;font-size:13.5px;letter-spacing:.04em}
-.ds-nav a{text-decoration:none;color:var(--ink-soft);position:relative;padding:4px 0}
-.ds-nav a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:1px;background:var(--accent);transition:width .25s}
-.ds-nav a:hover{color:var(--ink)}.ds-nav a:hover::after{width:100%}
-
-/* ---- buttons ---- */
-.ds-btn{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;letter-spacing:.03em;
-  padding:13px 26px;border-radius:999px;text-decoration:none;transition:transform .15s,box-shadow .15s,background .2s;cursor:pointer}
-.ds-btn:hover{transform:translateY(-1px)}
-.ds-btn--fill{background:var(--accent);color:#fff;box-shadow:0 10px 24px -12px var(--accent)}
-.ds-btn--fill:hover{background:var(--accent-ink)}
-.ds-btn--line{border:1px solid currentColor;color:var(--accent-ink)}
-.ds-btn--ghost{border:1px solid rgba(255,255,255,.55);color:#fff}
-.ds-btn--ghost:hover{background:rgba(255,255,255,.12)}
-
-/* ---- hero ---- */
-.ds-hero{position:relative;overflow:hidden;background:
-  radial-gradient(120% 120% at 85% -10%,var(--accent-wash),transparent 60%),var(--surface);
-  border-bottom:1px solid var(--line)}
-.ds-hero .wrap{padding:96px 24px 104px;position:relative}
-.ds-hero .eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--accent-ink);
-  font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:600}
-.ds-hero .eyebrow::before{content:"";width:28px;height:1px;background:var(--accent)}
-.ds-hero .mark{font-size:52px;line-height:1;margin-bottom:14px}
-.ds-hero h1{font-family:var(--font-display);font-weight:600;letter-spacing:.02em;
-  font-size:clamp(34px,7vw,68px);line-height:1.12;margin:.18em 0 .28em}
-.ds-hero .lead{font-size:clamp(15px,2.4vw,19px);color:var(--ink-soft);max-width:32em;margin:0 0 30px}
-.ds-hero .actions{display:flex;flex-wrap:wrap;gap:12px}
-
-/* ---- section scaffolding ---- */
-.ds-section{padding:88px 0;border-top:1px solid var(--line)}
-.ds-section:first-of-type{border-top:0}
-.ds-section--alt{background:var(--surface)}
-.ds-head{display:flex;align-items:baseline;gap:16px;margin-bottom:34px}
-.ds-index{font-family:var(--font-display);font-size:15px;color:var(--accent);letter-spacing:.1em}
-.ds-label{font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:600}
-.ds-h2{font-family:var(--font-display);font-weight:600;font-size:clamp(24px,4.5vw,34px);letter-spacing:.03em;margin:0}
-.ds-lead-text{color:var(--ink-soft);max-width:40em;margin:0}
-
-/* ---- menu ---- */
-.ds-menu{display:grid;gap:0}
-.ds-menu-item{display:grid;grid-template-columns:auto 1fr auto;align-items:baseline;gap:16px;
-  padding:22px 4px;border-bottom:1px solid var(--line)}
-.ds-menu-item .mi-emoji{font-size:22px}
-.ds-menu-item .mi-name{font-family:var(--font-display);font-size:19px;letter-spacing:.02em}
-.ds-menu-item .mi-dot{border-bottom:1px dotted var(--line);transform:translateY(-4px);align-self:stretch}
-.ds-menu-item .mi-sub{display:block;font-size:12.5px;color:var(--muted);font-family:var(--font-sans);letter-spacing:.04em}
-.ds-menu-item .mi-price{color:var(--accent-ink);font-weight:600;white-space:nowrap}
-.ds-note{font-size:12.5px;color:var(--muted);margin-top:18px}
-
-/* ---- access ---- */
-.ds-access{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
-.ds-info{border-top:1px solid var(--line)}
-.ds-info .row{display:flex;gap:14px;padding:15px 2px;border-bottom:1px solid var(--line)}
-.ds-info .k{width:88px;flex:none;color:var(--muted);font-size:13px;letter-spacing:.06em}
-.ds-info .tel{font-weight:600;color:var(--accent-ink);text-decoration:none}
-.ds-map{aspect-ratio:5/4;border-radius:var(--radius-lg);border:1px solid var(--line);
-  background:linear-gradient(135deg,var(--surface-2),#ece7dc);
-  display:grid;place-items:center;color:var(--muted);font-size:14px;letter-spacing:.06em}
-
-/* ---- CTA band ---- */
-.ds-cta{background:var(--ink);color:#f4f1ea;border-radius:var(--radius-lg);padding:54px 40px;text-align:center;
-  background-image:radial-gradient(80% 140% at 50% -20%,var(--accent-wash),transparent 60%)}
-.ds-cta .ds-label{color:var(--accent)}
-.ds-cta h2{font-family:var(--font-display);font-weight:600;color:#fff;font-size:clamp(22px,4vw,32px);margin:.2em 0 .4em}
-.ds-cta p{color:#d8d2c6;max-width:34em;margin:0 auto 22px}
-.ds-cta .actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-
-/* ---- footer ---- */
-.ds-footer{padding:46px 0 64px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
-.ds-footer .disc{background:var(--accent-wash);border:1px solid color-mix(in srgb,var(--accent) 22%,transparent);
-  color:var(--accent-ink);border-radius:var(--radius);padding:15px 18px;margin-bottom:20px;line-height:1.7}
-.ds-footer a{color:var(--accent-ink)}
-
-/* ---- gallery (一覧) ---- */
-.ds-gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:18px}
-.ds-gal a{display:block;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);
-  padding:24px;text-decoration:none;color:inherit;transition:transform .16s,box-shadow .16s,border-color .16s}
-.ds-gal a:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:color-mix(in srgb,var(--accent) 40%,var(--line))}
-.ds-gal .em{font-size:30px}
-.ds-gal .nm{font-family:var(--font-display);font-size:19px;margin-top:10px;letter-spacing:.02em}
-.ds-gal .sb{color:var(--muted);font-size:12.5px;margin-top:4px;letter-spacing:.04em}
-
-/* =========================================================================
-   Conversion / usability layer  （lazyweb research を反映）
-   原則: 1画面に主要CTAは1つ / 予約・電話を常時手の届く位置に / 余計な装飾で
-   コンバージョン地点を散らさない / 価値訴求と社会的証明をスキャナブルに。
-   ========================================================================= */
-
-/* header に予約CTA（PCの主要導線） */
-.ds-header .wrap{gap:18px}
-.ds-nav-wrap{display:flex;align-items:center;gap:26px}
-.ds-header .ds-btn--fill{padding:10px 20px;font-size:13px}
-
-/* social proof（社会的証明・実装イメージ） */
-.ds-proof{background:var(--surface);border-bottom:1px solid var(--line)}
-.ds-proof .wrap{display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center;justify-content:center;text-align:center;padding:18px 24px}
-.ds-proof .stars{color:#e0a106;letter-spacing:2px;font-size:15px}
-.ds-proof .quote{font-family:var(--font-display);font-size:16px}
-.ds-proof .src{font-size:12px;color:var(--muted)}
-
-/* 選ばれる理由（価値訴求 3-up） */
-.ds-highlights{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.ds-hl{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);padding:28px}
-.ds-hl .ic{font-size:26px}
-.ds-hl h3{font-family:var(--font-display);font-size:18px;margin:.55em 0 .3em;letter-spacing:.02em}
-.ds-hl p{color:var(--ink-soft);font-size:13.5px;margin:0}
-
-/* 人気バッジ */
-.ds-badge{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.06em;color:#fff;
-  background:var(--accent);border-radius:999px;padding:2px 9px;margin-left:8px;vertical-align:middle}
-
-/* 予約導線の補助（電話・営業時間を目立たせる） */
-.ds-reserve-aux{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:center;margin-top:16px;font-size:14px;color:#d8d2c6}
-.ds-reserve-aux a{color:#fff;text-decoration:none;font-weight:600}
-
-/* sticky モバイル予約バー（常時手の届く主要CTA） */
-.ds-actionbar{position:fixed;left:0;right:0;bottom:0;z-index:40;display:none;gap:10px;
-  padding:10px 14px calc(10px + env(safe-area-inset-bottom));
-  background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(10px);
-  border-top:1px solid var(--line);box-shadow:0 -8px 24px -16px rgba(28,25,23,.4)}
-.ds-actionbar a{flex:1;justify-content:center;padding:14px}
-
-/* ---- responsive ---- */
-@media(max-width:760px){
-  .ds-nav{display:none}
-  .ds-header .ds-btn--fill{display:none}      /* モバイルは下部の予約バーに集約 */
-  .ds-access{grid-template-columns:1fr;gap:26px}
-  .ds-highlights{grid-template-columns:1fr}
-  .ds-section{padding:60px 0}
-  .ds-hero .wrap{padding:72px 24px 80px}
-  .ds-menu-item{grid-template-columns:auto 1fr;row-gap:2px}
-  .ds-menu-item .mi-dot{display:none}
-  .ds-menu-item .mi-price{grid-column:2;justify-self:end}
-  .ds-actionbar{display:flex}
-  body{padding-bottom:74px}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: "Inter", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", Meiryo, sans-serif;
 }
-
+a { color: inherit; text-decoration: none; }
+.wrap { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+.hero {
+  min-height: 430px;
+  display: grid;
+  align-items: end;
+  padding: 88px 0 58px;
+  color: #fff;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.72), rgba(0,0,0,.25)),
+    url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1800&q=82") center / cover no-repeat;
+}
+.kicker { color: rgba(255,255,255,.78); font-size: 13px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; }
+h1 { max-width: 820px; margin: 14px 0 0; font-size: clamp(40px, 7vw, 78px); line-height: 1.02; letter-spacing: 0; }
+.lead { max-width: 680px; color: rgba(255,255,255,.82); font-size: 17px; line-height: 1.8; }
+.section { padding: 58px 0 76px; }
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.gallery-card {
+  min-height: 158px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 14px 38px rgba(23,23,23,.05);
+}
+.gallery-card span { color: var(--accent); font-size: 12px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+.gallery-card strong { font-size: 22px; line-height: 1.25; letter-spacing: 0; }
+.gallery-card small { color: var(--muted); font-size: 13px; }
+.note { color: var(--muted); font-size: 12px; margin-top: 28px; line-height: 1.8; }
+@media (max-width: 820px) {
+  .gallery { grid-template-columns: 1fr; }
+  .hero { min-height: 520px; }
+}
 </style>
 </head>
 <body>
-<section class="ds-hero"><div class="wrap">
-  <span class="eyebrow">コエテク合同会社｜Renewal Proposal</span>
-  <h1>提案デモ集　メール取得済み候補</h1>
-  <p class="lead">各店の旧サイト改善を体現した、スマホ対応・常時SSL・高速表示の構成サンプル（全24件）。</p>
-</div></section>
-<section class="ds-section"><div class="wrap">
-  <div class="ds-gal">
-    <a href="kanazawa-001/">
-      <div class="em">☕</div>
-      <div class="nm">金澤屋珈琲店</div>
-      <div class="sb">金沢市 ／ coffee_shop</div>
-    </a>
-    <a href="fukuoka-004/">
-      <div class="em">☕</div>
-      <div class="nm">リトルハニー（ハニー珈琲 博多駅前店）</div>
-      <div class="sb">福岡市 ／ coffee_shop・sandwich</div>
-    </a>
-    <a href="fukuoka-008/">
-      <div class="em">🥢</div>
-      <div class="nm">だし茶漬け えん</div>
-      <div class="sb">福岡市 ／ chazuke・うどん</div>
-    </a>
-    <a href="sapporo-024/">
-      <div class="em">🍣</div>
-      <div class="nm">町のすし家 四季花まる</div>
-      <div class="sb">札幌市 ／ 寿司</div>
-    </a>
-    <a href="sapporo-026/">
-      <div class="em">🍴</div>
-      <div class="nm">根室花まる</div>
-      <div class="sb">札幌市 ／ レストラン</div>
-    </a>
-    <a href="sapporo-027/">
-      <div class="em">🍶</div>
-      <div class="nm">松尾ジンギスカン</div>
-      <div class="sb">札幌市 ／ barbecue</div>
-    </a>
-    <a href="osaka-046/">
-      <div class="em">🍱</div>
-      <div class="nm">馳走庵</div>
-      <div class="sb">大阪市 ／ 和食</div>
-    </a>
-    <a href="osaka-049/">
-      <div class="em">☕</div>
-      <div class="nm">宝島 24</div>
-      <div class="sb">大阪市 ／ internet_cafe</div>
-    </a>
-    <a href="osaka-063/">
-      <div class="em">🥟</div>
-      <div class="nm">551蓬莱</div>
-      <div class="sb">大阪市 ／ 中華料理</div>
-    </a>
-    <a href="nagoya-066/">
-      <div class="em">☕</div>
-      <div class="nm">なごのや</div>
-      <div class="sb">名古屋市 ／ カフェ</div>
-    </a>
-    <a href="nagoya-069/">
-      <div class="em">🍔</div>
-      <div class="nm">Midtown BBQ</div>
-      <div class="sb">名古屋市 ／ バーガー・grill</div>
-    </a>
-    <a href="sendai-077/">
-      <div class="em">☕</div>
-      <div class="nm">星乃珈琲店</div>
-      <div class="sb">仙台市 ／ coffee_shop</div>
-    </a>
-    <a href="sendai-079/">
-      <div class="em">🍶</div>
-      <div class="nm">八剣伝</div>
-      <div class="sb">仙台市 ／ 酒場</div>
-    </a>
-    <a href="sendai-088/">
-      <div class="em">🍶</div>
-      <div class="nm">Vilevan</div>
-      <div class="sb">仙台市 ／ バー</div>
-    </a>
-    <a href="kyoto-095/">
-      <div class="em">🍝</div>
-      <div class="nm">Irish PUB field/カレーとカレーパンの店　野原屋</div>
-      <div class="sb">京都市 ／ fish_and_chips・pizza・curry・sandwich</div>
-    </a>
-    <a href="yokohama-100/">
-      <div class="em">🍴</div>
-      <div class="nm">菜香</div>
-      <div class="sb">横浜市 ／ レストラン</div>
-    </a>
-    <a href="yokohama-101/">
-      <div class="em">🍴</div>
-      <div class="nm">博多 もつ鍋 おおやま</div>
-      <div class="sb">横浜市 ／ hotpot</div>
-    </a>
-    <a href="sapporo-102/">
-      <div class="em">🍶</div>
-      <div class="nm">叙々苑</div>
-      <div class="sb">札幌市 ／ barbecue</div>
-    </a>
-    <a href="sapporo-103/">
-      <div class="em">🍽️</div>
-      <div class="nm">ミクニ サッポロ</div>
-      <div class="sb">札幌市 ／ フレンチ</div>
-    </a>
-    <a href="hiroshima-105/">
-      <div class="em">🍴</div>
-      <div class="nm">Kemby&#x27;s Cafe</div>
-      <div class="sb">広島市 ／ american</div>
-    </a>
-    <a href="nagoya-109/">
-      <div class="em">🍴</div>
-      <div class="nm">シューターズ</div>
-      <div class="sb">名古屋市 ／ レストラン</div>
-    </a>
-    <a href="sendai-111/">
-      <div class="em">🍴</div>
-      <div class="nm">カトマンドゥ</div>
-      <div class="sb">仙台市 ／ ネパール料理・スープカレー</div>
-    </a>
-    <a href="sendai-113/">
-      <div class="em">🍝</div>
-      <div class="nm">Pizzeria LAVAROCK 仙台</div>
-      <div class="sb">仙台市 ／ pizza</div>
-    </a>
-    <a href="kobe-118/">
-      <div class="em">☕</div>
-      <div class="nm">School Bus Kobe</div>
-      <div class="sb">神戸市 ／ coffee_shop</div>
-    </a>
+<section class="hero">
+  <div class="wrap">
+    <div class="kicker">コエテク合同会社 / Renewal Proposal</div>
+    <h1>プロフェッショナルLP提案デモ集</h1>
+    <p class="lead">メール取得済み候補 24件を、来店導線と店舗の世界観が伝わるランディングページ形式に再設計しました。</p>
   </div>
-  <p class="ds-note" style="margin-top:30px">※すべて コエテク合同会社 が公開情報をもとに制作した提案サンプルで、各店の公式サイトではありません。</p>
-</div></section>
+</section>
+<section class="section">
+  <div class="wrap">
+    <div class="gallery">
+      <a class="gallery-card" href="kanazawa-001/">
+        <span>金沢市</span>
+        <strong>金澤屋珈琲店</strong>
+        <small>喫茶店</small>
+      </a>
+      <a class="gallery-card" href="fukuoka-004/">
+        <span>福岡市</span>
+        <strong>リトルハニー（ハニー珈琲 博多駅前店）</strong>
+        <small>喫茶店・サンドイッチ</small>
+      </a>
+      <a class="gallery-card" href="fukuoka-008/">
+        <span>福岡市</span>
+        <strong>だし茶漬け えん</strong>
+        <small>茶漬け・うどん</small>
+      </a>
+      <a class="gallery-card" href="sapporo-024/">
+        <span>札幌市</span>
+        <strong>町のすし家 四季花まる</strong>
+        <small>寿司</small>
+      </a>
+      <a class="gallery-card" href="sapporo-026/">
+        <span>札幌市</span>
+        <strong>根室花まる</strong>
+        <small>レストラン</small>
+      </a>
+      <a class="gallery-card" href="sapporo-027/">
+        <span>札幌市</span>
+        <strong>松尾ジンギスカン</strong>
+        <small>焼肉・グリル</small>
+      </a>
+      <a class="gallery-card" href="osaka-046/">
+        <span>大阪市</span>
+        <strong>馳走庵</strong>
+        <small>和食</small>
+      </a>
+      <a class="gallery-card" href="osaka-049/">
+        <span>大阪市</span>
+        <strong>宝島 24</strong>
+        <small>インターネットカフェ</small>
+      </a>
+      <a class="gallery-card" href="osaka-063/">
+        <span>大阪市</span>
+        <strong>551蓬莱</strong>
+        <small>中華料理</small>
+      </a>
+      <a class="gallery-card" href="nagoya-066/">
+        <span>名古屋市</span>
+        <strong>なごのや</strong>
+        <small>カフェ</small>
+      </a>
+      <a class="gallery-card" href="nagoya-069/">
+        <span>名古屋市</span>
+        <strong>Midtown BBQ</strong>
+        <small>バーガー・グリル</small>
+      </a>
+      <a class="gallery-card" href="sendai-077/">
+        <span>仙台市</span>
+        <strong>星乃珈琲店</strong>
+        <small>喫茶店</small>
+      </a>
+      <a class="gallery-card" href="sendai-079/">
+        <span>仙台市</span>
+        <strong>八剣伝</strong>
+        <small>酒場</small>
+      </a>
+      <a class="gallery-card" href="sendai-088/">
+        <span>仙台市</span>
+        <strong>Vilevan</strong>
+        <small>バー</small>
+      </a>
+      <a class="gallery-card" href="kyoto-095/">
+        <span>京都市</span>
+        <strong>Irish PUB field/カレーとカレーパンの店　野原屋</strong>
+        <small>フィッシュ&amp;チップス・ピッツァ・カレー・サンドイッチ</small>
+      </a>
+      <a class="gallery-card" href="yokohama-100/">
+        <span>横浜市</span>
+        <strong>菜香</strong>
+        <small>レストラン</small>
+      </a>
+      <a class="gallery-card" href="yokohama-101/">
+        <span>横浜市</span>
+        <strong>博多 もつ鍋 おおやま</strong>
+        <small>鍋料理</small>
+      </a>
+      <a class="gallery-card" href="sapporo-102/">
+        <span>札幌市</span>
+        <strong>叙々苑</strong>
+        <small>焼肉・グリル</small>
+      </a>
+      <a class="gallery-card" href="sapporo-103/">
+        <span>札幌市</span>
+        <strong>ミクニ サッポロ</strong>
+        <small>フレンチ</small>
+      </a>
+      <a class="gallery-card" href="hiroshima-105/">
+        <span>広島市</span>
+        <strong>Kemby&#x27;s Cafe</strong>
+        <small>アメリカ料理</small>
+      </a>
+      <a class="gallery-card" href="nagoya-109/">
+        <span>名古屋市</span>
+        <strong>シューターズ</strong>
+        <small>レストラン</small>
+      </a>
+      <a class="gallery-card" href="sendai-111/">
+        <span>仙台市</span>
+        <strong>カトマンドゥ</strong>
+        <small>ネパール料理・スープカレー</small>
+      </a>
+      <a class="gallery-card" href="sendai-113/">
+        <span>仙台市</span>
+        <strong>Pizzeria LAVAROCK 仙台</strong>
+        <small>ピッツァ</small>
+      </a>
+      <a class="gallery-card" href="kobe-118/">
+        <span>神戸市</span>
+        <strong>School Bus Kobe</strong>
+        <small>喫茶店</small>
+      </a>
+    </div>
+    <p class="note">すべて コエテク合同会社 が公開情報をもとに制作した提案サンプルで、各店の公式サイトではありません。</p>
+  </div>
+</section>
 </body>
 </html>

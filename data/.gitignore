@@ -4,3 +4,13 @@ candidates_*.csv
 renewal_leads*.csv
 seed_*.csv
 *.csv
+# 営業メール関連（宛先・送信者情報・送信ログ・プレビュー）も非公開。
+recipients.csv
+outreach_sender.json
+sent_log.csv
+outreach_preview/
+form_outreach.md
+call_scripts.md
+scheduled_send.log
+scheduled_send.out
+scheduled_send.err

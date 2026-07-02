@@ -1,0 +1,10 @@
+{
+  "_comment": "このファイルをコピーして data/outreach_sender.json を作成し、自社情報を記入してください（data/outreach_sender.json はgit非追跡）。SMTPのパスワード等はここに書かず、環境変数で渡します。",
+  "sender_name": "（担当者氏名）",
+  "sender_company": "（会社名・屋号）",
+  "sender_address": "（〒・住所）",
+  "sender_email": "（返信を受けるメールアドレス＝From/Reply-To）",
+  "sender_phone": "（電話番号）",
+  "optout": "（配信停止の連絡先メール。未記入ならsender_emailを使用）",
+  "top_url": "https://ryutarote.github.io/web-renewal-studio/"
+}
