@@ -47,6 +47,7 @@ python3 scripts/send_outreach.py \
 
 - SPF: `v=spf1 include:_spf.onamae.ne.jp ~all`
 - MX: `10 mail1044.onamae.ne.jp.`
+- DKIM: `default._domainkey.koetech.jp` に `v=DKIM1; k=rsa; p=...` が存在
 - DMARC: 未設定
 
 DNSに追加する推奨レコード:
@@ -55,5 +56,4 @@ DNSに追加する推奨レコード:
 _dmarc.koetech.jp. TXT "v=DMARC1; p=none; rua=mailto:support@koetech.jp; fo=1; adkim=r; aspf=r"
 ```
 
-DKIMはお名前メール側で有効化し、発行されたTXT/CNAMEをDNSへ追加する。
 DMARCはまず `p=none` で集計し、到達状況を見てから `quarantine` 以上を検討する。
